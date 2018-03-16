@@ -27,7 +27,7 @@ namespace VangDeVolger
         {
             // this function will add the bullet to the game play
             // it is required to be called from the main class
-            _box.Image = (Properties.Resources.wall);
+            _box.Image = (Properties.Resources.box);
             _box.Name = Name;
             _box.Tag = Tag;
             _box.Left = X;

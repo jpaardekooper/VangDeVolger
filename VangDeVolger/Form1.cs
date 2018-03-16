@@ -31,7 +31,7 @@ namespace VangDeVolger
             //  player.direction = direct; //assignment the direction to the bullet
             player.mkHero(this); //run the function mkHero from the Hero.cs class
             enemy.mkEnemy(this);//run the function mkEnemy from the Enemy.cs class
-            GenerateWalls(15);
+            GenerateWalls(10);
 
         }
 
@@ -41,6 +41,9 @@ namespace VangDeVolger
             {
                 Wall wall = new Wall();
                 wall.mkWall(this);
+
+                Box box = new Box();
+                box.mkBox(this);
             }
         }
 
@@ -135,6 +138,30 @@ namespace VangDeVolger
                     //Enemy and wall collision
 
                     if ((j is PictureBox && j.Tag == "enemy") && (x is PictureBox && x.Tag == "wall"))
+                    {
+                        //checking if the X loop is touching the J loop
+                        //moving to the left of the wall
+                        if (j.Bounds.IntersectsWith(x.Bounds) && j.Left < x.Left + x.Width)
+                        {
+                            ((PictureBox)j).Left += player.Speed;
+                        }
+                        if (j.Bounds.IntersectsWith(x.Bounds) && j.Left > x.Left - x.Width)
+                        {
+                            ((PictureBox)j).Left -= player.Speed;
+                        }
+                        if (j.Bounds.IntersectsWith(x.Bounds) && j.Top < x.Top)
+                        {
+                            ((PictureBox)j).Top -= player.Speed;
+                        }
+                        if (j.Bounds.IntersectsWith(x.Bounds) && j.Top > x.Top)
+                        {
+                            ((PictureBox)j).Top += player.Speed;
+                        }
+
+                    }
+
+                    //noy pushable boxes
+                    if ((j is PictureBox && j.Tag == "enemy") && (x is PictureBox && x.Tag == "box"))
                     {
                         //checking if the X loop is touching the J loop
                         //moving to the left of the wall
