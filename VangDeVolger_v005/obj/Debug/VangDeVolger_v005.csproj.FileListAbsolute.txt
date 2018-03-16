@@ -1,0 +1,11 @@
+C:\Users\P_jaz\source\repos\VangDeVolger_v005\VangDeVolger_v005\obj\Debug\VangDeVolger_v005.csprojResolveAssemblyReference.cache
+C:\Users\P_jaz\source\repos\VangDeVolger_v005\VangDeVolger_v005\obj\Debug\VangDeVolger_v005.Properties.Resources.resources
+C:\Users\P_jaz\source\repos\VangDeVolger_v005\VangDeVolger_v005\obj\Debug\VangDeVolger_v005.csproj.GenerateResource.cache
+C:\Users\P_jaz\source\repos\VangDeVolger_v005\VangDeVolger_v005\obj\Debug\VangDeVolger_v005.csproj.CoreCompileInputs.cache
+C:\Users\P_jaz\source\repos\VangDeVolger_v005\VangDeVolger_v005\bin\Debug\VangDeVolger_v005.exe.config
+C:\Users\P_jaz\source\repos\VangDeVolger_v005\VangDeVolger_v005\bin\Debug\VangDeVolger_v005.exe
+C:\Users\P_jaz\source\repos\VangDeVolger_v005\VangDeVolger_v005\bin\Debug\VangDeVolger_v005.pdb
+C:\Users\P_jaz\source\repos\VangDeVolger_v005\VangDeVolger_v005\obj\Debug\VangDeVolger_v005.exe
+C:\Users\P_jaz\source\repos\VangDeVolger_v005\VangDeVolger_v005\obj\Debug\VangDeVolger_v005.pdb
+C:\Users\P_jaz\source\repos\VangDeVolger_v005\VangDeVolger_v005\obj\Debug\VangDeVolger_v005.GameSetup.resources
+C:\Users\P_jaz\source\repos\VangDeVolger_v005\VangDeVolger_v005\obj\Debug\VangDeVolger_v005.Game.resources
