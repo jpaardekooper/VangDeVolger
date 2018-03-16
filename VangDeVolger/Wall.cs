@@ -11,11 +11,7 @@ namespace VangDeVolger
     {
         PictureBox _wall = new PictureBox();
 
-        //to make random even more random
-        public static class Utils
-        {
-            public static readonly Random rnd = new Random();
-        }
+       
 
         public Wall() : base()
         {

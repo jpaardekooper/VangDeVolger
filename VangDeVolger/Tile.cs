@@ -23,7 +23,12 @@ namespace VangDeVolger
         public int Health { get; set; }
 
         public Image Sprite { get; set; }
-        
+
+        //to make random even more random
+        public static class Utils
+        {
+            public static readonly Random rnd = new Random();
+        }
 
 
         public Tile()

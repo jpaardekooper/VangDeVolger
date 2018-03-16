@@ -18,8 +18,7 @@ namespace VangDeVolger
             Tag = Name;
             Speed = 3;
             X = 1060 - _enemy.Width;
-            Y = 458 - _enemy.Height;
-           
+            Y = 458 - _enemy.Height;           
         }
 
         public void mkEnemy(Form form)
