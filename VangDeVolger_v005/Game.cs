@@ -11,8 +11,7 @@ using System.Windows.Forms;
 namespace VangDeVolger_v005
 {
     public partial class Game : Form
-    {      
-
+    {   
         public Game()
         {
             InitializeComponent();         
@@ -21,6 +20,9 @@ namespace VangDeVolger_v005
         private void Game_Load(object sender, EventArgs e)
         {
             label2.Text = GameSetup.MyTextBoxValue;
+
+            GameBoard loadLevelTiles = new GameBoard(this);
+
         }
     }
 }
