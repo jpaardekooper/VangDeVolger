@@ -1,0 +1,10 @@
+c:\users\p_jaz\source\repos\VangDeVolger\VangDeVolger\bin\Debug\VangDeVolger.exe.config
+c:\users\p_jaz\source\repos\VangDeVolger\VangDeVolger\bin\Debug\VangDeVolger.exe
+c:\users\p_jaz\source\repos\VangDeVolger\VangDeVolger\bin\Debug\VangDeVolger.pdb
+c:\users\p_jaz\source\repos\VangDeVolger\VangDeVolger\obj\Debug\VangDeVolger.csprojResolveAssemblyReference.cache
+c:\users\p_jaz\source\repos\VangDeVolger\VangDeVolger\obj\Debug\VangDeVolger.Properties.Resources.resources
+c:\users\p_jaz\source\repos\VangDeVolger\VangDeVolger\obj\Debug\VangDeVolger.csproj.GenerateResource.cache
+c:\users\p_jaz\source\repos\VangDeVolger\VangDeVolger\obj\Debug\VangDeVolger.csproj.CoreCompileInputs.cache
+c:\users\p_jaz\source\repos\VangDeVolger\VangDeVolger\obj\Debug\VangDeVolger.exe
+c:\users\p_jaz\source\repos\VangDeVolger\VangDeVolger\obj\Debug\VangDeVolger.pdb
+C:\Users\P_jaz\source\repos\VangDeVolger\VangDeVolger\obj\Debug\VangDeVolger.Platform.resources
