@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -11,10 +12,13 @@ using System.Windows.Forms;
 namespace VangDeVolger_v005
 {
     public partial class Game : Form
-    {   
+    {
+        
+
         public Game()
         {
-            InitializeComponent();         
+            InitializeComponent();
+          
         }
 
         private void Game_Load(object sender, EventArgs e)
@@ -23,6 +27,17 @@ namespace VangDeVolger_v005
 
             GameBoard loadLevelTiles = new GameBoard(this);
 
+             Hero loadHero = new Hero(this);
+            
+            for (int i =0;i< 144; i++)
+            {
+                Wall loadSprites = new Wall(this);
+            }
+
+           // Sprite loadSprites = new Sprite();
+
+
+          
         }
     }
 }
