@@ -11,7 +11,7 @@ namespace VangDeVolger_v005
     class GameBoard
     {
         // Panel[,] ChessboardPanels { get; set; }
-        private PictureBox[,] _gameBoardPanels;
+        public PictureBox[,] GameBoardBoxes;
 
         public List<PictureBox> items = new List<PictureBox>();
 
@@ -19,9 +19,9 @@ namespace VangDeVolger_v005
         const int gridSize = 12;
 
         public GameBoard(Form form)
-        {  
+        {
             // initialize the "chess board"
-            _gameBoardPanels = new PictureBox[gridSize, gridSize];
+            GameBoardBoxes = new PictureBox[gridSize, gridSize];
 
             // double for loop to handle all rows and columns
             for (var i = 0; i < gridSize; i++)
@@ -39,10 +39,10 @@ namespace VangDeVolger_v005
                     // add to Form's Controls so that they show up
                     form.Controls.Add(newPictureBox);
                     //adding picturebox to list
-                    items.Add(newPictureBox);                  
+                    items.Add(newPictureBox);
 
                     // add to our 2d array of panels for future use
-                    _gameBoardPanels[i, j] = newPictureBox;
+                    GameBoardBoxes[i, j] = newPictureBox;
 
                     // color the backgrounds
                     if (i == 0 && j == 0)
