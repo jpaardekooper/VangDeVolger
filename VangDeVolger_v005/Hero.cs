@@ -8,31 +8,29 @@ using System.Windows.Forms;
 
 namespace VangDeVolger_v005
 {
-    class Hero : Sprite
+    class Hero 
     {
-       
-        public Hero(Form form) : base() 
+    //    private int Health { get; set; }
+        public string name { get; set; }
+
+        public Hero() 
         {
-            PictureBox player = new PictureBox
-            {
-                Size = new Size(SpriteSize, SpriteSize),
-                Location = new Point(SpriteSize * 0, SpriteSize * 0),
-                Name = "player",
-                Tag = "player",
-                BackColor = Color.Blue
-                
-            };
-            form.Controls.Add(player);
-            Items.Add(player);
-            player.BringToFront();
-
-
-
-            foreach (PictureBox item in Items)
-            Console.WriteLine(item.Name);
-           
+            //       Health = 100;
+            this.name = "hero";
         }
 
+        public static void DrawHero(Form form)
+        {
+           
+            //form.Controls.Add(player);
+            //Items.Add(player);
+            //player.BringToFront();
+
+
+
+            //foreach (PictureBox item in Items)
+            //    Console.WriteLine(item.Name);
+        }
 
     }
 }

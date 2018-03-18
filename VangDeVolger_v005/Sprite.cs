@@ -17,8 +17,8 @@ namespace VangDeVolger_v005
 
         public int Speed { get; set; }
 
-        public int SpriteSize { get; set; }
-        public int GridSize { get; set; }
+        public static int SpriteSize { get; set; }
+        public static int GridSize { get; set; }
 
 
         protected Random rng = new Random();

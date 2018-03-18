@@ -10,7 +10,7 @@ namespace VangDeVolger_v005
 {
     class GameBoard
     {
-        public PictureBox[,] GameBoardBoxes;
+        public static PictureBox[,] GameBoardBoxes;
 
         private const int tileSize = 40;
         private const int gridSize = 12;
@@ -27,17 +27,26 @@ namespace VangDeVolger_v005
                 {
                     // create new Panel control which will be one 
                     // game board tile
+                   
                     PictureBox newPictureBox = new PictureBox
                     {
                         Size = new Size(tileSize, tileSize),
                         Location = new Point(tileSize * i, tileSize * j),
+                 
                     };
+                    if (i == 0 && j == 0)
+                    {
+                        newPictureBox.Image = Properties.Resources.enemyLeft;
+                        newPictureBox.SizeMode = PictureBoxSizeMode.Zoom;
+                        newPictureBox.Tag = "hero";
+
+                    }
 
                     // add to Form's Controls so that they show up
                     form.Controls.Add(newPictureBox);
                     //adding picturebox to list
 
-                    //adding items to the list
+                    //adding items to the list = 
 
 
                     // add to our 2d array of panels for future use
