@@ -10,20 +10,16 @@ using System.Windows.Forms;
 
 namespace VangDeVolgerSetup
 {
-    public partial class Form1 : Form
+    public partial class Form2 : Form
     {
-        public static string MyTextBoxValue;
-
-        public Form1()
+        public Form2()
         {
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void Form2_Load(object sender, EventArgs e)
         {
-            MyTextBoxValue = label1.Text;
-            Form2 Gameboard = new Form2();
-            Gameboard.Show();
+            label2.Text = Form1.MyTextBoxValue;
         }
     }
 }

@@ -7,3 +7,5 @@ C:\Users\P_jaz\source\repos\VangDeVolger\VangDeVolgerSetup\VangDeVolgerSetup\obj
 C:\Users\P_jaz\source\repos\VangDeVolger\VangDeVolgerSetup\VangDeVolgerSetup\obj\Debug\VangDeVolgerSetup.csproj.CoreCompileInputs.cache
 C:\Users\P_jaz\source\repos\VangDeVolger\VangDeVolgerSetup\VangDeVolgerSetup\obj\Debug\VangDeVolgerSetup.exe
 C:\Users\P_jaz\source\repos\VangDeVolger\VangDeVolgerSetup\VangDeVolgerSetup\obj\Debug\VangDeVolgerSetup.pdb
+C:\Users\P_jaz\source\repos\VangDeVolger\VangDeVolgerSetup\VangDeVolgerSetup\obj\Debug\VangDeVolgerSetup.Form1.resources
+C:\Users\P_jaz\source\repos\VangDeVolger\VangDeVolgerSetup\VangDeVolgerSetup\obj\Debug\VangDeVolgerSetup.Form2.resources
