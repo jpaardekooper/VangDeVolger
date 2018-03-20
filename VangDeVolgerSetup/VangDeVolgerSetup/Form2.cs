@@ -15,10 +15,9 @@ namespace VangDeVolgerSetup
     {
         public int levelmodus;
         public string MapName;
-      
-        private Block[,] myBlock = new Block[15, 15];
 
-        public GenerateLevel _generatelevel = new GenerateLevel();
+       
+        public GenerateLevel Generatelevel = new GenerateLevel();
 
         public Form2()
         {
@@ -35,11 +34,13 @@ namespace VangDeVolgerSetup
 
         private void _startGame()
         {
-            _generatelevel.Name = MapName;
+            Generatelevel.Name = MapName;
 
-            Console.WriteLine(_generatelevel.Name);
+      //      Console.WriteLine(Generatelevel.Name);
 
-            _generatelevel.LoadMyTextLevel(this, MapName);
+            Generatelevel.ReadMyTextLevelFile(this, MapName);
+            
+         
 
         }
         

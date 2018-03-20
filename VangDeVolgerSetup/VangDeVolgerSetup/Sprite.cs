@@ -8,13 +8,16 @@ using System.Windows.Forms;
 
 namespace VangDeVolgerSetup
 {
-    public class Block
+   
+
+    public class Sprite
     {
-        public Control Blockobject { get; set; }
-        
-        public Block(Control pBlockobject)
+        public Control SpriteObject { get; set; }      
+
+
+        public Sprite(Control pbSpriteObject)
         {
-            this.Blockobject = pBlockobject;
+            this.SpriteObject = pbSpriteObject;
         }
     }
 }

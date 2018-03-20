@@ -47,10 +47,10 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(705, 92);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(28, 13);
+            this.label1.Size = new System.Drawing.Size(29, 13);
             this.label1.TabIndex = 1;
             this.label1.Tag = "";
-            this.label1.Text = "hard";
+            this.label1.Text = "easy";
             // 
             // Form1
             // 
