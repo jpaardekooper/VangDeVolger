@@ -45,6 +45,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Block.cs" />
+    <Compile Include="Food.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -57,6 +59,8 @@
     <Compile Include="Form2.Designer.cs">
       <DependentUpon>Form2.cs</DependentUpon>
     </Compile>
+    <Compile Include="GameBoard.cs" />
+    <Compile Include="Hero.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
@@ -66,13 +70,14 @@
       <DependentUpon>Form2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -86,6 +91,32 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\wall.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\death.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Nleft.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Nright.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pushLeft.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pushRight.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Levels\Hard.txt" />
+    <Content Include="Levels\Easy.txt" />
+    <None Include="Resources\box.png" />
+    <None Include="Resources\enemyRight.gif" />
+    <None Include="Resources\enemyLeft.gif" />
+    <None Include="Resources\Easy.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

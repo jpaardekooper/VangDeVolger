@@ -13,11 +13,13 @@ namespace VangDeVolgerSetup
     public partial class Form1 : Form
     {
         public static string MyTextBoxValue;
-
+      
         public Form1()
         {
-            InitializeComponent();
+            InitializeComponent();           
         }
+        
+      
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -25,5 +27,6 @@ namespace VangDeVolgerSetup
             Form2 Gameboard = new Form2();
             Gameboard.Show();
         }
+
     }
 }
