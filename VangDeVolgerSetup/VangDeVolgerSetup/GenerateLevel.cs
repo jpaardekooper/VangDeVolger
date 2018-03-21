@@ -40,7 +40,7 @@ namespace VangDeVolgerSetup
         //    }
         //}
 
-        private Sprite[,] _gridMapArray = new Sprite[12, 12];
+        private Tile[,] _gridMapArray = new Tile[12, 12];
       
 
         //basic information of the picturebox (pb) width, height and position 
@@ -109,7 +109,7 @@ namespace VangDeVolgerSetup
                         //adding + 100 to the Y location to show the health bar of the player class
                         tile.Location = new Point(_currentPositionX, _currentPositionY+100);                       
                         Form2.Controls.Add(tile);  //adding the tile to Form2 so we can see it                       
-                        _gridMapArray[_iRow, _iCol] = new Sprite(tile); //filling the 2D array with sprites in to use them later on 
+                        _gridMapArray[_iRow, _iCol] = new Tile(tile); //filling the 2D array with sprites in to use them later on 
                         Console.Write(" " + tile.Tag + "\t");
                       
                         _iCol++;  //adding 1 collumn eachtime we pass this                       

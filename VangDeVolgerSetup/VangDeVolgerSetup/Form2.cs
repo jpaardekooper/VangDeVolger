@@ -41,9 +41,13 @@ namespace VangDeVolgerSetup
       //      Console.WriteLine(Generatelevel.Name);
 
             Generatelevel.ReadMyTextLevelFile(this, MapName);
-            
-         
+            _loadsprites();
 
+        }
+        private void _loadsprites()
+        {
+            Hero player = new Hero();           
+            player.CreateHeroInstance(this); //run the function mkHero from the Hero.cs class
         }
 
         private void _initializePictureList()
