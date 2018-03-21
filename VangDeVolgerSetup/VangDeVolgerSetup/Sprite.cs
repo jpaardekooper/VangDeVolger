@@ -9,8 +9,8 @@ namespace VangDeVolgerSetup
 {
     abstract class Sprite
     {
-        protected int _SpriteSpeed { get; set; } // creating a integer called speed and assigning a value of 20      
-        protected string _SpriteName { get; set; }
+        protected int _SpriteSpeed { get; set; } // creating a integer called speed    
+        protected string _SpriteName { get; set; } 
         protected string _SpriteTag { get; set; }
 
         protected int _StartLocationX { get; set; }
@@ -18,17 +18,8 @@ namespace VangDeVolgerSetup
 
         protected int _SpriteWidth { get; set; }
         protected int _SpriteHeight { get; set; }
-      
 
         protected Image _SpriteImage { get; set; }
-
-
-        ////to make random even more random
-        //public static class Utils
-        //{
-        //    public static readonly Random rnd = new Random();
-        //}
-
 
         public Sprite()
         {

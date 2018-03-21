@@ -28,7 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label2 = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // label2
@@ -40,6 +42,12 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "label1";
             // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Interval = 20;
+            this.timer1.Tick += new System.EventHandler(this.GameEngine);
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -48,6 +56,8 @@
             this.Controls.Add(this.label2);
             this.Name = "Form2";
             this.Text = "Form2";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form2_KeyDown);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form2_KeyUp);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -56,5 +66,6 @@
         #endregion
 
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Timer timer1;
     }
 }

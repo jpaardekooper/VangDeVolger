@@ -18,7 +18,7 @@ namespace VangDeVolgerSetup
     class Hero : Sprite
     {
         private PictureBox _spriteHero = new PictureBox(); // create a picture box 
-        Timer Move = new Timer();
+                                                           // Timer Move = new Timer();
 
         public HeroDirection HeroDirection { get; set; } // creating a public string called direction
         public bool PlayerInput { get; set; } // creating a public string called direction
@@ -33,9 +33,9 @@ namespace VangDeVolgerSetup
             //x is already 0 so that's correct
             _StartLocationY = 100;
 
-            Move.Interval = 20; // set the timer interval to speed    
-            Move.Tick += new EventHandler(Move_Tick); // assignment the timer with an event
-            Move.Start(); // start the timer   
+            //Move.Interval = 20; // set the timer interval to speed    
+            //Move.Tick += new EventHandler(Move_Tick); // assignment the timer with an event
+            //Move.Start(); // start the timer   
 
             _SpriteImage = Properties.Resources.Nright;
 
@@ -57,10 +57,11 @@ namespace VangDeVolgerSetup
             //Console.WriteLine(_hero.Size);
         }
 
-        public void Move_Tick(object sender, EventArgs e)
+        // public void Move_Tick(object sender, EventArgs e)
+        public void Move_Tick()
         {
             // if direction equals to left
-            if (PlayerInput == true)
+            if (PlayerInput)
             {
                 if (HeroDirection == HeroDirection.Left)
                 {
