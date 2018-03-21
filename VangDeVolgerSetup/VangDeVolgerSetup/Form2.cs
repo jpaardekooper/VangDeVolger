@@ -15,6 +15,7 @@ namespace VangDeVolgerSetup
     {
         public int levelmodus;
         public string MapName;
+        public List<PictureBox> AllPictureBoxesOnTheField = new List<PictureBox>();
 
        
         public GenerateLevel Generatelevel = new GenerateLevel();
@@ -29,7 +30,8 @@ namespace VangDeVolgerSetup
 
             //use private function _startGame to start the game
             _startGame();
-
+            _initializePictureList();
+            
         }
 
         private void _startGame()
@@ -42,6 +44,18 @@ namespace VangDeVolgerSetup
             
          
 
+        }
+
+        private void _initializePictureList()
+        {
+            foreach (PictureBox x in Controls.OfType<PictureBox>())
+            {
+                AllPictureBoxesOnTheField.Add(x);
+            }
+            foreach(PictureBox s in AllPictureBoxesOnTheField)
+            {
+                Console.WriteLine(s.Name + s.Tag);
+            }
         }
         
 
