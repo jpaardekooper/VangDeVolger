@@ -38,9 +38,9 @@ namespace VangDeVolgerSetup
         //    {
         //        _fillGridArray = value;
         //    }
-        //}
+        //}        
 
-        private Tile[,] _gridMapArray = new Tile[12, 12];
+        private Tile[,] _tileMapArray = new Tile[12, 12];
       
 
         //basic information of the picturebox (pb) width, height and position 
@@ -93,15 +93,20 @@ namespace VangDeVolgerSetup
                         switch (c)
                         {
                             case "D":
-                                tile.BackColor = Color.Red;
+                                //  tile.BackColor = Color.Red;
+                                tile.Name = "box";
                                 tile.Tag = "box";
+                                tile.Image = Properties.Resources.box;
                                 break;
                             case "V":
-                                tile.BackColor = Color.Green;
+                                //    tile.BackColor = Color.Green;
+                                tile.Name = "wall";
                                 tile.Tag = "wall";
+                                tile.Image = Properties.Resources.wall;
                                 break;
                             case "N":
                                 tile.BackColor = Color.Purple;
+                                tile.Name = "empty";
                                 tile.Tag = "empty";
                                 break;
 
@@ -109,30 +114,31 @@ namespace VangDeVolgerSetup
                         //adding + 100 to the Y location to show the health bar of the player class
                         tile.Location = new Point(_currentPositionX, _currentPositionY+100);                       
                         Form2.Controls.Add(tile);  //adding the tile to Form2 so we can see it                       
-                        _gridMapArray[_iRow, _iCol] = new Tile(tile); //filling the 2D array with sprites in to use them later on 
-                        Console.Write(" " + tile.Tag + "\t");
+                        _tileMapArray[_iRow, _iCol] = new Tile(tile); //filling the 2D array with sprites in to use them later on 
+                    //    Console.Write(" " + tile.Tag + "\t");
                       
                         _iCol++;  //adding 1 collumn eachtime we pass this                       
-                        _currentPositionX += _pbWidth + 1;  //while we are in the loop we place the tiles on the form2 we increase the positionX + 1 
+                        _currentPositionX += _pbWidth;  //while we are in the loop we place the tiles on the form2 we increase the positionX + 1 
                     }
-                    Console.WriteLine();
+                 //   Console.WriteLine();
                     _iRow++;
                     _iCol = 0;
                     _currentPositionX = _placement;                  
-                    _currentPositionY += _pbHeight + 1;   //adding small margin between each tile
+                    _currentPositionY += _pbHeight;   //adding small margin between each tile
                   
                 }
               
                 strReader.Close();
             }
-            //for (int i = 0; i < _gridMapArray.GetLength(0); i++)
-            //{
-            //    for (int j = 0; j < _gridMapArray.GetLength(1); j++)
-            //    {
-            //        Debug.Write("x" + _gridMapArray[i,j]);
-            //    }
-            //    Debug.WriteLine("");
-            //}
+            for (int i = 0; i < _tileMapArray.GetLength(0); i++)
+            {
+                for (int j = 0; j < _tileMapArray.GetLength(1); j++)
+                {
+                    Debug.Write(j);
+                }
+                Debug.WriteLine(i);
+            }
+          
 
         }
     }

@@ -10,12 +10,19 @@ namespace VangDeVolgerSetup
 {
    public class Tile
     {
-        public Control SpriteObject { get; set; }      
-
-
-        public Tile(Control pbSpriteObject)
+        public enum TileType
         {
-            this.SpriteObject = pbSpriteObject;
+            empty,
+            wall,
+            box
+        }
+        public Control TileObject { get; set; }  
+        public Control tileType { get; set; }
+
+        public Tile(Control pbTileObject, TileType pbTileType)
+        {
+            this.TileObject = pbTileObject;
+            this.tileType = pbTileObject;
         }
     }
 }
