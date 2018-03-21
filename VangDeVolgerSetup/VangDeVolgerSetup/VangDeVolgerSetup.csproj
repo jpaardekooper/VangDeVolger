@@ -45,6 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Enemy.cs" />
     <Compile Include="Sprite.cs" />
     <Compile Include="Tile.cs" />
     <Compile Include="Food.cs" />

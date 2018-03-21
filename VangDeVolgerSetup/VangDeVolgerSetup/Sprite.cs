@@ -9,7 +9,7 @@ namespace VangDeVolgerSetup
 {
     abstract class Sprite
     {
-        protected int _SpriteSpeed { get; set; } // creating a integer called speed    
+        public int _SpriteSpeed { get; set; } // creating a integer called speed    
         protected string _SpriteName { get; set; } 
         protected string _SpriteTag { get; set; }
 

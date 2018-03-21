@@ -94,15 +94,15 @@ namespace VangDeVolgerSetup
                         {
                             case "D":
                                 tile.BackColor = Color.Red;
-                                tile.Tag = "Box";
+                                tile.Tag = "box";
                                 break;
                             case "V":
                                 tile.BackColor = Color.Green;
-                                tile.Tag = "Wall";
+                                tile.Tag = "wall";
                                 break;
                             case "N":
                                 tile.BackColor = Color.Purple;
-                                tile.Tag = "Empty";
+                                tile.Tag = "empty";
                                 break;
 
                         }

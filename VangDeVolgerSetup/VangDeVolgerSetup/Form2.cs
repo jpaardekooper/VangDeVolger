@@ -13,12 +13,21 @@ namespace VangDeVolgerSetup
 {
     public partial class Form2 : Form
     {
-        Hero player = new Hero();
+        Hero spriteHero = new Hero();
+        Enemy spriteEnemy = new Enemy();
         public int levelmodus;
         public string MapName;
+        //need to get the current setup game with
+       // public int GameWidth;
         private bool _spaceDown;
 
-        PictureBox qwe;
+        
+
+        PictureBox player;
+        PictureBox enemy;
+        PictureBox wall;
+        PictureBox box;
+        PictureBox empty;
 
         public List<PictureBox> AllPictureBoxesOnTheField = new List<PictureBox>();
 
@@ -36,7 +45,11 @@ namespace VangDeVolgerSetup
             //use private function _startGame to start the game
             _startGame();
             _initializePictureList();
-            
+
+           // GameWidth = AllPictureBoxesOnTheField.Count  40;
+         //   Console.WriteLine(GameWidth);
+
+
         }
 
         private void _startGame()
@@ -50,56 +63,237 @@ namespace VangDeVolgerSetup
 
         }
         private void _loadsprites()
-        {                    
-            player.CreateHeroInstance(this); //run the function mkHero from the Hero.cs class
+        {
+            spriteHero.CreateHeroInstance(this); //run the function CreateHeroInstance from the Hero.cs class
+            spriteEnemy.CreateEnemyInstance(this); //run the function CreateEnemyInstance from the Enemy.cs class
         }
 
         private void _initializePictureList()
         {
-            foreach (PictureBox x in Controls.OfType<PictureBox>())
-            {
-                AllPictureBoxesOnTheField.Add(x);
-            }
-            foreach(PictureBox s in AllPictureBoxesOnTheField)
-            {
-                Console.WriteLine(s.Name + s.Tag);
-                if (s.Tag.Equals("player"))
-                {
-                    Console.WriteLine("WTF");
-                }
-            }
+            //foreach (PictureBox x in Controls.OfType<PictureBox>())
+            //{
+            //    AllPictureBoxesOnTheField.Add(x);
+            //}
+            //for (int i = 0; i < AllPictureBoxesOnTheField.Count; i++)
+            //{
+            //    if (AllPictureBoxesOnTheField[i].Tag.Equals("player"))
+            //    {
+            //        player = AllPictureBoxesOnTheField[i];
+            //        Console.WriteLine(player.Name);
+            //    }
+            //    if (AllPictureBoxesOnTheField[i].Tag.Equals("enemy"))
+            //    {
+            //        enemy = AllPictureBoxesOnTheField[i];
+            //        Console.WriteLine(enemy.Name);
+            //    }              
+            //}
+            //foreach (PictureBox w in AllPictureBoxesOnTheField)
+            //{
+            //    //    Console.WriteLine(s.Name + s.Tag);
+            //    if (w.Tag.Equals("wall"))
+            //    {
+            //        wall = w;
+            //        Console.WriteLine(wall.Name + "name");
+
+            //    }            
+
+            //}
+
+            //foreach (PictureBox b in AllPictureBoxesOnTheField)
+            //{
+            //    if (b.Tag.Equals("box"))
+            //    {
+            //        box = b;
+            //        Console.WriteLine(box.Name);
+            //    }
+            //}
         }
 
         private void GameEngine(object sender, EventArgs e)
         {
+            //walll interaction
+            //if ((player is PictureBox && player.Tag == "player") && (wall is PictureBox && wall.Tag == "wall"))
+            //{
+            //    //checking if the X loop is touching the J loop
+            //    //moving to the left of the wall
+            //    if (player.Bounds.IntersectsWith(wall.Bounds) && player.Left < wall.Left + wall.Width && spriteHero.HeroDirection == HeroDirection.Left)
+            //    {
+            //        ((PictureBox)player).Left += spriteHero._SpriteSpeed;
+            //        if (_spaceDown == true)
+            //        {
+            //            ((PictureBox)wall).Left -= 50;
+            //        }
+            //    }
+            //    else if (player.Bounds.IntersectsWith(wall.Bounds) && player.Left > wall.Left - wall.Width && spriteHero.HeroDirection == HeroDirection.Right)
+            //    {
+            //        ((PictureBox)player).Left -= spriteHero._SpriteSpeed;
+            //        if (_spaceDown == true)
+            //        {
+            //            ((PictureBox)wall).Left += 50;
+            //        }
+            //    }
+            //    else if (player.Bounds.IntersectsWith(wall.Bounds) && player.Top < wall.Top && spriteHero.HeroDirection == HeroDirection.Down)
+            //    {
+            //        ((PictureBox)player).Top -= spriteHero._SpriteSpeed;
+            //        if (_spaceDown == true)
+            //        {
+            //            ((PictureBox)wall).Top += 50;
+            //        }
+            //    }
+            //    else if (player.Bounds.IntersectsWith(wall.Bounds) && player.Top > wall.Top && spriteHero.HeroDirection == HeroDirection.Up)
+            //    {
+            //        ((PictureBox)player).Top += spriteHero._SpriteSpeed;
+            //        if (_spaceDown == true)
+            //        {
+            //            ((PictureBox)wall).Top -= 50;
+            //        }
+            //    }
+            //}
+            foreach (PictureBox x in Controls.OfType<PictureBox>())
+            {
+                //second for loop                
+                //we can determine if they hit eachother
+                foreach (PictureBox j in Controls.OfType<PictureBox>())
+                {
+                    //walll interaction
+                    if ((j is PictureBox && j.Tag == "player") && (x is PictureBox && x.Tag == "wall"))
+                    {
+                        //checking if the X loop is touching the J loop
+                        //moving to the left of the wall
+                        if (j.Bounds.IntersectsWith(x.Bounds) && j.Left < x.Left + x.Width && spriteHero.HeroDirection == HeroDirection.Left)
+                        {
+                            ((PictureBox)j).Left += spriteHero._SpriteSpeed;
+                            if (_spaceDown == true)
+                            {
+                                ((PictureBox)x).Left -= 40;
+                            }
+                        }
+                        else if (j.Bounds.IntersectsWith(x.Bounds) && j.Left > x.Left - x.Width && spriteHero.HeroDirection == HeroDirection.Right)
+                        {
+                            ((PictureBox)j).Left -= spriteHero._SpriteSpeed;
+                            if (_spaceDown == true)
+                            {
+                                ((PictureBox)x).Left += 40;
+                            }
+                        }
+                        else if (j.Bounds.IntersectsWith(x.Bounds) && j.Top < x.Top && spriteHero.HeroDirection == HeroDirection.Down)
+                        {
+                            ((PictureBox)j).Top -= spriteHero._SpriteSpeed;
+                            if (_spaceDown == true)
+                            {
+                                ((PictureBox)x).Top += 40;
+                            }
+                        }
+                        else if (j.Bounds.IntersectsWith(x.Bounds) && j.Top > x.Top && spriteHero.HeroDirection == HeroDirection.Up)
+                        {
+                            ((PictureBox)j).Top += spriteHero._SpriteSpeed;
+                            if (_spaceDown == true)
+                            {
+                                ((PictureBox)x).Top -= 40;
+                            }
+                        }
+                    }
 
+                    //Enemy and wall collision
+
+                    if ((j is PictureBox && j.Tag == "enemy") && (x is PictureBox && x.Tag == "wall"))
+                    {
+                        //checking if the X loop is touching the J loop
+                        //moving to the left of the wall
+                        if (j.Bounds.IntersectsWith(x.Bounds) && j.Left < x.Left + x.Width)
+                        {
+                            ((PictureBox)j).Left += spriteHero._SpriteSpeed;
+                        }
+                        if (j.Bounds.IntersectsWith(x.Bounds) && j.Left > x.Left - x.Width)
+                        {
+                            ((PictureBox)j).Left -= spriteHero._SpriteSpeed;
+                        }
+                        if (j.Bounds.IntersectsWith(x.Bounds) && j.Top < x.Top)
+                        {
+                            ((PictureBox)j).Top -= spriteHero._SpriteSpeed;
+                        }
+                        if (j.Bounds.IntersectsWith(x.Bounds) && j.Top > x.Top)
+                        {
+                            ((PictureBox)j).Top += spriteHero._SpriteSpeed;
+                        }
+
+                    }
+
+                    //noy pushable boxes
+                    if ((j is PictureBox && j.Tag == "enemy") && (x is PictureBox && x.Tag == "box"))
+                    {
+                        //checking if the X loop is touching the J loop
+                        //moving to the left of the wall
+                        if (j.Bounds.IntersectsWith(x.Bounds) && j.Left < x.Left + x.Width)
+                        {
+                            ((PictureBox)j).Left += spriteHero._SpriteSpeed;
+                        }
+                        if (j.Bounds.IntersectsWith(x.Bounds) && j.Left > x.Left - x.Width)
+                        {
+                            ((PictureBox)j).Left -= spriteHero._SpriteSpeed;
+                        }
+                        if (j.Bounds.IntersectsWith(x.Bounds) && j.Top < x.Top)
+                        {
+                            ((PictureBox)j).Top -= spriteHero._SpriteSpeed;
+                        }
+                        if (j.Bounds.IntersectsWith(x.Bounds) && j.Top > x.Top)
+                        {
+                            ((PictureBox)j).Top += spriteHero._SpriteSpeed;
+                        }
+
+                    }
+
+                    if ((j is PictureBox && j.Tag == "enemy") && (x is PictureBox && x.Tag == "player"))
+                    {
+                        //checking if the X loop is touching the J loop
+                        //moving to the left of the wall
+                        if (j.Left < x.Left + (x.Width / 3))
+                        {
+                            ((PictureBox)j).Left += spriteEnemy._SpriteSpeed;
+                        }
+                        if (j.Left > x.Left - (x.Width / 3))
+                        {
+                            ((PictureBox)j).Left -= spriteEnemy._SpriteSpeed;
+                        }
+                        if (j.Top < x.Top + (x.Height / 3))
+                        {
+                            ((PictureBox)j).Top += spriteEnemy._SpriteSpeed;
+                        }
+                        if (j.Top > x.Top - (x.Width / 3))
+                        {
+                            ((PictureBox)j).Top -= spriteEnemy._SpriteSpeed;
+                        }
+
+                    }
+                }
+            }
         }
 
         private void Form2_KeyDown(object sender, KeyEventArgs e)
         {
-            player.PlayerInput = true;
+            spriteHero.PlayerInput = true;
 
             //if we pressed left arrow
             if (e.KeyCode == Keys.Left)
             {
-                player.HeroDirection = HeroDirection.Left;
-                player.Move_Tick();
+                spriteHero.HeroDirection = HeroDirection.Left;
+                spriteHero.Move_Tick();
             }
             //if we pressed left arrow
             else if (e.KeyCode == Keys.Right)
             {
-                player.HeroDirection = HeroDirection.Right;
-                player.Move_Tick();
+                spriteHero.HeroDirection = HeroDirection.Right;
+                spriteHero.Move_Tick();
             }
             else if (e.KeyCode == Keys.Down)
             {
-                player.HeroDirection = HeroDirection.Down;
-                player.Move_Tick();
+                spriteHero.HeroDirection = HeroDirection.Down;
+                spriteHero.Move_Tick();
             }
             else if (e.KeyCode == Keys.Up)
             {
-                player.HeroDirection = HeroDirection.Up;
-                player.Move_Tick();
+                spriteHero.HeroDirection = HeroDirection.Up;
+                spriteHero.Move_Tick();
             }
 
 
@@ -112,7 +306,7 @@ namespace VangDeVolgerSetup
 
         private void Form2_KeyUp(object sender, KeyEventArgs e)
         {
-            player.PlayerInput = false;
+            spriteHero.PlayerInput = false;
             _spaceDown = false;
         }
     }
