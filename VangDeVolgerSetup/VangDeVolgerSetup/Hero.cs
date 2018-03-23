@@ -7,25 +7,20 @@ using System.Windows.Forms;
 
 namespace VangDeVolgerSetup
 {
-    public enum HeroDirection
-    {
-        Left,
-        Right,
-        Up,
-        Down
-    }
+
 
     class Hero : Sprite
     {
         private PictureBox _spriteHero = new PictureBox(); // create a picture box    
-        public HeroDirection HeroDirection { get; set; } // creating a public string called direction
+        public SpriteDirection HeroDirection { get; set; } // creating a public string called direction
         public bool PlayerInput { get; set; } // creating a public string called direction
+
 
         public Hero() : base()
         {
             _SpriteSpeed = 10;
             _SpriteName = "player";
-            _SpriteTag = _SpriteName;            
+            _SpriteTag = _SpriteName;
             //x is already 0 so that's correct
             _StartLocationY = 100;
 
@@ -34,8 +29,6 @@ namespace VangDeVolgerSetup
             //Move.Start(); // start the timer   
 
             _SpriteImage = Properties.Resources.Nright;
-
-
         }
 
         public void CreateHeroInstance(Form form)
@@ -57,56 +50,59 @@ namespace VangDeVolgerSetup
         public void Move_Tick()
         {
             // if direction equals to left
-            if (PlayerInput)
+
+            if (HeroDirection == SpriteDirection.Left)
             {
-                if (HeroDirection == HeroDirection.Left)
-                {
-                    _spriteHero.Left -= _SpriteSpeed; // move bullet towards the left of the screen
-                    _spriteHero.Image = (Properties.Resources.Nleft);
-                }
-                // if direction equals right
-                else if (HeroDirection == HeroDirection.Right)
-                {
-                    _spriteHero.Left += _SpriteSpeed; // move bullet towards the right of the screen
-                    _spriteHero.Image = (Properties.Resources.Nright);
-
-                }
-                // if direction is up
-                else if (HeroDirection == HeroDirection.Up)
-                {
-                    _spriteHero.Top -= _SpriteSpeed; // move the bullet towards top of the screen
-                    //_hero.Image = (Properties.Resources.Nright);
-                }
-                // if direction is down
-                else if (HeroDirection == HeroDirection.Down)
-                {
-                    _spriteHero.Top += _SpriteSpeed; // move the bullet bottom of the screen
-                    //_hero.Image = (Properties.Resources.Nleft);
-                }
-
-
-                //stop hero from moving against walls of canvas
-                //moving to right
-                if (_spriteHero.Left < 0)
-                {
-                    _spriteHero.Left += _SpriteSpeed;
-                }
-                //moving to left
-                if (_spriteHero.Left > (12 * 40 - _spriteHero.Width / 2))
-                {
-                    _spriteHero.Left -= _SpriteSpeed;
-                }
-                //moving to top
-                if (_spriteHero.Top < 100)
-                {
-                    _spriteHero.Top += _SpriteSpeed;
-                }
-                //moving to bottom
-                if (_spriteHero.Top > (95 + 12 * 40 - _spriteHero.Width / 2))
-                {
-                    _spriteHero.Top -= _SpriteSpeed;
-                }
+                _spriteHero.Left -= _SpriteSpeed; // move bullet towards the left of the screen
+                _spriteHero.Image = (Properties.Resources.Nleft);
             }
+            // if direction equals right
+            if (HeroDirection == SpriteDirection.Right)
+            {
+                _spriteHero.Left += _SpriteSpeed; // move bullet towards the right of the screen
+                _spriteHero.Image = (Properties.Resources.Nright);
+
+            }
+            // if direction is up
+            if (HeroDirection == SpriteDirection.Up)
+            {
+                _spriteHero.Top -= _SpriteSpeed; // move the bullet towards top of the screen
+                                                 //_hero.Image = (Properties.Resources.Nright);
+            }
+            // if direction is down
+            if (HeroDirection == SpriteDirection.Down)
+            {
+                _spriteHero.Top += _SpriteSpeed; // move the bullet bottom of the screen
+                                                 //_hero.Image = (Properties.Resources.Nleft);
+            }
+            if (HeroDirection == SpriteDirection.None)
+            {
+                _SpriteSpeed = 0;
+            }
+
+
+            //stop hero from moving against walls of canvas
+            //moving to left
+            if (_spriteHero.Left < 0)
+            {
+                _spriteHero.Left += _SpriteSpeed;
+            }
+            //moving to Right
+            if (_spriteHero.Left > (12 * 40 - _spriteHero.Width))
+            {
+                _spriteHero.Left -= _SpriteSpeed;
+            }
+            //moving to top
+            if (_spriteHero.Top < 100)
+            {
+                _spriteHero.Top += _SpriteSpeed;
+            }
+            //moving to bottom
+            if (_spriteHero.Top > (12 * 40 - _spriteHero.Height / 2 + 80))
+            {
+                _spriteHero.Top -= _SpriteSpeed;
+            }
+
         }
     }
 }

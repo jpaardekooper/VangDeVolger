@@ -7,6 +7,15 @@ using System.Threading.Tasks;
 
 namespace VangDeVolgerSetup
 {
+    public enum SpriteDirection
+    {
+        Left,
+        Right,
+        Up,
+        Down,
+        None
+    }
+
     abstract class Sprite
     {
         public int _SpriteSpeed { get; set; } // creating a integer called speed    
@@ -14,7 +23,7 @@ namespace VangDeVolgerSetup
         protected string _SpriteTag { get; set; }
 
         protected int _StartLocationX { get; set; }
-        protected int _StartLocationY { get; set; }
+        protected int _StartLocationY { get; set; }        
 
         protected int _SpriteWidth { get; set; }
         protected int _SpriteHeight { get; set; }

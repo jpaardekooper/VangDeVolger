@@ -115,7 +115,10 @@
   <ItemGroup>
     <Content Include="Levels\Hard.txt" />
     <Content Include="Levels\Easy.txt" />
+    <None Include="Resources\empty.png" />
+    <None Include="Resources\wall.png" />
     <None Include="Resources\box.png" />
+    <None Include="Resources\background.png" />
     <None Include="Resources\enemyRight.gif" />
     <None Include="Resources\enemyLeft.gif" />
     <None Include="Resources\Easy.txt" />
