@@ -63,8 +63,38 @@ namespace VangDeVolgerSetup
         {
             if (!_gameOver)
             {
+                if (_playerInput)
+                {
+                    spriteHero.Move_Tick();
+                }
+                Console.WriteLine(_playerInput);
                 foreach (PictureBox x in Controls.OfType<PictureBox>())
                 {
+                    if (x.Tag.Equals("enemy"))
+                    {
+                        ////stop hero from moving against walls of canvas
+                        ////moving to left
+                        if (x.Left < 0)
+                        {
+                            x.Left += spriteEnemy._SpriteSpeed;
+                        }
+                        //moving to Right
+                        if (x.Left > (12 * 40 - x.Width))
+                        {
+                            x.Left -= spriteEnemy._SpriteSpeed;
+                        }
+                        //moving to top
+                        if (x.Top < 100)
+                        {
+                            x.Top += spriteEnemy._SpriteSpeed;
+                        }
+                        //moving to bottom
+                        if (x.Top > (12 * 40 ) + 60)
+                        {
+                            x.Top -= spriteEnemy._SpriteSpeed;
+                        }
+                    }
+
                     //we can determine if they hit eachother
                     foreach (PictureBox j in Controls.OfType<PictureBox>())
                     {
@@ -254,17 +284,17 @@ namespace VangDeVolgerSetup
                             //moving to the left of the wall
                             if (j.Left < x.Left )
                             {
-                                j.Left += spriteEnemy._SpriteSpeed;
+                                j.Left += spriteEnemy._SpriteSpeed;                                
                             }
                             else if (j.Left > x.Left)
                             {
                                 j.Left -= spriteEnemy._SpriteSpeed;
                             }
-                            else if (j.Top < x.Top )
+                            else if (j.Top < x.Top)
                             {
                                 j.Top += spriteEnemy._SpriteSpeed;
                             }
-                            else if (j.Top > x.Top )
+                            else if (j.Top > x.Top)
                             {
                                 j.Top -= spriteEnemy._SpriteSpeed;
                             }
@@ -325,53 +355,52 @@ namespace VangDeVolgerSetup
         {
             if (!_playerInput)
             {
+               
                 //    spriteHero.PlayerInput = true;
                 //if we pressed left arrow
                 if (e.KeyCode == Keys.Left)
                 {
-
-
                     spriteHero.HeroDirection = SpriteDirection.Left;
-                    spriteHero.Move_Tick();
+                    _playerInput = true;
                 }
                 //if we pressed left arrow
                 if (e.KeyCode == Keys.Right)
                 {
 
                     spriteHero.HeroDirection = SpriteDirection.Right;
-                    spriteHero.Move_Tick();
+                    _playerInput = true;
                 }
                 if (e.KeyCode == Keys.Down)
                 {
 
 
                     spriteHero.HeroDirection = SpriteDirection.Down;
-                    spriteHero.Move_Tick();
+                    _playerInput = true;
                 }
                 if (e.KeyCode == Keys.Up)
                 {
 
 
                     spriteHero.HeroDirection = SpriteDirection.Up;
-                    spriteHero.Move_Tick();
+                    _playerInput = true;
                 }
 
                 if (e.KeyCode == Keys.P)
                 {
-                    _playerInput = true;
+                    _playerInput = false;
                     lblPause.Visible = true;
                     pause.Visible = false;
                     resume.Visible = true;
                     timer1.Stop();
                 }
-
               
             }
            
         }
 
         private void Form2_KeyUp(object sender, KeyEventArgs e)
-        {          
+        {
+            _playerInput = false;
 
             if (e.KeyCode == Keys.R)
             {

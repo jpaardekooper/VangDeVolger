@@ -18,7 +18,7 @@ namespace VangDeVolgerSetup
         {
             _SpriteName = "enemy";
             _SpriteTag = _SpriteName;
-            _SpriteSpeed = 1;
+            _SpriteSpeed = 3;
             _StartLocationX = (8 * 40 );
             _StartLocationY = (110 + (10 * 40) - _spriteEnemy.Height);
         }
