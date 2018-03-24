@@ -11,9 +11,9 @@ namespace VangDeVolgerSetup
 
     class Hero : Sprite
     {
-        private PictureBox _spriteHero = new PictureBox(); // create a picture box    
+        public PictureBox _spriteHero = new PictureBox(); // create a picture box    
         public SpriteDirection HeroDirection { get; set; } // creating a public string called direction
-        public bool PlayerInput { get; set; } // creating a public string called direction
+       
 
 
         public Hero() : base()
@@ -22,7 +22,11 @@ namespace VangDeVolgerSetup
             _SpriteName = "player";
             _SpriteTag = _SpriteName;
             //x is already 0 so that's correct
-            _StartLocationY = 100;
+            // _StartLocationY = 100;
+
+            //testing
+            _StartLocationY = 11*40;
+            _StartLocationX = 11 * 40;
 
             //Move.Interval = 20; // set the timer interval to speed    
             //Move.Tick += new EventHandler(Move_Tick); // assignment the timer with an event
