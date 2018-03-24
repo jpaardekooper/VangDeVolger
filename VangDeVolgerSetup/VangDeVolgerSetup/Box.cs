@@ -8,21 +8,23 @@ using System.Windows.Forms;
 
 namespace VangDeVolgerSetup
 {
-   public class Tile
+    class Box : Sprite
     {
-        public enum TileType
-        {
-            empty,
-            wall,
-            box
-        }
-        public Control TileObject { get; set; }  
-       //public Control tileType { get; set; }
 
-        public Tile(Control pbTileObject) //, TileType pbTileType
+        public PictureBox spriteBox = new PictureBox();
+
+        public Box( int locationX, int locationY)
         {
-            this.TileObject = pbTileObject;
-      //      this.tileType = pbTileObject;
+            spriteBox.Height = _SpriteHeight;
+            spriteBox.Width = _SpriteWidth;
+            spriteBox.Name = "box";
+            spriteBox.Tag = "box";
+            spriteBox.Image = Properties.Resources.box;
+            spriteBox.Location = new Point(locationX, locationY);
+
+           
         }
+      
+
     }
 }

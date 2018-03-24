@@ -1,0 +1,25 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace VangDeVolgerSetup
+{
+    class Wall : Sprite
+    {
+        public PictureBox spriteWall = new PictureBox();
+
+        public Wall(int locationX, int locationY)
+        {
+            spriteWall.Height = _SpriteHeight;
+            spriteWall.Width = _SpriteWidth;
+            spriteWall.Name = "box";
+            spriteWall.Tag = "box";
+            spriteWall.Image = Properties.Resources.box;
+            spriteWall.Location = new Point(locationX, locationY);
+        }
+    }
+}

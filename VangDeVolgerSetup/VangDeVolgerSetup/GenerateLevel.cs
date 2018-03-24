@@ -25,23 +25,7 @@ namespace VangDeVolgerSetup
             {
                 _name = value;
             }
-        }
-
-        //private int[,] _fillGridArray { get; set; }
-        //public int[,] FillGridArray
-        //{
-        //    get
-        //    {
-        //        return _fillGridArray;
-        //    }
-        //    set
-        //    {
-        //        _fillGridArray = value;
-        //    }
-        //}        
-
-     //   private Tile[,] _tileMapArray = new Tile[12, 12];
-
+        }    
 
         //basic information of the picturebox (pb) width, height and position 
         private int _pbHeight = 40;
@@ -50,10 +34,6 @@ namespace VangDeVolgerSetup
         private int _currentPositionY = 0;
         private int _placement = 0;
         private string _levelModus = string.Empty;
-
-        //  private int _iRow = 0;
-        //   private int _iCol = 0;
-
 
         public void ReadMyTextLevelFile(Form2 Form2, string Name)
         {
@@ -91,37 +71,23 @@ namespace VangDeVolgerSetup
                         };
                         switch (c)
                         {
-                            case "D":
-                                PictureBox tile = new PictureBox
-                                {
-                                    Size = new Size(_pbHeight, _pbWidth)
-                                };
-                                //  tile.BackColor = Color.Red;
-                                tile.Name = "box";
-                                tile.Tag = "box";
-                                tile.Image = Properties.Resources.box;
-                                tile.Location = new Point(_currentPositionX, _currentPositionY + 100);
-                                Form2.Controls.Add(tile);  //adding the tile to Form2 so we can see it   
-                                tile.BringToFront();
+                            case "D":                              
+                                Box Box = new Box(_currentPositionX, _currentPositionY + 100);
+                                Form2.Controls.Add(Box.spriteBox);  //adding the tile to Form2 so we can see it   
+                                Box.spriteBox.BringToFront();
+                              
                                 break;
                             case "V":
-                                PictureBox tile2 = new PictureBox
-                                {
-                                    Size = new Size(_pbHeight, _pbWidth)
-                                };
-                                //    tile.BackColor = Color.Green;
-                                tile2.Name = "wall";
-                                tile2.Tag = "wall";
-                                tile2.Image = Properties.Resources.wall;
-                                tile2.Location = new Point(_currentPositionX, _currentPositionY + 100);
-                                Form2.Controls.Add(tile2);  //adding the tile to Form2 so we can see it   
-                                tile2.BringToFront();
+                                Wall Wall = new Wall(_currentPositionX, _currentPositionY + 100);
+                                Form2.Controls.Add(Wall.spriteWall);  //adding the tile to Form2 so we can see it   
+                                Wall.spriteWall.BringToFront();
                                 break;
                             case "N":
                                 tile3.Name = "empty";
                                 tile3.Tag = "empty";
 
                                 break;
+                                //catching the error
                             case "?":
 
                                 tile3.Name = "empty";
@@ -129,17 +95,18 @@ namespace VangDeVolgerSetup
                                 break;
 
                         }
+                        //default background ( a grey tile)
                         tile3.Enabled = false;                       
                         tile3.Image = Properties.Resources.empty;
                         tile3.Location = new Point(_currentPositionX, _currentPositionY + 100);
+
                         Form2.Controls.Add(tile3);  //adding the tile to Form2 so we can see it  
                         //its not a bug but a feature
                         if (Name.Equals("crazy"))
                         {
                             Console.WriteLine("crazy");
                             tile3.BringToFront();
-                        }
-                          
+                        }                          
                         _currentPositionX += _pbWidth;  //while we are in the loop we place the tiles on the form2 we increase the positionX + 1 
                     }             
                     _currentPositionX = _placement;

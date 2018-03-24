@@ -35,7 +35,7 @@ namespace VangDeVolgerSetup
             _SpriteImage = Properties.Resources.Nright;
         }
 
-        public void CreateHeroInstance(Form form)
+        public void CreateHeroInstance(Form2 form2)
         {
             _spriteHero.Image = _SpriteImage;
             _spriteHero.Tag = _SpriteTag;
@@ -45,7 +45,7 @@ namespace VangDeVolgerSetup
             _spriteHero.Width = _SpriteWidth;
             _spriteHero.Top = _StartLocationY;
             _spriteHero.SizeMode = PictureBoxSizeMode.Zoom;
-            form.Controls.Add(_spriteHero); // add the bullet to the screen
+            form2.Controls.Add(_spriteHero); // add the bullet to the screen
             _spriteHero.BringToFront(); // bring the bullet to front of other objects
             //Console.WriteLine(_hero.Size);
         }

@@ -12,7 +12,7 @@ namespace VangDeVolgerSetup
         Left,
         Right,
         Up,
-        Down,
+        Down,  
         None
     }
 
@@ -35,8 +35,8 @@ namespace VangDeVolgerSetup
             _SpriteSpeed = 0;
             _StartLocationX = 0;
             _StartLocationY = 0;
-            _SpriteWidth = 35;
-            _SpriteHeight = 35;
+            _SpriteWidth = 40;
+            _SpriteHeight = 40;
         }
 
     }
