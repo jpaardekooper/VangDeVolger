@@ -81,22 +81,22 @@ namespace VangDeVolgerSetup.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to N N N N N N N N N N N N
-        ///N V N N N N N N N D N N
-        ///N N D N N N N N N N N N
-        ///N V N N N N N N N N N N
-        ///N N N N N D N N N N N N
-        ///N N N N N N N N N N N N
-        ///N V N N N N N N N N N N
-        ///N N N N N N N N N N N N
-        ///N N D N N N N N N N N N
+        ///   Looks up a localized string similar to ?N N V V V V N N N N V N
         ///N N N N N N N N N D N N
-        ///N N N N N N N N N N N N
+        ///N N D V V V V V V N N V
+        ///N N N D D D D V N N N N
+        ///N N N D N N D N N N N V
+        ///N V N D N N D N N N N N
+        ///N V N V N N D N V N N V
+        ///N N N N N N N N D N N N
+        ///N N N N N N N N N N N V
+        ///N D D D D N N N N D N N
+        ///N D N D N N N N N N N N
         ///N N N N N N N N N N N N.
         /// </summary>
-        public static string Easy {
+        public static string easy {
             get {
-                return ResourceManager.GetString("Easy", resourceCulture);
+                return ResourceManager.GetString("easy", resourceCulture);
             }
         }
         
@@ -127,6 +127,26 @@ namespace VangDeVolgerSetup.Properties {
             get {
                 object obj = ResourceManager.GetObject("enemyRight", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ?N N V V V V N N N N V N
+        ///N N N N N N N N N D N N
+        ///N N D V V V V V V N N V
+        ///N N N D D D D V N N N N
+        ///N N N D N N D N N N N V
+        ///N V N D N N D N N N N N
+        ///N V N V N N D N V N N V
+        ///N N N N N N N N D N N N
+        ///N N N N N N N N N N N V
+        ///N D D D D N N N N D N N
+        ///N D N D N N N N N N N N
+        ///N N N N N N N N N N N N.
+        /// </summary>
+        public static string hard {
+            get {
+                return ResourceManager.GetString("hard", resourceCulture);
             }
         }
         

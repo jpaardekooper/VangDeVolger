@@ -45,6 +45,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ChangeMap.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChangeMap.Designer.cs">
+      <DependentUpon>ChangeMap.cs</DependentUpon>
+    </Compile>
     <Compile Include="Enemy.cs" />
     <Compile Include="Sprite.cs" />
     <Compile Include="Tile.cs" />
@@ -65,6 +71,9 @@
     <Compile Include="Hero.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="ChangeMap.resx">
+      <DependentUpon>ChangeMap.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -113,8 +122,6 @@
     <None Include="Resources\pushRight.gif" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Levels\Hard.txt" />
-    <Content Include="Levels\Easy.txt" />
     <None Include="Resources\empty.png" />
     <None Include="Resources\wall.png" />
     <None Include="Resources\box.png" />
@@ -122,6 +129,13 @@
     <None Include="Resources\enemyRight.gif" />
     <None Include="Resources\enemyLeft.gif" />
     <None Include="Resources\Easy.txt" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <None Include="Levels\easy.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Levels\hard.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

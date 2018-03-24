@@ -13,14 +13,13 @@ namespace VangDeVolgerSetup
     public partial class Form1 : Form
     {
         public static string MyTextBoxValue;
-      
+
+        public static string myMapValue;
+
         public Form1()
         {
             InitializeComponent();           
         }
-        
-      
-
               
 
         //css for easy
@@ -69,6 +68,11 @@ namespace VangDeVolgerSetup
 
         }
 
-      
+        private void button1_Click(object sender, EventArgs e)
+        {
+            myMapValue = easy.Text;
+            ChangeMap ChangeMap = new ChangeMap();
+            ChangeMap.Show();
+        }
     }
 }

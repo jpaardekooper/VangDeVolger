@@ -32,6 +32,7 @@
             this.crazy = new System.Windows.Forms.Label();
             this.VangDeVolgerLbl = new System.Windows.Forms.Label();
             this.hard = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // easy
@@ -92,12 +93,23 @@
             this.hard.MouseEnter += new System.EventHandler(this.hard_MouseEnter);
             this.hard.MouseLeave += new System.EventHandler(this.hard_MouseLeave);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(447, 192);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 8;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(32)))), ((int)(((byte)(108)))));
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.hard);
             this.Controls.Add(this.VangDeVolgerLbl);
             this.Controls.Add(this.crazy);
@@ -116,6 +128,7 @@
         private System.Windows.Forms.Label crazy;
         private System.Windows.Forms.Label VangDeVolgerLbl;
         private System.Windows.Forms.Label hard;
+        private System.Windows.Forms.Button button1;
     }
 }
 

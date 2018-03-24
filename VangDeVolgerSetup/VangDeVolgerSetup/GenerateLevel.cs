@@ -67,7 +67,7 @@ namespace VangDeVolgerSetup
             switch (Name)
             {
                 case "easy":
-                    _levelModus = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..\\..\\Levels\\Easy.txt");
+                    _levelModus = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..\\..\\Levels\\easy.txt");
                 //    Console.WriteLine(_levelModus);
                     break;
 
