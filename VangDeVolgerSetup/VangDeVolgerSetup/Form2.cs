@@ -67,7 +67,7 @@ namespace VangDeVolgerSetup
                 {
                     spriteHero.Move_Tick();
                 }
-                Console.WriteLine(_playerInput);
+             //   Console.WriteLine(_playerInput);
                 foreach (PictureBox x in Controls.OfType<PictureBox>())
                 {
                     if (x.Tag.Equals("enemy"))
@@ -113,7 +113,7 @@ namespace VangDeVolgerSetup
                                     x.BringToFront();
                                 }
                             }
-                            if (j.Bounds.IntersectsWith(x.Bounds) && j.Left > x.Left - x.Width && spriteHero.HeroDirection == SpriteDirection.Right)
+                            else if (j.Bounds.IntersectsWith(x.Bounds) && j.Left > x.Left - x.Width && spriteHero.HeroDirection == SpriteDirection.Right)
                             {
                                 j.Left -= spriteHero._SpriteSpeed;
                                 //box can't go out of the screen from right side
@@ -123,7 +123,7 @@ namespace VangDeVolgerSetup
                                     x.BringToFront();
                                 }
                             }
-                            if (j.Bounds.IntersectsWith(x.Bounds) && j.Top < x.Top && spriteHero.HeroDirection == SpriteDirection.Down)
+                            else if (j.Bounds.IntersectsWith(x.Bounds) && j.Top < x.Top && spriteHero.HeroDirection == SpriteDirection.Down)
                             {
 
                                 j.Top -= spriteHero._SpriteSpeed;
@@ -134,7 +134,7 @@ namespace VangDeVolgerSetup
                                     x.BringToFront();
                                 }
                             }
-                            if (j.Bounds.IntersectsWith(x.Bounds) && j.Top > x.Top && spriteHero.HeroDirection == SpriteDirection.Up)
+                            else if (j.Bounds.IntersectsWith(x.Bounds) && j.Top > x.Top && spriteHero.HeroDirection == SpriteDirection.Up)
                             {
                                 j.Top += spriteHero._SpriteSpeed;
                                 //box can't go out of the screen from top side
@@ -151,46 +151,23 @@ namespace VangDeVolgerSetup
                         {
                             //checking if the X loop is touching the J loop
                             //moving to the left of the wall
-                            if (j.Bounds.IntersectsWith(x.Bounds) && spriteHero.HeroDirection == SpriteDirection.Left)
+                            if (j.Bounds.IntersectsWith(x.Bounds) && j.Left < x.Left + x.Width && spriteHero.HeroDirection == SpriteDirection.Left)
                             {
-                                //   j.Left += spriteHero._SpriteSpeed;
-
-                                spriteHero._SpriteSpeed = 0;
-                                j.Left = x.Left + j.Height;
+                                j.Left += spriteHero._SpriteSpeed;
+                                //box can't go out of the screen from left side                              
                             }
-                            else
+                            else if (j.Bounds.IntersectsWith(x.Bounds) && j.Left > x.Left - x.Width && spriteHero.HeroDirection == SpriteDirection.Right)
                             {
-                                spriteHero._SpriteSpeed = 10;
+                                j.Left -= spriteHero._SpriteSpeed;
+                              
                             }
-                            if (j.Bounds.IntersectsWith(x.Bounds) && spriteHero.HeroDirection == SpriteDirection.Right)
+                            else if (j.Bounds.IntersectsWith(x.Bounds) && j.Top < x.Top && spriteHero.HeroDirection == SpriteDirection.Down)
                             {
-                                //   j.Left -= spriteHero._SpriteSpeed;
-                                spriteHero._SpriteSpeed = 0;
-                                j.Left = x.Left - j.Height;
+                                j.Top -= spriteHero._SpriteSpeed;                              
                             }
-                            else
+                            else if (j.Bounds.IntersectsWith(x.Bounds) && j.Top > x.Top && spriteHero.HeroDirection == SpriteDirection.Up)
                             {
-                                spriteHero._SpriteSpeed = 10;
-                            }
-                            if (j.Bounds.IntersectsWith(x.Bounds) && spriteHero.HeroDirection == SpriteDirection.Down)
-                            {
-                                // j.Top -= spriteHero._SpriteSpeed;
-                                spriteHero._SpriteSpeed = 0;
-                                j.Top = x.Top - j.Height;
-                            }
-                            else
-                            {
-                                spriteHero._SpriteSpeed = 10;
-                            }
-                            if (j.Bounds.IntersectsWith(x.Bounds) && spriteHero.HeroDirection == SpriteDirection.Up)
-                            {
-                                //j.Top += spriteHero._SpriteSpeed;
-                                spriteHero._SpriteSpeed = 0;
-                                j.Top = x.Top + j.Height;
-                            }
-                            else
-                            {
-                                spriteHero._SpriteSpeed = 10;
+                                j.Top += spriteHero._SpriteSpeed;                               
                             }
                         }
 
@@ -219,19 +196,7 @@ namespace VangDeVolgerSetup
                             }
                         }
 
-
-
-
-
                         //Enemy and wall collision
-
-
-
-
-
-
-                        //}
-
                         if ((j.Tag.Equals("enemy")) && (x.Tag.Equals("wall")))
                         {
                             //checking if the X loop is touching the J loop
@@ -255,7 +220,7 @@ namespace VangDeVolgerSetup
 
                         }
 
-                        //noy pushable boxes
+                        //not pushable boxes
                         if ((j.Tag.Equals("enemy")) && (x.Tag.Equals("box")))
                         {
                             //checking if the X loop is touching the J loop
@@ -282,10 +247,11 @@ namespace VangDeVolgerSetup
                         {
                             //checking if the X loop is touching the J loop
                             //moving to the left of the wall
-                            if (j.Left < x.Left )
+                            if (j.Top > x.Top)
                             {
-                                j.Left += spriteEnemy._SpriteSpeed;                                
+                                j.Top -= spriteEnemy._SpriteSpeed;
                             }
+                           
                             else if (j.Left > x.Left)
                             {
                                 j.Left -= spriteEnemy._SpriteSpeed;
@@ -294,9 +260,9 @@ namespace VangDeVolgerSetup
                             {
                                 j.Top += spriteEnemy._SpriteSpeed;
                             }
-                            else if (j.Top > x.Top)
+                            else if (j.Left < x.Left)
                             {
-                                j.Top -= spriteEnemy._SpriteSpeed;
+                                j.Left += spriteEnemy._SpriteSpeed;
                             }
 
                         }
@@ -304,11 +270,7 @@ namespace VangDeVolgerSetup
 
 
                     
-                    if (1+1 == 5)
-                        {
-                            Console.WriteLine("opgesloten - 40");
-                            _gameOver = false;
-                        }
+                    
 
                         //if ((j.Tag.Equals("enemy")) && (x.Tag.Equals("player")))
                         //{

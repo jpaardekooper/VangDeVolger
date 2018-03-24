@@ -17,7 +17,7 @@ namespace VangDeVolgerSetup
             box
         }
         public Control TileObject { get; set; }  
-       /// public Control tileType { get; set; }
+       //public Control tileType { get; set; }
 
         public Tile(Control pbTileObject) //, TileType pbTileType
         {
