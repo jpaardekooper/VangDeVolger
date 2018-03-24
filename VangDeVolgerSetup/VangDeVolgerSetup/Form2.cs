@@ -163,108 +163,130 @@ namespace VangDeVolgerSetup
                         }
                     }
 
-                
-                
-                   
+                    if ((j.Tag.Equals("box")) && (x.Tag.Equals("wall")))
+                    {
+                        //checking if the X loop is touching the J loop
+                        //moving to the left of the wall
+                        if (j.Bounds.IntersectsWith(x.Bounds) && spriteHero.HeroDirection == SpriteDirection.Left)
+                        {                        
+                            j.Left = x.Left + j.Height;
+                        }
+                      
+                        if (j.Bounds.IntersectsWith(x.Bounds) && spriteHero.HeroDirection == SpriteDirection.Right)
+                        {                        
+                            j.Left = x.Left - j.Height;
+                        }
+                      
+                        if (j.Bounds.IntersectsWith(x.Bounds) && spriteHero.HeroDirection == SpriteDirection.Down)
+                        {                        
+                            j.Top = x.Top - j.Height;
+                        }
+                       
+                        if (j.Bounds.IntersectsWith(x.Bounds) && spriteHero.HeroDirection == SpriteDirection.Up)
+                        {                            
+                            j.Top = x.Top + j.Height;
+                        }                      
+                    }
+
 
 
                     //Enemy and wall collision
 
-                    //if ((j.Tag.Equals("enemy")) && (x.Tag.Equals("wall")))
-                    //{
-                    //    //checking if the X loop is touching the J loop
-                    //    //moving to the left of the wall
-                    //    if (j.Bounds.IntersectsWith(x.Bounds) && j.Left < x.Left + x.Width)
-                    //    {
+                    if ((j.Tag.Equals("enemy")) && (x.Tag.Equals("box")))
+                    {
+                        //checking if the X loop is touching the J loop
+                        //moving to the left of the wall
+                        if (j.Bounds.IntersectsWith(x.Bounds) && j.Left < x.Left + x.Width)
+                        {
 
-                    //        j.Left += spriteEnemy._SpriteSpeed;
-                    //        // Console.WriteLine("left");
-                    //    }
-                    //    if (j.Bounds.IntersectsWith(x.Bounds) && j.Left > x.Left - x.Width)
-                    //    {
-                    //        j.Left -= spriteEnemy._SpriteSpeed ;
+                            j.Left += spriteEnemy._SpriteSpeed;
+                            // Console.WriteLine("left");
+                        }
+                        if (j.Bounds.IntersectsWith(x.Bounds) && j.Left > x.Left - x.Width)
+                        {
+                            j.Left -= spriteEnemy._SpriteSpeed;
 
-                    //    }
-                    //    if (j.Bounds.IntersectsWith(x.Bounds) && j.Top < x.Top)
-                    //    {
-                    //        j.Top -= spriteEnemy._SpriteSpeed;
-                    //    }
-                    //    if (j.Bounds.IntersectsWith(x.Bounds) && j.Top > x.Top)
-                    //    {
-                    //        j.Top += spriteEnemy._SpriteSpeed;
-                    //    }
-
-
-
-
-                    //}
-
-                    ////noy pushable boxes
-                    //if ((j.Tag.Equals("enemy")) && (x.Tag.Equals("box")))
-                    //{
-                    //    //checking if the X loop is touching the J loop
-                    //    //moving to the left of the wall
-                    //    if (j.Bounds.IntersectsWith(x.Bounds) && j.Left < x.Left + x.Width )
-                    //    {
-                    //        j.Left += spriteEnemy._SpriteSpeed;                          
-                    //    }
-                    //    if (j.Bounds.IntersectsWith(x.Bounds) && j.Left > x.Left - x.Width)
-                    //    {
-                    //        j.Left -= spriteEnemy._SpriteSpeed;                           
-                    //    }
-                    //    if (j.Bounds.IntersectsWith(x.Bounds) && j.Top < x.Top)
-                    //    {
-                    //        j.Top -= spriteEnemy._SpriteSpeed;                           
-                    //    }
-                    //    if (j.Bounds.IntersectsWith(x.Bounds) && j.Top > x.Top)
-                    //    {
-                    //        j.Top += spriteEnemy._SpriteSpeed;                          
-                    //    }
-
-                    //    //left of the enemy
-                    //    //       N
-                    //    //     N E N
-                    //    //       N
-                    //    if (j.Left - 40 == x.Left &&
-                    //        j.Left + 40 == x.Left &&
-                    //        j.Top - 40 == x.Top &&
-                    //        j.Top + 40 == x.Top
-                    //        )
-                    //    {
-                    //        Console.WriteLine("opgesloten - 40");
-                    //    }
-                    //}
-
-                    //if ((j.Tag.Equals("enemy")) && (x.Tag.Equals("player")))
-                    //{
-                    //    //checking if the X loop is touching the J loop
-                    //    //moving to the left of the wall
-                    //    if (j.Left < x.Left + (x.Width / 3))
-                    //    {
-                    //        spriteEnemy.EnemyDirection = SpriteDirection.Left;
-                    //        j.Left += spriteEnemy._SpriteSpeed;
-                    //    }
-                    //    if (j.Left > x.Left - (x.Width / 3))
-                    //    {
-                    //        spriteEnemy.EnemyDirection = SpriteDirection.Right;
-                    //        j.Left -= spriteEnemy._SpriteSpeed;
-                    //    }
-                    //    if (j.Top < x.Top + (x.Height / 3))
-                    //    {
-                    //        spriteEnemy.EnemyDirection = SpriteDirection.Up;
-                    //        j.Top += spriteEnemy._SpriteSpeed;
-                    //    }
-                    //    if (j.Top > x.Top - (x.Width / 3))
-                    //    {
-                    //        spriteEnemy.EnemyDirection = SpriteDirection.Down;
-                    //        j.Top -= spriteEnemy._SpriteSpeed;
-                    //    }
-
-                    //}
+                        }
+                        if (j.Bounds.IntersectsWith(x.Bounds) && j.Top < x.Top)
+                        {
+                            j.Top -= spriteEnemy._SpriteSpeed;
+                        }
+                        if (j.Bounds.IntersectsWith(x.Bounds) && j.Top > x.Top)
+                        {
+                            j.Top += spriteEnemy._SpriteSpeed;
+                        }
+                    }
 
 
 
-                }
+                        //}
+
+                        ////noy pushable boxes
+                        //if ((j.Tag.Equals("enemy")) && (x.Tag.Equals("box")))
+                        //{
+                        //    //checking if the X loop is touching the J loop
+                        //    //moving to the left of the wall
+                        //    if (j.Bounds.IntersectsWith(x.Bounds) && j.Left < x.Left + x.Width )
+                        //    {
+                        //        j.Left += spriteEnemy._SpriteSpeed;                          
+                        //    }
+                        //    if (j.Bounds.IntersectsWith(x.Bounds) && j.Left > x.Left - x.Width)
+                        //    {
+                        //        j.Left -= spriteEnemy._SpriteSpeed;                           
+                        //    }
+                        //    if (j.Bounds.IntersectsWith(x.Bounds) && j.Top < x.Top)
+                        //    {
+                        //        j.Top -= spriteEnemy._SpriteSpeed;                           
+                        //    }
+                        //    if (j.Bounds.IntersectsWith(x.Bounds) && j.Top > x.Top)
+                        //    {
+                        //        j.Top += spriteEnemy._SpriteSpeed;                          
+                        //    }
+
+                        //    //left of the enemy
+                        //    //       N
+                        //    //     N E N
+                        //    //       N
+                        //    if (j.Left - 40 == x.Left &&
+                        //        j.Left + 40 == x.Left &&
+                        //        j.Top - 40 == x.Top &&
+                        //        j.Top + 40 == x.Top
+                        //        )
+                        //    {
+                        //        Console.WriteLine("opgesloten - 40");
+                        //    }
+                        //}
+
+                        //if ((j.Tag.Equals("enemy")) && (x.Tag.Equals("player")))
+                        //{
+                        //    //checking if the X loop is touching the J loop
+                        //    //moving to the left of the wall
+                        //    if (j.Left < x.Left + (x.Width / 3))
+                        //    {
+                        //        spriteEnemy.EnemyDirection = SpriteDirection.Left;
+                        //        j.Left += spriteEnemy._SpriteSpeed;
+                        //    }
+                        //    if (j.Left > x.Left - (x.Width / 3))
+                        //    {
+                        //        spriteEnemy.EnemyDirection = SpriteDirection.Right;
+                        //        j.Left -= spriteEnemy._SpriteSpeed;
+                        //    }
+                        //    if (j.Top < x.Top + (x.Height / 3))
+                        //    {
+                        //        spriteEnemy.EnemyDirection = SpriteDirection.Up;
+                        //        j.Top += spriteEnemy._SpriteSpeed;
+                        //    }
+                        //    if (j.Top > x.Top - (x.Width / 3))
+                        //    {
+                        //        spriteEnemy.EnemyDirection = SpriteDirection.Down;
+                        //        j.Top -= spriteEnemy._SpriteSpeed;
+                        //    }
+
+                        //}
+
+
+
+                    }
             }
         }
 
