@@ -34,6 +34,8 @@
             this.lblPause = new System.Windows.Forms.Label();
             this.pause = new System.Windows.Forms.Label();
             this.resume = new System.Windows.Forms.Label();
+            this.playerHealthBar = new System.Windows.Forms.ProgressBar();
+            this.enemyHealthBar = new System.Windows.Forms.ProgressBar();
             this.SuspendLayout();
             // 
             // timer1
@@ -58,7 +60,7 @@
             this.lblPause.AutoSize = true;
             this.lblPause.Font = new System.Drawing.Font("Mistral", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPause.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(114)))), ((int)(((byte)(204)))));
-            this.lblPause.Location = new System.Drawing.Point(191, 21);
+            this.lblPause.Location = new System.Drawing.Point(131, 220);
             this.lblPause.Name = "lblPause";
             this.lblPause.Size = new System.Drawing.Size(227, 57);
             this.lblPause.TabIndex = 1;
@@ -84,16 +86,35 @@
             this.resume.TabIndex = 5;
             this.resume.Text = "press \'R\' to resume the game";
             // 
+            // playerHealthBar
+            // 
+            this.playerHealthBar.ForeColor = System.Drawing.Color.Green;
+            this.playerHealthBar.Location = new System.Drawing.Point(319, 21);
+            this.playerHealthBar.Name = "playerHealthBar";
+            this.playerHealthBar.Size = new System.Drawing.Size(151, 13);
+            this.playerHealthBar.Step = 20;
+            this.playerHealthBar.TabIndex = 6;
+            // 
+            // enemyHealthBar
+            // 
+            this.enemyHealthBar.ForeColor = System.Drawing.Color.Green;
+            this.enemyHealthBar.Location = new System.Drawing.Point(319, 52);
+            this.enemyHealthBar.Name = "enemyHealthBar";
+            this.enemyHealthBar.Size = new System.Drawing.Size(151, 13);
+            this.enemyHealthBar.TabIndex = 7;
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(32)))), ((int)(((byte)(108)))));
-            this.ClientSize = new System.Drawing.Size(619, 541);
+            this.ClientSize = new System.Drawing.Size(491, 552);
+            this.Controls.Add(this.lblPause);
+            this.Controls.Add(this.enemyHealthBar);
+            this.Controls.Add(this.playerHealthBar);
             this.Controls.Add(this.resume);
             this.Controls.Add(this.pause);
-            this.Controls.Add(this.lblPause);
             this.Controls.Add(this.label2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Form2";
@@ -112,5 +133,7 @@
         private System.Windows.Forms.Label lblPause;
         private System.Windows.Forms.Label pause;
         private System.Windows.Forms.Label resume;
+        private System.Windows.Forms.ProgressBar playerHealthBar;
+        private System.Windows.Forms.ProgressBar enemyHealthBar;
     }
 }

@@ -5,8 +5,8 @@ N N N D D D D V N N N N
 N N N D N N D N N N N V
 N V N D N N D N N N N N
 N V N V N N D N V N N V
-N N N N N N N N D N N N
-N N N N N N N N N N N V
+N N N N N D D D D N N N
+N N N N N D N N D N N V
 N D D D D N N N N D N N
-N D N D N N N N N N N N
+N D N D N N D N N N N N
 N N N N N N N N N N N N

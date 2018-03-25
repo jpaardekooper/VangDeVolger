@@ -71,6 +71,7 @@
     <Compile Include="Hero.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Wall.cs" />
     <EmbeddedResource Include="ChangeMap.resx">
       <DependentUpon>ChangeMap.cs</DependentUpon>
     </EmbeddedResource>
@@ -130,7 +131,9 @@
     <None Include="Resources\enemyLeft.gif" />
     <None Include="Resources\Easy.txt" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\death 5.png" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="Levels\easy.txt" />
   </ItemGroup>

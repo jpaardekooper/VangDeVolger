@@ -16,9 +16,9 @@ namespace VangDeVolgerSetup
         {
             spriteWall.Height = _SpriteHeight;
             spriteWall.Width = _SpriteWidth;
-            spriteWall.Name = "box";
-            spriteWall.Tag = "box";
-            spriteWall.Image = Properties.Resources.box;
+            spriteWall.Name = "wall";
+            spriteWall.Tag = "wall";
+            spriteWall.Image = Properties.Resources.wall;
             spriteWall.Location = new Point(locationX, locationY);
         }
     }

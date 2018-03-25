@@ -73,25 +73,25 @@ namespace VangDeVolgerSetup.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap death {
+        public static System.Drawing.Bitmap death_5 {
             get {
-                object obj = ResourceManager.GetObject("death", resourceCulture);
+                object obj = ResourceManager.GetObject("death_5", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ?N N V V V V N N N N V N
+        ///   Looks up a localized string similar to N N V V V V N N N N V N
         ///N N N N N N N N N D N N
         ///N N D V V V V V V N N V
         ///N N N D D D D V N N N N
         ///N N N D N N D N N N N V
         ///N V N D N N D N N N N N
         ///N V N V N N D N V N N V
-        ///N N N N N N N N D N N N
-        ///N N N N N N N N N N N V
+        ///N N N N N D D D D N N N
+        ///N N N N N D N N D N N V
         ///N D D D D N N N N D N N
-        ///N D N D N N N N N N N N
+        ///N D N D N N D N N N N N
         ///N N N N N N N N N N N N.
         /// </summary>
         public static string easy {
