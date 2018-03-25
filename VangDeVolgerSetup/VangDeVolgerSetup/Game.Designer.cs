@@ -1,6 +1,6 @@
 ﻿namespace VangDeVolgerSetup
 {
-    partial class Form2
+    partial class Game
     {
         /// <summary>
         /// Required designer variable.

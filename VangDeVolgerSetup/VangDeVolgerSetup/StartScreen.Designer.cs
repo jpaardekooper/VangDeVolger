@@ -1,6 +1,6 @@
 ﻿namespace VangDeVolgerSetup
 {
-    partial class Form1
+    partial class StartScreen
     {
         /// <summary>
         /// Required designer variable.

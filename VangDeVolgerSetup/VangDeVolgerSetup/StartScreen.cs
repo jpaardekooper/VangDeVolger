@@ -4,19 +4,20 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace VangDeVolgerSetup
 {
-    public partial class Form1 : Form
+    public partial class StartScreen : Form
     {
         public static string MyTextBoxValue;
 
         public static string myMapValue;
 
-        public Form1()
+        public StartScreen()
         {
             InitializeComponent();           
         }
@@ -26,7 +27,7 @@ namespace VangDeVolgerSetup
         private void easy_Click(object sender, EventArgs e)
         {
             MyTextBoxValue = easy.Text;
-            Form2 Gameboard = new Form2();
+            Game Gameboard = new Game();
             Gameboard.Show();
         }
         private void easy_MouseEnter(object sender, EventArgs e)
@@ -47,7 +48,7 @@ namespace VangDeVolgerSetup
         private void hard_Click(object sender, EventArgs e)
         {
             MyTextBoxValue = hard.Text;
-            Form2 Gameboard = new Form2();
+            Game Gameboard = new Game();
             Gameboard.Show();
         }
         private void hard_MouseEnter(object sender, EventArgs e)
@@ -73,6 +74,12 @@ namespace VangDeVolgerSetup
             myMapValue = easy.Text;
             ChangeMap ChangeMap = new ChangeMap();
             ChangeMap.Show();
+        }
+
+        private void _playHoverSound()
+        {
+            SoundPlayer simpleSound = new SoundPlayer(@"c:\Windows\Media\chimes.wav");
+            simpleSound.Play();
         }
     }
 }

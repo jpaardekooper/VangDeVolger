@@ -24,7 +24,7 @@ namespace VangDeVolgerSetup
         {
             InitializeComponent();
 
-            mapName.Text = Form1.myMapValue;
+            mapName.Text = StartScreen.myMapValue;
             _mapValue = mapName.Text.ToString();            
 
             loadData(_mapValue);

@@ -37,7 +37,7 @@ namespace VangDeVolgerSetup
             _SpriteImage = Properties.Resources.Nright;
         }
 
-        public void CreateHeroInstance(Form2 form2)
+        public void CreateHeroInstance(Game form2)
         {
             _spriteHero.Image = _SpriteImage;
             _spriteHero.Tag = _SpriteTag;

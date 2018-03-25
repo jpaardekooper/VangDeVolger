@@ -35,7 +35,7 @@ namespace VangDeVolgerSetup
         private int _placement = 0;
         private string _levelModus = string.Empty;
 
-        public void ReadMyTextLevelFile(Form2 Form2, string Name)
+        public void ReadMyTextLevelFile(Game Form2, string Name)
         {
             //if we get an error show it
             if (Name.Equals(""))
