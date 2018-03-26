@@ -8,35 +8,35 @@
     </TypeIdentifier>
   </Class>
   <Class Name="VangDeVolgerSetup.ChangeMap" Collapsed="true">
-    <Position X="9.75" Y="0.5" Width="1.5" />
+    <Position X="11.5" Y="2.5" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AEAAABAAQCAAABAAAACAAAACQAAIAAAQAEAQIAAAAAA=</HashCode>
       <FileName>ChangeMap.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="VangDeVolgerSetup.Enemy" Collapsed="true">
+  <Class Name="VangDeVolgerSetup.Enemy">
     <Position X="2.75" Y="1.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAIAAABAAAAAAAAAAACAAAQAA=</HashCode>
       <FileName>Enemy.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="VangDeVolgerSetup.StartScreen" Collapsed="true">
-    <Position X="11.5" Y="0.5" Width="1.5" />
+  <Class Name="VangDeVolgerSetup.StartScreen">
+    <Position X="7" Y="2.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>ACBAAAAAACAMAgAhAAKAAAAiAABIAQAAAEACAAAACAA=</HashCode>
+      <HashCode>ACBAAAAAACAMBgAhAAKAAAAiAABAAQAAAEACAAQACAA=</HashCode>
       <FileName>StartScreen.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="VangDeVolgerSetup.Game" Collapsed="true">
-    <Position X="13.25" Y="0.5" Width="1.5" />
+    <Position X="14.25" Y="2.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>CASQgAAEACIAADCIAACAIAAiABAABAIAAAAAAABBKAA=</HashCode>
       <FileName>Game.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="VangDeVolgerSetup.GenerateLevel" Collapsed="true">
-    <Position X="9.75" Y="1.5" Width="1.5" />
+  <Class Name="VangDeVolgerSetup.GenerateLevel">
+    <Position X="11.5" Y="3.75" Width="2" />
     <TypeIdentifier>
       <HashCode>CAAAIAAgAAAYAAAABAAAAAYAAAAAAAAAAAAAAABAAAA=</HashCode>
       <FileName>GenerateLevel.cs</FileName>
@@ -81,12 +81,6 @@
     <Position X="9.75" Y="2.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>ACAQAAAAAAAAAQAgAAABEgACEQAAAAAAAAAEAgwAAIA=</HashCode>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="VangDeVolgerSetup.Properties.Settings" Collapsed="true">
-    <Position X="11.5" Y="2.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAABAAAAAAAAAAAAAAA=</HashCode>
     </TypeIdentifier>
   </Class>
   <Enum Name="VangDeVolgerSetup.SpriteDirection" Collapsed="true">
