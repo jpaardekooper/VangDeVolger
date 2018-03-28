@@ -71,6 +71,10 @@ namespace VangDeVolgerSetup
                 case SpriteDirection.Down:
                     _spriteHero.Top += _SpriteSpeed; // move the bullet bottom of the screen
                     break;
+                case SpriteDirection.None:
+                    _spriteHero.Left += 0;
+                    _spriteHero.Top += 0;// move the bullet bottom of the screen
+                    break;
             }      
 
             //stop hero from moving against walls of canvas

@@ -65,17 +65,14 @@ namespace VangDeVolgerSetup
                     string[] stringLineArray = strLine.Split(' ');
                     foreach (string c in stringLineArray)
                     {
-                        Button tile3 = new Button
-                        {
-                            Size = new Size(_pbHeight, _pbWidth)
-                        };
+                        Tile Tile = new Tile(_currentPositionX, _currentPositionY + 100);
+                       
                         switch (c)
                         {
                             case "D":                              
                                 Box Box = new Box(_currentPositionX, _currentPositionY + 100);
                                 Form2.Controls.Add(Box.spriteBox);  //adding the tile to Form2 so we can see it   
-                                Box.spriteBox.BringToFront();
-                              
+                                Box.spriteBox.BringToFront();                              
                                 break;
                             case "V":
                                 Wall Wall = new Wall(_currentPositionX, _currentPositionY + 100);
@@ -83,29 +80,26 @@ namespace VangDeVolgerSetup
                                 Wall.spriteWall.BringToFront();
                                 break;
                             case "N":
-                                tile3.Name = "empty";
-                                tile3.Tag = "empty";
-
+                                Tile.BtnTile.Name = "empty";
+                                Tile.BtnTile.Tag = "empty";
                                 break;
                                 //catching the error
                             case "?":
-
-                                tile3.Name = "empty";
-                                tile3.Tag = "empty";
+                                Tile.BtnTile.Name = "empty";
+                                Tile.BtnTile.Tag = "empty";
                                 break;
 
                         }
                         //default background ( a grey tile)
-                        tile3.Enabled = false;                       
-                        tile3.Image = Properties.Resources.empty;
-                        tile3.Location = new Point(_currentPositionX, _currentPositionY + 100);
+                        
+                        //Tile.Location = new Point(_currentPositionX, _currentPositionY + 100);
 
-                        Form2.Controls.Add(tile3);  //adding the tile to Form2 so we can see it  
+                        Form2.Controls.Add(Tile.BtnTile);  //adding the tile to Form2 so we can see it  
                         //its not a bug but a feature
                         if (Name.Equals("crazy"))
                         {
                             Console.WriteLine("crazy");
-                            tile3.BringToFront();
+                            Tile.BtnTile.BringToFront();
                         }                          
                         _currentPositionX += _pbWidth;  //while we are in the loop we place the tiles on the form2 we increase the positionX + 1 
                     }             

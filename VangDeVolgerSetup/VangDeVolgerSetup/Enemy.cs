@@ -18,10 +18,9 @@ namespace VangDeVolgerSetup
         public Enemy() : base()
         {
             EnemyHealth = 100;
-
             _SpriteName = "enemy";
             _SpriteTag = _SpriteName;
-            _SpriteSpeed =3;
+            _SpriteSpeed = 3;
             _StartLocationX = (11 * 40);
             _StartLocationY = (100 + (12 * 40) - _spriteEnemy.Height);
         }
@@ -33,17 +32,15 @@ namespace VangDeVolgerSetup
             _spriteEnemy.Image = (Properties.Resources.enemyLeft);
             _spriteEnemy.Left = _StartLocationX;
             _spriteEnemy.Top = _StartLocationY;
-            _spriteEnemy.Height = _SpriteHeight - 7 ;
-            _spriteEnemy.Width = _SpriteWidth-7;
+            _spriteEnemy.Height = _SpriteHeight - 7;
+            _spriteEnemy.Width = _SpriteWidth - 7;
             _spriteEnemy.SizeMode = PictureBoxSizeMode.Zoom;
             _spriteEnemy.BackColor = Color.Green;
             _spriteEnemy.Tag = _SpriteTag; // set the tag to bullet
             _spriteEnemy.Name = _SpriteName;
             _spriteEnemy.Bounds = _spriteEnemy.Bounds;
-
             form.Controls.Add(_spriteEnemy); // add the bullet to the screen
             _spriteEnemy.BringToFront(); // bring the bullet to front of other objects
-
         }
 
         public void CheckForOutOfBounds()
@@ -70,7 +67,7 @@ namespace VangDeVolgerSetup
                 _spriteEnemy.Top -= _SpriteSpeed;
             }
         }
-      
+
 
     }
 }

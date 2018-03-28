@@ -15,8 +15,8 @@ namespace VangDeVolgerSetup
 
         public Box( int locationX, int locationY)
         {
-            spriteBox.Height = _SpriteHeight;
-            spriteBox.Width = _SpriteWidth;
+            spriteBox.Size = new Size(40, 40);
+           // spriteBox.Width = _SpriteWidth;
             spriteBox.Name = "box";
             spriteBox.Tag = "box";
             spriteBox.Image = Properties.Resources.box;
