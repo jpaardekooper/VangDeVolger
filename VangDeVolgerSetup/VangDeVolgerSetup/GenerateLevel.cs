@@ -10,7 +10,6 @@ using System.Windows.Forms;
 
 namespace VangDeVolgerSetup
 {
-
     public class GenerateLevel
     {
         //creating a private _name instance to set the game modus of the game (easy, hard, crazy)
@@ -28,16 +27,26 @@ namespace VangDeVolgerSetup
         }
         public Tile[,] _tileMapArray = new Tile[12, 12];
         //basic information of the picturebox (pb) width, height and position 
-        private int _pbHeight = 40;
-        private int _pbWidth = 40;
-        private int _currentPositionX = 0;
-        private int _currentPositionY = 0;
-        private int _placement = 0;
-        private int _iRow = 0;
-        private int _iCol = 0;
+        private int _pbHeight { get; set; }
+        private int _pbWidth { get; set; }
+        private int _currentPositionX { get; set; }
+        private int _currentPositionY { get; set; }
+        private int _placement { get; set; }
+        private int _iRow { get; set; }
+        private int _iCol { get; set; }
         private string _levelModus = string.Empty;
 
-       
+        //filling the attributes with values
+        public GenerateLevel()
+        {
+            _pbHeight = 40;
+            _pbWidth = 40;
+            _currentPositionX = 0;
+            _currentPositionY = 0;
+            _placement = 0;
+            _iRow = 0;
+            _iCol = 0;
+        }
 
         public void ReadMyTextLevelFile(Game Form2, string Name)
         {
@@ -56,13 +65,11 @@ namespace VangDeVolgerSetup
                     break;
 
                 case "hard":
-                    _levelModus = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..\\..\\Levels\\hard.txt");
-                    //   Console.WriteLine(_levelModus);
+                    _levelModus = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..\\..\\Levels\\hard.txt");               
                     break;
             }
             using (StreamReader strReader = new StreamReader(_levelModus))
             {
-
                 string strLine = string.Empty;
                 while ((strLine = strReader.ReadLine()) != null)
                 {
@@ -92,20 +99,19 @@ namespace VangDeVolgerSetup
                                 Tile.TileNr = 3;
                                 Tile.TileType = TileType.wall;
                                 break;
-                            case "N":    
+                            case "N":
                                 //creating a button if a char N is found with the type empty and img empty
                                 Tile.TileNr = 0;
                                 Tile.TileType = TileType.empty;
                                 break;
                             //catching the error //creating a button if a char N is found with the type empty and img empty
-                            case "?":                                
+                            case "?":
                                 Tile.TileType = TileType.empty;
                                 Tile.TileNr = 0;
                                 break;
 
-                        }                     
-                        _tileMapArray[_iCol, _iRow] = Tile;
-                        //Tile.Location = new Point(_currentPositionX, _currentPositionY + 100);
+                        }
+                        _tileMapArray[_iCol, _iRow] = Tile; //assigning the Tile object to the array                     
                         Form2.Controls.Add(Tile.BtnTile);  //adding the tile to Form2 so we can see it  
 
                         //its not a bug but a feature
@@ -116,29 +122,28 @@ namespace VangDeVolgerSetup
                         }
 
                         _iCol++;  //adding 1 collumn eachtime we pass this    
-                        _currentPositionX += _pbWidth;  //while we are in the loop we place the tiles on the form2 we increase the positionX + 1 
+                        _currentPositionX += _pbWidth;  //while we are in the loop we place the tiles on the Game window. We increase the positionX
                     }
-                    _iRow++;
-                    _iCol = 0;
+                    _iRow++; //add 1 new row each time we pass this
+                    _iCol = 0; //resetting column count to 0 so we can pass new data
                     _currentPositionX = _placement;
                     _currentPositionY += _pbHeight;   //adding small margin between each tile
                 }
-                strReader.Close();
+                strReader.Close(); //closing the file
             }
-
 
             //checking what is inside the array
             for (int i = 0; i < _tileMapArray.GetLength(0); i++)
             {
                 for (int j = 0; j < _tileMapArray.GetLength(1); j++)
                 {
-                    Console.Write(" "+_tileMapArray[j, i].TileType + "\t ");
-                   
+                    Console.Write(" " + _tileMapArray[j, i].TileType + "\t ");
+
                 }
                 Console.WriteLine();
             }
             //soo if we call this function we know what is in N E S W but..
-            Tile.HasNeighbour(_tileMapArray,1,1);
+            Tile.HasNeighbour(_tileMapArray, 1, 1);
         }
     }
 }

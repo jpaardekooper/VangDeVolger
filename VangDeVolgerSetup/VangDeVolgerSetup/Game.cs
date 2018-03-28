@@ -55,6 +55,7 @@ namespace VangDeVolgerSetup
             _callEnemyClass.CreateEnemyInstance(this); //run the function CreateEnemyInstance from the Enemy.cs class
         }
 
+        //this is a game engine timer this will check the interaction of each object 
         private void GameEngine(object sender, EventArgs e)
         {
             if (!_gameOver)
@@ -330,7 +331,7 @@ namespace VangDeVolgerSetup
         private void _pauseGame()
         {
             _gamePaused = true;
-
+            //grabbing all controls and hide them
             foreach (Control c in Controls)
             {
                 c.Visible = false;
@@ -344,12 +345,12 @@ namespace VangDeVolgerSetup
 
         private void _resumeGame()
         {
+            _gamePaused = false;
+            //grabbing all controls and hide them
             foreach (Control c in Controls)
             {
                 c.Visible = true;
             }
-
-            _gamePaused = false;
             lblPause.Visible = false;
             pause.Visible = true;
             resume.Visible = false;
@@ -359,6 +360,7 @@ namespace VangDeVolgerSetup
         private void _gameIsOver()
         {
             _gameOver = true;
+            //grabbing all controls and hide them
             foreach (Control c in Controls)
             {
                 c.Visible = false;
