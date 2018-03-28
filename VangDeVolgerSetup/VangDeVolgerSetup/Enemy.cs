@@ -25,10 +25,12 @@ namespace VangDeVolgerSetup
             _StartLocationY = (100 + (12 * 40) - _spriteEnemy.Height);
         }
 
+        /// <summary>
+        /// Create the sprite of enemy and adding it to the form
+        /// </summary>
+        /// <param name="form"></param>
         public void CreateEnemyInstance(Form form)
-        {
-            // this function will add the bullet to the game play
-            // it is required to be called from the main class
+        { 
             _spriteEnemy.Image = (Properties.Resources.enemyLeft);
             _spriteEnemy.Left = _StartLocationX;
             _spriteEnemy.Top = _StartLocationY;
@@ -36,11 +38,11 @@ namespace VangDeVolgerSetup
             _spriteEnemy.Width = _SpriteWidth - 7;
             _spriteEnemy.SizeMode = PictureBoxSizeMode.Zoom;
             _spriteEnemy.BackColor = Color.Green;
-            _spriteEnemy.Tag = _SpriteTag; // set the tag to bullet
+            _spriteEnemy.Tag = _SpriteTag;
             _spriteEnemy.Name = _SpriteName;
             _spriteEnemy.Bounds = _spriteEnemy.Bounds;
-            form.Controls.Add(_spriteEnemy); // add the bullet to the screen
-            _spriteEnemy.BringToFront(); // bring the bullet to front of other objects
+            form.Controls.Add(_spriteEnemy); 
+            _spriteEnemy.BringToFront(); 
         }
 
         public void CheckForOutOfBounds()

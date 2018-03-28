@@ -20,34 +20,7 @@ namespace VangDeVolgerSetup
     {
 
         public Button BtnTile = new Button();
-        public int TileNr { get; set; }
-
-        //private int _locationX { get; set; }
-        //public int LocationX
-        //{
-        //    get
-        //    {
-        //        return _locationX;
-        //    }
-        //    set
-        //    {
-        //        _locationX = value;
-        //    }
-        //}
-
-        //private int _locationY { get; set; }
-        //public int LocationY
-        //{
-        //    get
-        //    {
-        //        return _locationY;
-        //    }
-        //    set
-        //    {
-        //        _locationY = value;
-        //    }
-        //}
-
+        public int TileNr { get; set; }  
         private TileType _tileType { get; set; }
         public TileType TileType
         {
@@ -61,6 +34,12 @@ namespace VangDeVolgerSetup
             }
         }
 
+        /// <summary>
+        /// checking what type the tile is and filling it in the correct array
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <param name="type"></param>
         public Tile(int x, int y, TileType type)
         {
             BtnTile.Size = new Size(40, 40);
@@ -71,7 +50,13 @@ namespace VangDeVolgerSetup
             TileType = type;
         }
 
-        //checking if
+        /// <summary>
+        /// checking the Neighbour of the current tile
+        /// </summary>
+        /// <param name="array"></param>
+        /// <param name="CellX"></param>
+        /// <param name="CellY"></param>
+        /// <returns></returns>
         public static bool HasNeighbour(Tile[,] array, int CellX, int CellY)
         {
 

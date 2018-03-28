@@ -47,7 +47,11 @@ namespace VangDeVolgerSetup
             _iRow = 0;
             _iCol = 0;
         }
-
+        /// <summary>
+        /// checking the level we picked and giving it back to Form2
+        /// </summary>
+        /// <param name="Form2"></param>
+        /// <param name="Name"></param>
         public void ReadMyTextLevelFile(Game Form2, string Name)
         {
             //if we get an error show it
@@ -65,7 +69,7 @@ namespace VangDeVolgerSetup
                     break;
 
                 case "hard":
-                    _levelModus = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..\\..\\Levels\\hard.txt");               
+                    _levelModus = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..\\..\\Levels\\hard.txt");
                     break;
             }
             using (StreamReader strReader = new StreamReader(_levelModus))

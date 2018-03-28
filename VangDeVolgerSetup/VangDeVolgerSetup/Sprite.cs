@@ -17,12 +17,7 @@ namespace VangDeVolgerSetup
     }
 
     abstract class Sprite
-    {
-        //List<KeyValuePair<int, int>> fourNeighbors = new List<KeyValuePair<int, int>>()
-        //                                    { new KeyValuePair<int, int>(-1,0),
-        //                                      new KeyValuePair<int, int>(0,1),
-        //                                      new KeyValuePair<int, int>(1, 0),
-        //                                      new KeyValuePair<int, int>(0,-1) };
+    {        
 
         public int _SpriteSpeed { get; set; } // creating a integer called speed    
         protected string _SpriteName { get; set; } 
