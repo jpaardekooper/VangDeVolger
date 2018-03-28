@@ -34,7 +34,19 @@ namespace VangDeVolgerSetup
         protected Image _SpriteImage { get; set; }
         protected int _MaxGameWidth { get; set; }
         protected int _maxGameHeight { get; set; }
-     
+
+        private Tile[,] _tileMapArray { get; set; }
+        public Tile[,] TileMapArray
+        {
+            get
+            {
+                return _tileMapArray;
+            }
+            set
+            {
+                _tileMapArray = value;
+            }
+        }
 
         public Sprite()
         {
@@ -46,6 +58,7 @@ namespace VangDeVolgerSetup
             _MaxGameWidth = 11 * 40;
             _maxGameHeight = 12 * 40 + 60;
         }
+        
 
     }
 }

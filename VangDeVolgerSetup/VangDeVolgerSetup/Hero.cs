@@ -14,12 +14,10 @@ namespace VangDeVolgerSetup
         public PictureBox _spriteHero = new PictureBox(); // create a picture box    
         public SpriteDirection HeroDirection { get; set; } // creating a public string called direction
         public int HeroHealth { get; set; }
-       
-
-
+      
         public Hero() : base()
         {
-            HeroHealth = 100;          
+            HeroHealth = 100;
             _SpriteSpeed = 40;
             _SpriteName = "player";
             _SpriteTag = _SpriteName;
@@ -27,7 +25,7 @@ namespace VangDeVolgerSetup
             // _StartLocationY = 100;
 
             //testing
-            _StartLocationY = 100;          
+            _StartLocationY = 100;
 
             //Move.Interval = 20; // set the timer interval to speed    
             //Move.Tick += new EventHandler(Move_Tick); // assignment the timer with an event
@@ -50,7 +48,7 @@ namespace VangDeVolgerSetup
             _spriteHero.BringToFront(); // bring the bullet to front of other objects
             //Console.WriteLine(_hero.Size);
         }
-      
+
         // public void Move_Tick(object sender, EventArgs e)
         public void Move_Tick(SpriteDirection direction)
         {
@@ -75,7 +73,7 @@ namespace VangDeVolgerSetup
                     _spriteHero.Left += 0;
                     _spriteHero.Top += 0;// move the bullet bottom of the screen
                     break;
-            }      
+            }
 
             //stop hero from moving against walls of canvas
             //moving to left

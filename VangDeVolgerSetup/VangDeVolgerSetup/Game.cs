@@ -16,7 +16,7 @@ namespace VangDeVolgerSetup
         private Hero _callHeroClass = new Hero(); //create new hero class
         private Enemy _callEnemyClass = new Enemy(); //create new enemy class
         private GenerateLevel _callGeneratelevel = new GenerateLevel(); //create new generate level class
-
+     
         public string GetMapName; //able to detect what game modus we are playing
 
         private bool _gameOver = false;
@@ -119,7 +119,6 @@ namespace VangDeVolgerSetup
                         }
 
 
-
                         //walll interaction
                         else if ((j.Tag.Equals("player")) && (x.Tag.Equals("wall")))
                         {
@@ -146,7 +145,6 @@ namespace VangDeVolgerSetup
                                     j.Top += _callHeroClass._SpriteSpeed;
                                 }
                             }
-
 
                         }
 
