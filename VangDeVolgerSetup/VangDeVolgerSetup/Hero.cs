@@ -14,7 +14,7 @@ namespace VangDeVolgerSetup
         public PictureBox _spriteHero = new PictureBox(); // create a picture box    
         public SpriteDirection HeroDirection { get; set; } // creating a public string called direction
         public int HeroHealth { get; set; }
-      
+        
         public Hero() : base()
         {
             HeroHealth = 100;

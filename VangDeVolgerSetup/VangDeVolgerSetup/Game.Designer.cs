@@ -36,6 +36,8 @@
             this.resume = new System.Windows.Forms.Label();
             this.playerHealthBar = new System.Windows.Forms.ProgressBar();
             this.enemyHealthBar = new System.Windows.Forms.ProgressBar();
+            this.lblGameOver = new System.Windows.Forms.Label();
+            this.newgame = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // timer1
@@ -80,7 +82,7 @@
             // 
             this.resume.AutoSize = true;
             this.resume.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(114)))), ((int)(((byte)(204)))));
-            this.resume.Location = new System.Drawing.Point(12, 52);
+            this.resume.Location = new System.Drawing.Point(12, 53);
             this.resume.Name = "resume";
             this.resume.Size = new System.Drawing.Size(143, 13);
             this.resume.TabIndex = 5;
@@ -105,6 +107,27 @@
             this.enemyHealthBar.TabIndex = 7;
             this.enemyHealthBar.Value = 100;
             // 
+            // lblGameOver
+            // 
+            this.lblGameOver.AutoSize = true;
+            this.lblGameOver.Font = new System.Drawing.Font("Mistral", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblGameOver.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(114)))), ((int)(((byte)(204)))));
+            this.lblGameOver.Location = new System.Drawing.Point(142, 220);
+            this.lblGameOver.Name = "lblGameOver";
+            this.lblGameOver.Size = new System.Drawing.Size(203, 57);
+            this.lblGameOver.TabIndex = 8;
+            this.lblGameOver.Text = "Game Over!";
+            // 
+            // newgame
+            // 
+            this.newgame.AutoSize = true;
+            this.newgame.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(114)))), ((int)(((byte)(204)))));
+            this.newgame.Location = new System.Drawing.Point(12, 24);
+            this.newgame.Name = "newgame";
+            this.newgame.Size = new System.Drawing.Size(123, 13);
+            this.newgame.TabIndex = 9;
+            this.newgame.Text = "press \'N\' for a new game";
+            // 
             // Game
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -112,6 +135,8 @@
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(32)))), ((int)(((byte)(108)))));
             this.ClientSize = new System.Drawing.Size(491, 552);
+            this.Controls.Add(this.newgame);
+            this.Controls.Add(this.lblGameOver);
             this.Controls.Add(this.lblPause);
             this.Controls.Add(this.enemyHealthBar);
             this.Controls.Add(this.playerHealthBar);
@@ -137,5 +162,7 @@
         private System.Windows.Forms.Label resume;
         private System.Windows.Forms.ProgressBar playerHealthBar;
         private System.Windows.Forms.ProgressBar enemyHealthBar;
+        private System.Windows.Forms.Label lblGameOver;
+        private System.Windows.Forms.Label newgame;
     }
 }

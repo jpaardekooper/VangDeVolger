@@ -29,6 +29,7 @@ namespace VangDeVolgerSetup
             InitializeComponent();
             lblPause.Visible = false;
             resume.Visible = false;
+            lblGameOver.Visible = false;
             ///
             ///Able to get de level name of the screen to generate the levelwith
             ///
@@ -64,10 +65,9 @@ namespace VangDeVolgerSetup
                     //we can determine if they hit eachother
                     foreach (PictureBox j in Controls.OfType<PictureBox>())
                     {
-                        //walll interaction
+                        //player with walll interaction
                         if ((j.Tag.Equals("player")) && (x.Tag.Equals("box")))
-                        {
-                            //checking if the X loop is touching the J loop
+                        {                           
                             //moving to the left of the wall
                             if (j.Bounds.IntersectsWith(x.Bounds))
                             {
@@ -356,6 +356,18 @@ namespace VangDeVolgerSetup
             timer1.Start();
         }
 
+        private void _gameIsOver()
+        {
+            _gameOver = true;
+            foreach (Control c in Controls)
+            {
+                c.Visible = false;
+            }
+            newgame.Visible = true;
+            lblGameOver.Visible = true;
+            timer1.Stop();
+        }
+
         private void CheckHeroHealth()
         {
             ///
@@ -370,8 +382,7 @@ namespace VangDeVolgerSetup
                 _callHeroClass._spriteHero.Image = Properties.Resources.death_5;
                 _callHeroClass._spriteHero.BringToFront();
                 Console.WriteLine("verloren");
-                timer1.Stop(); //stop the timer
-                _gameOver = true; // boolgame over is true
+                _gameIsOver();
             }
 
             if (_callHeroClass.HeroHealth < 60)
@@ -398,8 +409,7 @@ namespace VangDeVolgerSetup
             {
                 Console.WriteLine("gewonnen");
 
-                timer1.Stop(); //stop the timer
-                _gameOver = true; // boolgame over is true
+                _gameIsOver();
             }
 
             if (_callEnemyClass.EnemyHealth < 60)
