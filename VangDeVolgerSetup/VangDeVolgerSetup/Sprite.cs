@@ -16,27 +16,25 @@ namespace VangDeVolgerSetup
         None
     }
 
-   
-
     abstract class Sprite
     {
-        List<KeyValuePair<int, int>> fourNeighbors = new List<KeyValuePair<int, int>>()
-                                            { new KeyValuePair<int, int>(-1,0),
-                                              new KeyValuePair<int, int>(0,1),
-                                              new KeyValuePair<int, int>(1, 0),
-                                              new KeyValuePair<int, int>(0,-1) };
+        //List<KeyValuePair<int, int>> fourNeighbors = new List<KeyValuePair<int, int>>()
+        //                                    { new KeyValuePair<int, int>(-1,0),
+        //                                      new KeyValuePair<int, int>(0,1),
+        //                                      new KeyValuePair<int, int>(1, 0),
+        //                                      new KeyValuePair<int, int>(0,-1) };
 
         public int _SpriteSpeed { get; set; } // creating a integer called speed    
         protected string _SpriteName { get; set; } 
         protected string _SpriteTag { get; set; }
-
         protected int _StartLocationX { get; set; }
-        protected int _StartLocationY { get; set; }        
-
+        protected int _StartLocationY { get; set; } 
         protected int _SpriteWidth { get; set; }
         protected int _SpriteHeight { get; set; }
-
         protected Image _SpriteImage { get; set; }
+        protected int _MaxGameWidth { get; set; }
+        protected int _maxGameHeight { get; set; }
+     
 
         public Sprite()
         {
@@ -45,6 +43,8 @@ namespace VangDeVolgerSetup
             _StartLocationY = 0;
             _SpriteWidth = 40;
             _SpriteHeight = 40;
+            _MaxGameWidth = 11 * 40;
+            _maxGameHeight = 12 * 40 + 60;
         }
 
     }

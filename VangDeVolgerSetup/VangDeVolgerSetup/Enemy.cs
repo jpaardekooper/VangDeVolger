@@ -21,8 +21,8 @@ namespace VangDeVolgerSetup
 
             _SpriteName = "enemy";
             _SpriteTag = _SpriteName;
-            _SpriteSpeed = 3;
-            _StartLocationX = (11 * 40 );
+            _SpriteSpeed =3;
+            _StartLocationX = (11 * 40);
             _StartLocationY = (100 + (12 * 40) - _spriteEnemy.Height);
         }
 
@@ -33,8 +33,8 @@ namespace VangDeVolgerSetup
             _spriteEnemy.Image = (Properties.Resources.enemyLeft);
             _spriteEnemy.Left = _StartLocationX;
             _spriteEnemy.Top = _StartLocationY;
-            _spriteEnemy.Height = _SpriteHeight;
-            _spriteEnemy.Width = _SpriteWidth;
+            _spriteEnemy.Height = _SpriteHeight - 7 ;
+            _spriteEnemy.Width = _SpriteWidth-7;
             _spriteEnemy.SizeMode = PictureBoxSizeMode.Zoom;
             _spriteEnemy.BackColor = Color.Green;
             _spriteEnemy.Tag = _SpriteTag; // set the tag to bullet
@@ -45,6 +45,32 @@ namespace VangDeVolgerSetup
             _spriteEnemy.BringToFront(); // bring the bullet to front of other objects
 
         }
+
+        public void CheckForOutOfBounds()
+        {
+            ////stop hero from moving against walls of canvas
+            ////moving to left
+            if (_spriteEnemy.Left < 0)
+            {
+                _spriteEnemy.Left += _SpriteSpeed;
+            }
+            //moving to Right
+            if (_spriteEnemy.Left > (12 * 40 - _spriteEnemy.Width))
+            {
+                _spriteEnemy.Left -= _SpriteSpeed;
+            }
+            //moving to top
+            if (_spriteEnemy.Top < 100)
+            {
+                _spriteEnemy.Top += _SpriteSpeed;
+            }
+            //moving to bottom
+            if (_spriteEnemy.Top > (12 * 40) + 60)
+            {
+                _spriteEnemy.Top -= _SpriteSpeed;
+            }
+        }
+      
 
     }
 }

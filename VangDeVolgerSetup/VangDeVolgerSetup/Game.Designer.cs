@@ -94,6 +94,7 @@
             this.playerHealthBar.Size = new System.Drawing.Size(151, 13);
             this.playerHealthBar.Step = 20;
             this.playerHealthBar.TabIndex = 6;
+            this.playerHealthBar.Value = 100;
             // 
             // enemyHealthBar
             // 
@@ -102,8 +103,9 @@
             this.enemyHealthBar.Name = "enemyHealthBar";
             this.enemyHealthBar.Size = new System.Drawing.Size(151, 13);
             this.enemyHealthBar.TabIndex = 7;
+            this.enemyHealthBar.Value = 100;
             // 
-            // Form2
+            // Game
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -117,7 +119,7 @@
             this.Controls.Add(this.pause);
             this.Controls.Add(this.label2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Name = "Form2";
+            this.Name = "Game";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form2";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form2_KeyDown);

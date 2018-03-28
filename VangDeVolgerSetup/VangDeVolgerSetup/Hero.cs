@@ -19,9 +19,8 @@ namespace VangDeVolgerSetup
 
         public Hero() : base()
         {
-            HeroHealth = 100;
-
-            _SpriteSpeed = 10;
+            HeroHealth = 100;          
+            _SpriteSpeed = 40;
             _SpriteName = "player";
             _SpriteTag = _SpriteName;
             //x is already 0 so that's correct
@@ -53,39 +52,26 @@ namespace VangDeVolgerSetup
         }
       
         // public void Move_Tick(object sender, EventArgs e)
-        public void Move_Tick()
+        public void Move_Tick(SpriteDirection direction)
         {
             // if direction equals to left
-
-            if (HeroDirection == SpriteDirection.Left)
+            switch (direction)
             {
-                _spriteHero.Left -= _SpriteSpeed; // move bullet towards the left of the screen
-                _spriteHero.Image = (Properties.Resources.Nleft);
-            }
-            // if direction equals right
-            if (HeroDirection == SpriteDirection.Right)
-            {
-                _spriteHero.Left += _SpriteSpeed; // move bullet towards the right of the screen
-                _spriteHero.Image = (Properties.Resources.Nright);
-
-            }
-            // if direction is up
-            if (HeroDirection == SpriteDirection.Up)
-            {
-                _spriteHero.Top -= _SpriteSpeed; // move the bullet towards top of the screen
-                                                 //_hero.Image = (Properties.Resources.Nright);
-            }
-            // if direction is down
-            if (HeroDirection == SpriteDirection.Down)
-            {
-                _spriteHero.Top += _SpriteSpeed; // move the bullet bottom of the screen
-                                                 //_hero.Image = (Properties.Resources.Nleft);
-            }
-            if (HeroDirection == SpriteDirection.None)
-            {
-                _SpriteSpeed = 0;
-            }
-
+                case SpriteDirection.Left:
+                    _spriteHero.Left -= _SpriteSpeed; // move bullet towards the left of the screen
+                    _spriteHero.Image = (Properties.Resources.Nleft);
+                    break;
+                case SpriteDirection.Right:
+                    _spriteHero.Left += _SpriteSpeed; // move bullet towards the right of the screen
+                    _spriteHero.Image = (Properties.Resources.Nright);
+                    break;
+                case SpriteDirection.Up:
+                    _spriteHero.Top -= _SpriteSpeed; // move the bullet towards top of the screen
+                    break;
+                case SpriteDirection.Down:
+                    _spriteHero.Top += _SpriteSpeed; // move the bullet bottom of the screen
+                    break;
+            }      
 
             //stop hero from moving against walls of canvas
             //moving to left
@@ -94,7 +80,7 @@ namespace VangDeVolgerSetup
                 _spriteHero.Left += _SpriteSpeed;
             }
             //moving to Right
-            if (_spriteHero.Left > (12 * 40 - _spriteHero.Width))
+            if (_spriteHero.Left > _MaxGameWidth)
             {
                 _spriteHero.Left -= _SpriteSpeed;
             }
@@ -104,7 +90,7 @@ namespace VangDeVolgerSetup
                 _spriteHero.Top += _SpriteSpeed;
             }
             //moving to bottom
-            if (_spriteHero.Top > (12 * 40 - _spriteHero.Height / 2 + 80))
+            if (_spriteHero.Top > _maxGameHeight)
             {
                 _spriteHero.Top -= _SpriteSpeed;
             }
