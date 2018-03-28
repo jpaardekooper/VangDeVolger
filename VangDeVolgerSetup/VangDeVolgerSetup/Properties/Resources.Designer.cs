@@ -151,6 +151,15 @@ namespace VangDeVolgerSetup.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 123456.
+        /// </summary>
+        public static string Highscores {
+            get {
+                return ResourceManager.GetString("Highscores", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         public static System.Drawing.Bitmap Nleft {

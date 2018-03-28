@@ -52,7 +52,7 @@
       <DependentUpon>ChangeMap.cs</DependentUpon>
     </Compile>
     <Compile Include="Enemy.cs" />
-    <Compile Include="Graph.cs" />
+    <Compile Include="Highscore.cs" />
     <Compile Include="Sprite.cs" />
     <Compile Include="Box.cs" />
     <Compile Include="StartScreen.cs">
@@ -141,6 +141,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Levels\hard.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Highscores\Highscores.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

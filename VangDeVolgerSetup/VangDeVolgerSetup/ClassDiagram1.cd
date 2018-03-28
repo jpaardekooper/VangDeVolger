@@ -24,7 +24,7 @@
   <Class Name="VangDeVolgerSetup.Game" Collapsed="true">
     <Position X="11.5" Y="1" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>CASBoAIEACIAADQAEACAYAAiAIQABAIAAAAAAABAIAg=</HashCode>
+      <HashCode>CASBoAIEICIAADQAEACAYAAiAIQABAIAAAAEAABAIAg=</HashCode>
       <FileName>Game.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -33,13 +33,6 @@
     <TypeIdentifier>
       <HashCode>CAgAIAAgAAAYAAAABAAAAAYAABAAAAAAAAAAAABEAAA=</HashCode>
       <FileName>GenerateLevel.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="VangDeVolgerSetup.Graph" Collapsed="true">
-    <Position X="9.75" Y="2" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAACAAAAAAAAAEAAAAQAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Graph.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="VangDeVolgerSetup.Hero" Collapsed="true">
@@ -59,7 +52,7 @@
   <Class Name="VangDeVolgerSetup.Sprite" Collapsed="true">
     <Position X="3.75" Y="1" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAIQAAABAAAAEgAAAAAAAAAAAAAAAAgAAABAIAA=</HashCode>
+      <HashCode>AAAAACIQAAABAAAAEgAAAAAAAAAAAAAAAAgAAABEIAA=</HashCode>
       <FileName>Sprite.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -73,7 +66,7 @@
   <Class Name="VangDeVolgerSetup.Tile" Collapsed="true">
     <Position X="13.25" Y="3" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAABoAAABAAAAAAAAABAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAIAAAAAAAAAAAAAABAAAAAAgAABAAAAAgAAAA=</HashCode>
       <FileName>Tile.cs</FileName>
     </TypeIdentifier>
   </Class>

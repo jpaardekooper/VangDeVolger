@@ -41,7 +41,7 @@
             this.mapName.AutoSize = true;
             this.mapName.Font = new System.Drawing.Font("Mistral", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.mapName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(114)))), ((int)(((byte)(204)))));
-            this.mapName.Location = new System.Drawing.Point(122, 21);
+            this.mapName.Location = new System.Drawing.Point(111, 19);
             this.mapName.Name = "mapName";
             this.mapName.Size = new System.Drawing.Size(112, 44);
             this.mapName.TabIndex = 1;
@@ -122,7 +122,6 @@
             this.Name = "ChangeMap";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ChangeMap";
-            this.Load += new System.EventHandler(this.ChangeMap_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

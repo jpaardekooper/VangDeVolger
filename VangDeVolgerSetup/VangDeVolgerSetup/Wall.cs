@@ -12,6 +12,11 @@ namespace VangDeVolgerSetup
     {
         public PictureBox spriteWall = new PictureBox();
 
+        /// <summary>
+        /// creating a wall sprite that stand on top of the tile
+        /// </summary>
+        /// <param name="locationX"></param>
+        /// <param name="locationY"></param>
         public Wall(int locationX, int locationY)
         {
             spriteWall.Size = new Size(40, 40);
