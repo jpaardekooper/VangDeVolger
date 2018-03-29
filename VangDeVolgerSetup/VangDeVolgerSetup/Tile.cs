@@ -11,18 +11,7 @@ namespace VangDeVolgerSetup
     public class Tile
     {
         public Button BtnTile = new Button();
-        private SpriteType _tileType { get; set; }
-        public SpriteType Type
-        {
-            get
-            {
-                return _tileType;
-            }
-            set
-            {
-                _tileType = value;
-            }
-        }
+        public Sprite Contains { get; set; }       
 
         /// <summary>
         /// checking what type the tile is and filling it in the correct array
@@ -30,13 +19,12 @@ namespace VangDeVolgerSetup
         /// <param name="x"></param>
         /// <param name="y"></param>
         /// <param name="type"></param>
-        public Tile(int x, int y, SpriteType type)
+        public Tile(int x, int y)
         {
             BtnTile.Size = new Size(40, 40);
             BtnTile.Enabled = false;
             BtnTile.Image = Properties.Resources.empty;
-            BtnTile.Location = new Point(x, y);
-            Type = type;
+            BtnTile.Location = new Point(x, y);  
         }
 
         /// <summary>
@@ -48,26 +36,23 @@ namespace VangDeVolgerSetup
         /// <returns></returns>
         public static bool HasNeighbour(Tile[,] array, int CellX, int CellY)
         {
-            if (array[CellX + 1, CellY].Type == SpriteType.empty)
+            if (array[CellX + 1, CellY].Contains is null)
             {
-                Console.WriteLine(array[CellX + 1, CellY].Type);
+                Console.WriteLine(array[CellX + 1, CellY].Contains);
                 Console.WriteLine("right is true");
                 return true;
             }
-
-            if (array[CellX - 1, CellY].Type == SpriteType.empty)
+            if (array[CellX - 1, CellY].Contains is null)
             {
                 Console.WriteLine("left is true");
                 return true;
             }
-
-            if (array[CellX, CellY + 1].Type == SpriteType.empty)
+            if (array[CellX, CellY + 1].Contains is null)
             {
                 Console.WriteLine("top is true");
                 return true;
             }
-
-            if (array[CellX, CellY - 1].Type == SpriteType.empty)
+            if (array[CellX, CellY - 1].Contains is null)
             {
                 Console.WriteLine("bottom is true");
                 return true;

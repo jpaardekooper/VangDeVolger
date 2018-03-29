@@ -83,7 +83,7 @@ namespace VangDeVolgerSetup
                     foreach (string c in stringLineArray)
                     {
                         //creating a Tile object to fill our Game with tiles
-                        Tile Tile = new Tile(_currentPositionX, _currentPositionY + 100, SpriteType.empty);
+                        Tile Tile = new Tile(_currentPositionX, _currentPositionY + 100);
                         //     Tile.TileNr = 1;
 
                         switch (c)
@@ -92,29 +92,33 @@ namespace VangDeVolgerSetup
                                 //creating a pictureBox when the char D is found in txt.file
                                 Box Box = new Box(_currentPositionX, _currentPositionY + 100);
                                 Form2.Controls.Add(Box.spriteBox);  //adding the tile to Form2 so we can see it   
-                                Box.spriteBox.BringToFront();
-                                //  Tile.TileNr = 2;
-                                Tile.Type = SpriteType.box;
+                                Box.spriteBox.BringToFront();                         
+                           //     Tile.Type = SpriteType.box;
+                                Tile.Contains = Box;
                                 // Console.WriteLine("test");
                                 break;
                             case "V":
                                 //creating a pictureBox when the char V is found in txt.file
-                                Wall Wall = new Wall(_currentPositionX, _currentPositionY + 100);                          
+                                Wall Wall = new Wall(_currentPositionX, _currentPositionY + 100);
                                 Form2.Controls.Add(Wall.spriteWall);  //adding the tile to Form2 so we can see it   
                                 Wall.spriteWall.BringToFront();
                                 //  Tile.TileNr = 3;
-                                Tile.Type = SpriteType.wall;
+                         //       Tile.Type = SpriteType.wall;
+                                Tile.Contains = Wall;
                                 //  Tile.TileType = TileType.wall;
                                 break;
                             case "N":
+                                Tile.Contains = null;
                                 //creating a button if a char N is found with the type empty and img empty
                                 //    Tile.TileNr = 0;
-                                Tile.Type = SpriteType.empty;
+                                //       Tile.Type = SpriteType.empty;
+                                //     Tile.Contains = ;
                                 //   Tile.TileType = TileType.empty;
                                 break;
                             //catching the error //creating a button if a char N is found with the type empty and img empty
                             case "?":
-                                Tile.Type = SpriteType.empty;
+                                Tile.Contains = null;
+                         //       Tile.Type = SpriteType.empty;
                                 // Tile.TileNr = 0;
                                 break;
 
@@ -158,7 +162,7 @@ namespace VangDeVolgerSetup
                     {
                         { 'T', _generateLevelMap[j,i] }
                     };
-
+                    Console.Write(" "+ _generateLevelMap[j, i].Contains);
                     if (i != 0)
                     {
                         _neighbour.Add('W', _generateLevelMap[j, i - 1]);
@@ -176,6 +180,7 @@ namespace VangDeVolgerSetup
                         _neighbour.Add('S', _generateLevelMap[j + 1, i]);
                     }
                 }
+                Console.WriteLine();
             }
         }
     }

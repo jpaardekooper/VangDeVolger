@@ -34,17 +34,17 @@ namespace VangDeVolgerSetup
             Move.Start(); // start the timer   
         }
 
-        public void CreateHeroInstance(Game form2)
-        {            
-            form2.Controls.Add(_PbSpriteContainer); // add the hero to the screen
+        public void CreateHeroInstance(Game gameplatform)
+        {
+            gameplatform.Controls.Add(_PbSpriteContainer); // add the hero to the screen
             _PbSpriteContainer.BringToFront(); // bring the hero to front of other objects    
         }
 
-        public void HeroIsDeath(Game form2)
+        public void HeroIsDeath(Game gameplatform)
         {
             _PbSpriteContainer.Image = Properties.Resources.death_5;
             _PbSpriteContainer.SizeMode = PictureBoxSizeMode.Zoom;
-            form2.Controls.Add(_PbSpriteContainer); // add the bullet to the screen
+            gameplatform.Controls.Add(_PbSpriteContainer); // add the bullet to the screen
             _PbSpriteContainer.BringToFront(); // bring the bullet to front of other objects
         }
 
