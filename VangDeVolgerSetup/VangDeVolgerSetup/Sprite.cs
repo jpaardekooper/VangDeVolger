@@ -4,56 +4,72 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace VangDeVolgerSetup
 {
-    public enum SpriteDirection
+    public enum Direction
     {
         Left,
         Right,
         Up,
-        Down,  
+        Down,
         None
     }
 
-    abstract class Sprite
-    {        
+    public enum SpriteType
+    {
+        empty,
+        wall,
+        box,
+        enemy,
+        player,
+    }
 
-        public int _SpriteSpeed { get; set; } // creating a integer called speed    
-        protected string _SpriteName { get; set; } 
-        protected string _SpriteTag { get; set; }
-        protected int _StartLocationX { get; set; }
-        protected int _StartLocationY { get; set; } 
+    public abstract class Sprite
+    {      
         protected int _SpriteWidth { get; set; }
-        protected int _SpriteHeight { get; set; }
-        protected Image _SpriteImage { get; set; }
+        protected int _SpriteHeight { get; set; }    
+        public int _SpriteSpeed { get; set; } // creating a integer called speed    
+        protected PictureBox _PbSpriteContainer { get; set; }
         protected int _MaxGameWidth { get; set; }
-        protected int _maxGameHeight { get; set; }
-
-        private Tile[,] _tileMapArray { get; set; }
-        public Tile[,] TileMapArray
-        {
-            get
-            {
-                return _tileMapArray;
-            }
-            set
-            {
-                _tileMapArray = value;
-            }
-        }
+        protected int _MaxGameHeight { get; set; }
+        public SpriteType _SpriteType { get; set; }
 
         public Sprite()
         {
-            _SpriteSpeed = 0;
-            _StartLocationX = 0;
-            _StartLocationY = 0;
+            _SpriteSpeed = 0;           
             _SpriteWidth = 40;
             _SpriteHeight = 40;
             _MaxGameWidth = 11 * 40;
-            _maxGameHeight = 12 * 40 + 60;
+            _MaxGameHeight = 12 * 40 + 60;
         }
-        
+
+        public void CheckForOutOfBounds()
+        {
+            ////stop hero from moving against walls of canvas
+            ////moving to left
+            if (_PbSpriteContainer.Left < 0)
+            {
+                _PbSpriteContainer.Left += _SpriteSpeed;
+            }
+            //moving to Right
+            if (_PbSpriteContainer.Left > _MaxGameWidth)
+            {
+                _PbSpriteContainer.Left -= _SpriteSpeed;
+            }
+            //moving to top
+            if (_PbSpriteContainer.Top < 100)
+            {
+                _PbSpriteContainer.Top += _SpriteSpeed;
+            }
+            //moving to bottom
+            if (_PbSpriteContainer.Top > _MaxGameHeight)
+            {
+                _PbSpriteContainer.Top -= _SpriteSpeed;
+            }
+        }
+
 
     }
 }

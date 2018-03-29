@@ -32,11 +32,11 @@ namespace VangDeVolgerSetup
             resume.Visible = false;
             lblGameOver.Visible = false;
             inputPlayerName.Visible = false;
-         //   lblScore.Visible = false;
+            //   lblScore.Visible = false;
             btnShowScore.Visible = false;
             lblHighscore.Visible = false;
             boxAllHighScores.Visible = false;
-     //       boxAllHighScores.Enabled = false;
+            //       boxAllHighScores.Enabled = false;
 
             ///Able to get de level name of the screen to generate the levelwith          
             label2.Text = StartScreen.MyTextBoxValue;
@@ -66,6 +66,8 @@ namespace VangDeVolgerSetup
         {
             if (!_gameOver)
             {
+                _callHeroClass.CheckForOutOfBounds();
+
                 //   Console.WriteLine(_playerInput);
                 foreach (PictureBox x in Controls.OfType<PictureBox>())
                 {
@@ -78,9 +80,9 @@ namespace VangDeVolgerSetup
                             //moving to the left of the wall
                             if (j.Bounds.IntersectsWith(x.Bounds))
                             {
-                                _callEnemyClass.CheckForOutOfBounds();
+                             //   _callEnemyClass.CheckForOutOfBounds();
                                 _updateScore();
-                                if (j.Left <= x.Right && _callHeroClass.HeroDirection == SpriteDirection.Left)
+                                if (j.Left <= x.Right && _callHeroClass.HeroDirection == Direction.Left)
                                 {
                                     Console.WriteLine("touching");
                                     j.Left += _callHeroClass._SpriteSpeed;
@@ -91,7 +93,7 @@ namespace VangDeVolgerSetup
                                         x.BringToFront();
                                     }
                                 }
-                                else if (j.Right >= x.Left && _callHeroClass.HeroDirection == SpriteDirection.Right)
+                                else if (j.Right >= x.Left && _callHeroClass.HeroDirection == Direction.Right)
                                 {
                                     j.Left -= _callHeroClass._SpriteSpeed;
                                     //box can't go out of the screen from right side
@@ -101,7 +103,7 @@ namespace VangDeVolgerSetup
                                         x.BringToFront();
                                     }
                                 }
-                                else if (j.Bottom <= x.Bottom && _callHeroClass.HeroDirection == SpriteDirection.Down)
+                                else if (j.Bottom <= x.Bottom && _callHeroClass.HeroDirection == Direction.Down)
                                 {
 
                                     j.Top -= _callHeroClass._SpriteSpeed;
@@ -112,7 +114,7 @@ namespace VangDeVolgerSetup
                                         x.BringToFront();
                                     }
                                 }
-                                else if (j.Bottom >= x.Top && _callHeroClass.HeroDirection == SpriteDirection.Up)
+                                else if (j.Bottom >= x.Top && _callHeroClass.HeroDirection == Direction.Up)
                                 {
                                     j.Top += _callHeroClass._SpriteSpeed;
                                     //box can't go out of the screen from top side
@@ -134,20 +136,20 @@ namespace VangDeVolgerSetup
                             if (j.Bounds.IntersectsWith(x.Bounds))
                             {
 
-                                if (j.Left <= x.Right && _callHeroClass.HeroDirection == SpriteDirection.Left)
+                                if (j.Left <= x.Right && _callHeroClass.HeroDirection == Direction.Left)
                                 {
-                                //    Console.WriteLine("touching");
+                                    //    Console.WriteLine("touching");
                                     j.Left += _callHeroClass._SpriteSpeed;
                                 }
-                                else if (j.Right >= x.Left && _callHeroClass.HeroDirection == SpriteDirection.Right)
+                                else if (j.Right >= x.Left && _callHeroClass.HeroDirection == Direction.Right)
                                 {
                                     j.Left -= _callHeroClass._SpriteSpeed;
                                 }
-                                else if (j.Bottom <= x.Bottom && _callHeroClass.HeroDirection == SpriteDirection.Down)
+                                else if (j.Bottom <= x.Bottom && _callHeroClass.HeroDirection == Direction.Down)
                                 {
                                     j.Top -= _callHeroClass._SpriteSpeed;
                                 }
-                                else if (j.Bottom >= x.Top && _callHeroClass.HeroDirection == SpriteDirection.Up)
+                                else if (j.Bottom >= x.Top && _callHeroClass.HeroDirection == Direction.Up)
                                 {
                                     j.Top += _callHeroClass._SpriteSpeed;
 
@@ -162,21 +164,21 @@ namespace VangDeVolgerSetup
                             //moving to the left of the wall
                             if (j.Bounds.IntersectsWith(x.Bounds))
                             {
-                               
-                                if (_callHeroClass.HeroDirection == SpriteDirection.Left)
+
+                                if (_callHeroClass.HeroDirection == Direction.Left)
                                 {
                                     j.Left = x.Right + j.Height;
                                 }
-                                else if (_callHeroClass.HeroDirection == SpriteDirection.Right)
+                                else if (_callHeroClass.HeroDirection == Direction.Right)
                                 {
                                     j.Left = x.Left - j.Height;
                                 }
-                                else if (_callHeroClass.HeroDirection == SpriteDirection.Down)
+                                else if (_callHeroClass.HeroDirection == Direction.Down)
                                 {
                                     j.Top = x.Bottom - j.Height;
                                 }
 
-                                else if (_callHeroClass.HeroDirection == SpriteDirection.Up)
+                                else if (_callHeroClass.HeroDirection == Direction.Up)
                                 {
                                     j.Top = x.Top + j.Height;
                                 }
@@ -259,13 +261,13 @@ namespace VangDeVolgerSetup
 
                             if (j.Left < x.Left - 30)
                             {
-                                j.Left += _callEnemyClass._SpriteSpeed;
-                                _callEnemyClass._spriteEnemy.Image = Properties.Resources.enemyRight;
+                                j.Left += _callEnemyClass._SpriteSpeed;                                
+                                _callEnemyClass.SetEnemyImageLeft();
                             }
                             else if (j.Left > x.Left + 30)
                             {
                                 j.Left -= _callEnemyClass._SpriteSpeed;
-                                _callEnemyClass._spriteEnemy.Image = Properties.Resources.enemyLeft;
+                                _callEnemyClass.SetEnemyImageRight();
                             }
                             else if (j.Top < x.Top)
                             {
@@ -283,34 +285,30 @@ namespace VangDeVolgerSetup
 
         private void Form2_KeyDown(object sender, KeyEventArgs e)
         {
-             if (_gameOver) return; // if game over is true then do nothing
+            if (_gameOver) return; // if game over is true then do nothing
             if (_gamePaused) return; // if gamepaused is true then do nothing
 
             switch (e.KeyCode)
             {
                 case Keys.Left:
                     _callHeroClass.PlayerInput = true;
-                    _callHeroClass.HeroDirection = SpriteDirection.Left;
+                    _callHeroClass.HeroDirection = Direction.Left;
                     _updateScore();
                     break;
                 case Keys.Right:
                     _callHeroClass.PlayerInput = true;
-                    _callHeroClass.HeroDirection = SpriteDirection.Right;
+                    _callHeroClass.HeroDirection = Direction.Right;
                     break;
                 case Keys.Down:
                     _callHeroClass.PlayerInput = true;
-                    _callHeroClass.HeroDirection = SpriteDirection.Down;
+                    _callHeroClass.HeroDirection = Direction.Down;
                     break;
                 case Keys.Up:
                     _callHeroClass.PlayerInput = true;
-                    _callHeroClass.HeroDirection = SpriteDirection.Up;
+                    _callHeroClass.HeroDirection = Direction.Up;
                     break;
 
             }
-            //if (_playerInput && _gamePaused == false || _gameOver == false) //if it's true then we call HeroMove function
-            //{
-            //    _callHeroClass.Move_Tick(_callHeroClass.HeroDirection);
-            //}
 
             //pausing the game
             if (e.KeyCode == Keys.P)
@@ -427,9 +425,8 @@ namespace VangDeVolgerSetup
             }
             else
             {
-                _callHeroClass._spriteHero.Image = Properties.Resources.death_5;
-                _callHeroClass._spriteHero.BringToFront();
-                Console.WriteLine("verloren");
+                _callHeroClass.HeroIsDeath(this);
+                Console.WriteLine("Game Over");
                 _gameIsOver();
             }
 
@@ -474,7 +471,7 @@ namespace VangDeVolgerSetup
         private void _updateScore()
         {
             int myScore = Convert.ToInt32(lblScore.Text);
-            int newScore = myScore + 2;           
+            int newScore = myScore + 2;
             Console.WriteLine(newScore);
             lblScore.Text = newScore.ToString();
         }

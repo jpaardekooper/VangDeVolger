@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -7,12 +8,10 @@ using System.Windows.Forms;
 
 namespace VangDeVolgerSetup
 {
-
-
     class Hero : Sprite
     {
-        public PictureBox _spriteHero = new PictureBox(); // create a picture box    
-        public SpriteDirection HeroDirection { get; set; } // creating a public string called direction
+    //    public PictureBox _spriteHero = new PictureBox(); // create a picture box    
+        public Direction HeroDirection { get; set; } // creating a public string called direction
         public int HeroHealth { get; set; }
         public Timer Move = new Timer();
         public bool PlayerInput { get; set; } // creating a public string called direction
@@ -21,107 +20,61 @@ namespace VangDeVolgerSetup
         {
             HeroHealth = 100;
             _SpriteSpeed = 5;
-            _SpriteName = "player";
-            _SpriteTag = _SpriteName;
-            _StartLocationY = 100;
+            _PbSpriteContainer = new PictureBox();          
+            _PbSpriteContainer.Name = "player";
+            _PbSpriteContainer.Tag = _PbSpriteContainer.Name;
+            _PbSpriteContainer.Top = 0;
+            _PbSpriteContainer.Top = 100;
+            _PbSpriteContainer.Size = new Size(_SpriteWidth, _SpriteHeight);
+            _PbSpriteContainer.SizeMode = PictureBoxSizeMode.Zoom;
+            _PbSpriteContainer.Image = Properties.Resources.Nright;
 
             Move.Interval = 24; // set the timer interval to speed    
             Move.Tick += new EventHandler(Move_Tick); // assignment the timer with an event
             Move.Start(); // start the timer   
-
-            _SpriteImage = Properties.Resources.Nright;
         }
 
         public void CreateHeroInstance(Game form2)
-        {
-            _spriteHero.Image = _SpriteImage;
-            _spriteHero.Tag = _SpriteTag;
-            _spriteHero.Name = _SpriteName;
-            _spriteHero.Left = _StartLocationX;
-            _spriteHero.Height = _SpriteHeight;
-            _spriteHero.Width = _SpriteWidth;
-            _spriteHero.Top = _StartLocationY;
-            _spriteHero.SizeMode = PictureBoxSizeMode.Zoom;
-            form2.Controls.Add(_spriteHero); // add the bullet to the screen
-            _spriteHero.BringToFront(); // bring the bullet to front of other objects
-            //Console.WriteLine(_hero.Size);
+        {            
+            form2.Controls.Add(_PbSpriteContainer); // add the hero to the screen
+            _PbSpriteContainer.BringToFront(); // bring the hero to front of other objects    
         }
 
-        public void Move_Tick(object sender, EventArgs e)
-        // public void Move_Tick(SpriteDirection direction)
+        public void HeroIsDeath(Game form2)
         {
-            // if direction equals to left
-            //switch (direction)
-            //{
-            //    case SpriteDirection.Left:
-            //        _spriteHero.Left -= _SpriteSpeed; // move bullet towards the left of the screen
-            //        _spriteHero.Image = (Properties.Resources.Nleft);
-            //        break;
-            //    case SpriteDirection.Right:
-            //        _spriteHero.Left += _SpriteSpeed; // move bullet towards the right of the screen
-            //        _spriteHero.Image = (Properties.Resources.Nright);
-            //        break;
-            //    case SpriteDirection.Up:
-            //        _spriteHero.Top -= _SpriteSpeed; // move the bullet towards top of the screen
-            //        break;
-            //    case SpriteDirection.Down:
-            //        _spriteHero.Top += _SpriteSpeed; // move the bullet bottom of the screen
-            //        break;
-            //    case SpriteDirection.None:
-            //        _spriteHero.Left += 0;
-            //        _spriteHero.Top += 0;// move the bullet bottom of the screen
-            //        break;
-            //}
+            _PbSpriteContainer.Image = Properties.Resources.death_5;
+            _PbSpriteContainer.SizeMode = PictureBoxSizeMode.Zoom;
+            form2.Controls.Add(_PbSpriteContainer); // add the bullet to the screen
+            _PbSpriteContainer.BringToFront(); // bring the bullet to front of other objects
+        }
 
+        public void Move_Tick(object sender, EventArgs e)      
+        {
             if (PlayerInput == true)
             {             
-                if (HeroDirection == SpriteDirection.Left)
+                if (HeroDirection == Direction.Left)
                 {
-                    _spriteHero.Left -= _SpriteSpeed; // move hero towards the left of the screen
-                    _spriteHero.Image = (Properties.Resources.Nleft);
+                    _PbSpriteContainer.Left -= _SpriteSpeed; // move hero towards the left of the screen
+                    _PbSpriteContainer.Image = (Properties.Resources.Nleft);
                 }
                 // if direction equals right
-                else if (HeroDirection == SpriteDirection.Right)
+                else if (HeroDirection == Direction.Right)
                 {
-                    _spriteHero.Left += _SpriteSpeed; // move hero towards the right of the screen
-                    _spriteHero.Image = (Properties.Resources.Nright);
+                    _PbSpriteContainer.Left += _SpriteSpeed; // move hero towards the right of the screen
+                    _PbSpriteContainer.Image = (Properties.Resources.Nright);
 
                 }
                 // if direction is up
-                else if (HeroDirection == SpriteDirection.Down)
+                else if (HeroDirection == Direction.Down)
                 {
-                    _spriteHero.Top += _SpriteSpeed; // move the hero to  bottom of the screen
+                    _PbSpriteContainer.Top += _SpriteSpeed; // move the hero to  bottom of the screen
                 }
                 // if direction is down
-                else if (HeroDirection == SpriteDirection.Up)
+                else if (HeroDirection == Direction.Up)
                 {
-                    _spriteHero.Top -= _SpriteSpeed;// move the bullet bottom of the screen
-                }
-
-
-                //stop hero from moving against walls of canvas
-                //moving to left
-                if (_spriteHero.Left < 0)
-                {
-                    _spriteHero.Left += _SpriteSpeed;
-                }
-                //moving to Right
-                if (_spriteHero.Left > _MaxGameWidth)
-                {
-                    _spriteHero.Left -= _SpriteSpeed;
-                }
-                //moving to top
-                if (_spriteHero.Top < 100)
-                {
-                    _spriteHero.Top += _SpriteSpeed;
-                }
-                //moving to bottom
-                if (_spriteHero.Top > _maxGameHeight)
-                {
-                    _spriteHero.Top -= _SpriteSpeed;
-                }
+                    _PbSpriteContainer.Top -= _SpriteSpeed;// move the bullet bottom of the screen
+                }              
             }
-
-        }
+        }       
     }
 }

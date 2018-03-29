@@ -25,8 +25,9 @@ namespace VangDeVolgerSetup
                 _name = value;
             }
         }
-        public Tile[,] _tileMapArray = new Tile[12, 12];
+        private Tile[,] _generateLevelMap = new Tile[12, 12];
         //basic information of the picturebox (pb) width, height and position 
+        private Dictionary<char, Tile> _neighbour { get; set; }
         private int _pbHeight { get; set; }
         private int _pbWidth { get; set; }
         private int _currentPositionX { get; set; }
@@ -39,6 +40,7 @@ namespace VangDeVolgerSetup
         //filling the attributes with values
         public GenerateLevel()
         {
+            //      _neighbour = new Dictionary<char, Tile>();
             _pbHeight = 40;
             _pbWidth = 40;
             _currentPositionX = 0;
@@ -81,7 +83,7 @@ namespace VangDeVolgerSetup
                     foreach (string c in stringLineArray)
                     {
                         //creating a Tile object to fill our Game with tiles
-                        Tile Tile = new Tile(_currentPositionX, _currentPositionY + 100, TileType.empty);
+                        Tile Tile = new Tile(_currentPositionX, _currentPositionY + 100, SpriteType.empty);
                         //     Tile.TileNr = 1;
 
                         switch (c)
@@ -91,31 +93,33 @@ namespace VangDeVolgerSetup
                                 Box Box = new Box(_currentPositionX, _currentPositionY + 100);
                                 Form2.Controls.Add(Box.spriteBox);  //adding the tile to Form2 so we can see it   
                                 Box.spriteBox.BringToFront();
-                                Tile.TileNr = 2;
-                                Tile.TileType = TileType.box;
+                                //  Tile.TileNr = 2;
+                                Tile.Type = SpriteType.box;
                                 // Console.WriteLine("test");
                                 break;
                             case "V":
                                 //creating a pictureBox when the char V is found in txt.file
-                                Wall Wall = new Wall(_currentPositionX, _currentPositionY + 100);
+                                Wall Wall = new Wall(_currentPositionX, _currentPositionY + 100);                          
                                 Form2.Controls.Add(Wall.spriteWall);  //adding the tile to Form2 so we can see it   
                                 Wall.spriteWall.BringToFront();
-                                Tile.TileNr = 3;
-                                Tile.TileType = TileType.wall;
+                                //  Tile.TileNr = 3;
+                                Tile.Type = SpriteType.wall;
+                                //  Tile.TileType = TileType.wall;
                                 break;
                             case "N":
                                 //creating a button if a char N is found with the type empty and img empty
-                                Tile.TileNr = 0;
-                                Tile.TileType = TileType.empty;
+                                //    Tile.TileNr = 0;
+                                Tile.Type = SpriteType.empty;
+                                //   Tile.TileType = TileType.empty;
                                 break;
                             //catching the error //creating a button if a char N is found with the type empty and img empty
                             case "?":
-                                Tile.TileType = TileType.empty;
-                                Tile.TileNr = 0;
+                                Tile.Type = SpriteType.empty;
+                                // Tile.TileNr = 0;
                                 break;
 
                         }
-                        _tileMapArray[_iCol, _iRow] = Tile; //assigning the Tile object to the array                     
+                        _generateLevelMap[_iCol, _iRow] = Tile; //assigning the Tile object to the array                     
                         Form2.Controls.Add(Tile.BtnTile);  //adding the tile to Form2 so we can see it  
 
                         //its not a bug but a feature
@@ -135,19 +139,44 @@ namespace VangDeVolgerSetup
                 }
                 strReader.Close(); //closing the file
             }
+            SetNeighbours();
 
+        }
+
+        private void SetNeighbours()
+        {
             //checking what is inside the array
-            for (int i = 0; i < _tileMapArray.GetLength(0); i++)
+            //y
+            for (int i = 0; i < _generateLevelMap.GetLength(0); i++)
             {
-                for (int j = 0; j < _tileMapArray.GetLength(1); j++)
+                //x
+                for (int j = 0; j < _generateLevelMap.GetLength(1); j++)
                 {
-                    Console.Write(" " + _tileMapArray[j, i].TileType + "\t ");
+                    // checks for the borders and adds the neighbor if it exists
+                    // in the board
+                    Dictionary<char, Tile> _neighbour = new Dictionary<char, Tile>
+                    {
+                        { 'T', _generateLevelMap[j,i] }
+                    };
 
+                    if (i != 0)
+                    {
+                        _neighbour.Add('W', _generateLevelMap[j, i - 1]);
+                    }
+                    if (i != _generateLevelMap.GetLength(0) - 1)
+                    {
+                        _neighbour.Add('E', _generateLevelMap[j, i + 1]);
+                    }
+                    if (j != 0)
+                    {
+                        _neighbour.Add('N', _generateLevelMap[j - 1, i]);
+                    }
+                    if (j != _generateLevelMap.GetLength(1) - 1)
+                    {
+                        _neighbour.Add('S', _generateLevelMap[j + 1, i]);
+                    }
                 }
-                Console.WriteLine();
             }
-            //soo if we call this function we know what is in N E S W but..
-            Tile.HasNeighbour(_tileMapArray, 1, 1);
         }
     }
 }

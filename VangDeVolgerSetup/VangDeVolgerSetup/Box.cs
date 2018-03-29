@@ -11,7 +11,7 @@ namespace VangDeVolgerSetup
     class Box : Sprite
     {
         public PictureBox spriteBox = new PictureBox();
-
+       // public S Type { get; set; } 
         /// <summary>
         /// creating a box sprite on top of a tile
         /// </summary>
@@ -19,11 +19,12 @@ namespace VangDeVolgerSetup
         /// <param name="locationY"></param>
         public Box( int locationX, int locationY)
         {
-            spriteBox.Size = new Size(40, 40);   
+            spriteBox.Size = new Size(_SpriteWidth, _SpriteHeight);   
             spriteBox.Name = "box";
-            spriteBox.Tag = "box";
+            spriteBox.Tag = spriteBox.Name;
             spriteBox.Image = Properties.Resources.box;
-            spriteBox.Location = new Point(locationX, locationY);           
+            spriteBox.Location = new Point(locationX, locationY);
+            _SpriteType = SpriteType.box;
         }
       
 
