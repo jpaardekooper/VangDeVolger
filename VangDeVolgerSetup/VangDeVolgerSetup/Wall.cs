@@ -19,8 +19,7 @@ namespace VangDeVolgerSetup
         /// <param name="locationY"></param>
         public Wall(int locationX, int locationY)
         {
-            spriteWall.Size = new Size(_SpriteHeight, _SpriteHeight);
-            //spriteWall.Width = _SpriteWidth;
+            spriteWall.Size = new Size(_SpriteHeight, _SpriteHeight);          
             spriteWall.Name = "wall";
             spriteWall.Tag = spriteWall.Name;
             spriteWall.Image = Properties.Resources.wall;

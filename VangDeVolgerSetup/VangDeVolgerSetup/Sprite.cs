@@ -16,16 +16,7 @@ namespace VangDeVolgerSetup
         Down,
         None
     }
-
-    //public enum SpriteType
-    //{
-    //    empty,
-    //    wall,
-    //    box,
-    //    enemy,
-    //    player,
-    //}
-
+   
     public abstract class Sprite
     {      
         protected int _SpriteWidth { get; set; }
@@ -33,8 +24,7 @@ namespace VangDeVolgerSetup
         public int _SpriteSpeed { get; set; } // creating a integer called speed    
         protected PictureBox _PbSpriteContainer { get; set; }
         protected int _MaxGameWidth { get; set; }
-        protected int _MaxGameHeight { get; set; }
-      //  public SpriteType _SpriteType { get; set; }
+        protected int _MaxGameHeight { get; set; } 
 
         public Sprite()
         {

@@ -8,9 +8,7 @@ using System.Threading.Tasks;
 namespace VangDeVolgerSetup
 {
     public class Highscore
-    {
-        public List<string> HighscoresList = new List<string>();   
-
+    {  
         private string _fileName { get; set; }
         private string _filePath { get; set; }
 
@@ -71,29 +69,26 @@ namespace VangDeVolgerSetup
             File.AppendAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, _fileName),
                     lvl + "  " + name + "  " + score + "  " + DateTime.Now.ToString() + Environment.NewLine);
 
-
             TextWriter tw = new StreamWriter(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, _fileName), true);   
-
             // close the stream
             tw.Close();       
         }
 
-        public void ReadAllHighScores(Game Form2)
+        public void ReadAllHighScores(Game gameplatform)
         {
-            using (FileStream fs = File.Open(_filePath, FileMode.Open, FileAccess.Read, FileShare.None))
+            using (FileStream readscores = File.Open(_filePath, FileMode.Open, FileAccess.Read, FileShare.None))
             {
                 byte[] b = new byte[1024];
                 UTF8Encoding temp = new UTF8Encoding(true);
 
-                while (fs.Read(b, 0, b.Length) > 0)
+                while (readscores.Read(b, 0, b.Length) > 0)
                 {
-                    //  Console.WriteLine(temp.GetString(b));
-                    Form2.boxAllHighScores.Text = temp.GetString(b);
+                    gameplatform.boxAllHighScores.Text = temp.GetString(b);
                 }
 
             }
             //let the highscore (richtextbox) show
-            Form2.boxAllHighScores.Visible = true;
+            gameplatform.boxAllHighScores.Visible = true;
         }
       
     }

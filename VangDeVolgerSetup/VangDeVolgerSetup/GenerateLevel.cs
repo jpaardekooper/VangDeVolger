@@ -39,8 +39,7 @@ namespace VangDeVolgerSetup
 
         //filling the attributes with values
         public GenerateLevel()
-        {
-            //      _neighbour = new Dictionary<char, Tile>();
+        {        
             _pbHeight = 40;
             _pbWidth = 40;
             _currentPositionX = 0;
@@ -54,7 +53,7 @@ namespace VangDeVolgerSetup
         /// </summary>
         /// <param name="Form2"></param>
         /// <param name="Name"></param>
-        public void ReadMyTextLevelFile(Game Form2, string Name)
+        public void ReadMyTextLevelFile(Game gameplatform, string Name)
         {
             //if we get an error show it
             if (Name.Equals(""))
@@ -66,11 +65,12 @@ namespace VangDeVolgerSetup
             switch (Name)
             {
                 case "easy":
-                    _levelModus = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..\\..\\Levels\\easy.txt");
-                    //    Console.WriteLine(_levelModus);
+                    _levelModus = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..\\..\\Levels\\easy.txt");                 
                     break;
-
                 case "hard":
+                    _levelModus = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..\\..\\Levels\\hard.txt");
+                    break;
+                case "crazy":
                     _levelModus = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..\\..\\Levels\\hard.txt");
                     break;
             }
@@ -83,48 +83,34 @@ namespace VangDeVolgerSetup
                     foreach (string c in stringLineArray)
                     {
                         //creating a Tile object to fill our Game with tiles
-                        Tile Tile = new Tile(_currentPositionX, _currentPositionY + 100);
-                        //     Tile.TileNr = 1;
+                        Tile Tile = new Tile(_currentPositionX, _currentPositionY + 100);                   
 
                         switch (c)
                         {
                             case "D":
                                 //creating a pictureBox when the char D is found in txt.file
                                 Box Box = new Box(_currentPositionX, _currentPositionY + 100);
-                                Form2.Controls.Add(Box.spriteBox);  //adding the tile to Form2 so we can see it   
-                                Box.spriteBox.BringToFront();                         
-                           //     Tile.Type = SpriteType.box;
-                                Tile.Contains = Box;
-                                // Console.WriteLine("test");
+                                gameplatform.Controls.Add(Box.spriteBox);  //adding the tile to Form2 so we can see it   
+                                Box.spriteBox.BringToFront();  
+                                Tile.Contains = Box;                               
                                 break;
                             case "V":
                                 //creating a pictureBox when the char V is found in txt.file
                                 Wall Wall = new Wall(_currentPositionX, _currentPositionY + 100);
-                                Form2.Controls.Add(Wall.spriteWall);  //adding the tile to Form2 so we can see it   
-                                Wall.spriteWall.BringToFront();
-                                //  Tile.TileNr = 3;
-                         //       Tile.Type = SpriteType.wall;
-                                Tile.Contains = Wall;
-                                //  Tile.TileType = TileType.wall;
+                                gameplatform.Controls.Add(Wall.spriteWall);  //adding the tile to Form2 so we can see it   
+                                Wall.spriteWall.BringToFront();                         
+                                Tile.Contains = Wall;                          
                                 break;
                             case "N":
-                                Tile.Contains = null;
-                                //creating a button if a char N is found with the type empty and img empty
-                                //    Tile.TileNr = 0;
-                                //       Tile.Type = SpriteType.empty;
-                                //     Tile.Contains = ;
-                                //   Tile.TileType = TileType.empty;
+                                Tile.Contains = null;                               
                                 break;
                             //catching the error //creating a button if a char N is found with the type empty and img empty
                             case "?":
-                                Tile.Contains = null;
-                         //       Tile.Type = SpriteType.empty;
-                                // Tile.TileNr = 0;
+                                Tile.Contains = null;                      
                                 break;
-
                         }
                         _generateLevelMap[_iCol, _iRow] = Tile; //assigning the Tile object to the array                     
-                        Form2.Controls.Add(Tile.BtnTile);  //adding the tile to Form2 so we can see it  
+                        gameplatform.Controls.Add(Tile.BtnTile);  //adding the tile to Form2 so we can see it  
 
                         //its not a bug but a feature
                         if (Name.Equals("crazy"))
@@ -144,7 +130,6 @@ namespace VangDeVolgerSetup
                 strReader.Close(); //closing the file
             }
             SetNeighbours();
-
         }
 
         private void SetNeighbours()

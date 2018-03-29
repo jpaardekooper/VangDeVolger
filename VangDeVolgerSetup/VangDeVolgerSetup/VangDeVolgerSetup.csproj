@@ -131,7 +131,6 @@
     <None Include="Resources\background.png" />
     <None Include="Resources\enemyRight.gif" />
     <None Include="Resources\enemyLeft.gif" />
-    <None Include="Resources\Easy.txt" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\death 5.png" />
@@ -144,6 +143,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Highscores\Highscores.txt" />
+    <None Include="Levels\crazy.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

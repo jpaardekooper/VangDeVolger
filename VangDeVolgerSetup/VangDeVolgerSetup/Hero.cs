@@ -10,7 +10,7 @@ namespace VangDeVolgerSetup
 {
     class Hero : Sprite
     {
-    //    public PictureBox _spriteHero = new PictureBox(); // create a picture box    
+        //    public PictureBox _spriteHero = new PictureBox(); // create a picture box    
         public Direction HeroDirection { get; set; } // creating a public string called direction
         public int HeroHealth { get; set; }
         public Timer Move = new Timer();
@@ -20,10 +20,9 @@ namespace VangDeVolgerSetup
         {
             HeroHealth = 100;
             _SpriteSpeed = 5;
-            _PbSpriteContainer = new PictureBox();          
+            _PbSpriteContainer = new PictureBox();
             _PbSpriteContainer.Name = "player";
-            _PbSpriteContainer.Tag = _PbSpriteContainer.Name;
-            _PbSpriteContainer.Top = 0;
+            _PbSpriteContainer.Tag = _PbSpriteContainer.Name;  
             _PbSpriteContainer.Top = 100;
             _PbSpriteContainer.Size = new Size(_SpriteWidth, _SpriteHeight);
             _PbSpriteContainer.SizeMode = PictureBoxSizeMode.Zoom;
@@ -48,10 +47,11 @@ namespace VangDeVolgerSetup
             _PbSpriteContainer.BringToFront(); // bring the bullet to front of other objects
         }
 
-        public void Move_Tick(object sender, EventArgs e)      
+        public void Move_Tick(object sender, EventArgs e)
         {
             if (PlayerInput == true)
-            {             
+            {
+                // if direction equals left
                 if (HeroDirection == Direction.Left)
                 {
                     _PbSpriteContainer.Left -= _SpriteSpeed; // move hero towards the left of the screen
@@ -62,7 +62,6 @@ namespace VangDeVolgerSetup
                 {
                     _PbSpriteContainer.Left += _SpriteSpeed; // move hero towards the right of the screen
                     _PbSpriteContainer.Image = (Properties.Resources.Nright);
-
                 }
                 // if direction is up
                 else if (HeroDirection == Direction.Down)
@@ -73,8 +72,8 @@ namespace VangDeVolgerSetup
                 else if (HeroDirection == Direction.Up)
                 {
                     _PbSpriteContainer.Top -= _SpriteSpeed;// move the bullet bottom of the screen
-                }              
+                }
             }
-        }       
+        }
     }
 }

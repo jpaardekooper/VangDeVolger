@@ -37,13 +37,13 @@ namespace VangDeVolgerSetup
             switch (levelmodus)
             {
                 case "easy":
-                    _levelModusPath = Path.GetFullPath(Directory.GetCurrentDirectory() + @"..\..\..\Levels\easy.txt");
-                    //    Console.WriteLine(_levelModus);
+                    _levelModusPath = Path.GetFullPath(Directory.GetCurrentDirectory() + @"..\..\..\Levels\easy.txt");                 
                     break;
-
                 case "hard":
-                    _levelModusPath = Path.GetFullPath(Directory.GetCurrentDirectory() + @"..\..\..\Levels\hard.txt");
-                    //   Console.WriteLine(_levelModus);
+                    _levelModusPath = Path.GetFullPath(Directory.GetCurrentDirectory() + @"..\..\..\Levels\hard.txt");                   
+                    break;
+                case "crazy":
+                    _levelModusPath = Path.GetFullPath(Directory.GetCurrentDirectory() + @"..\..\..\Levels\crazy.txt");                  
                     break;
             }
 

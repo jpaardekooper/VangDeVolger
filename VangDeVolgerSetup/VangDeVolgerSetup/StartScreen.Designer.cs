@@ -33,6 +33,8 @@
             this.VangDeVolgerLbl = new System.Windows.Forms.Label();
             this.hard = new System.Windows.Forms.Label();
             this.changeEasyMap = new System.Windows.Forms.Button();
+            this.changeHardMap = new System.Windows.Forms.Button();
+            this.changeCrazyMap = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // easy
@@ -63,6 +65,8 @@
             this.crazy.Text = "crazy";
             this.crazy.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.crazy.Click += new System.EventHandler(this.crazy_Click);
+            this.crazy.MouseEnter += new System.EventHandler(this.crazy_MouseEnter);
+            this.crazy.MouseLeave += new System.EventHandler(this.crazy_MouseLeave);
             // 
             // VangDeVolgerLbl
             // 
@@ -95,13 +99,36 @@
             // 
             // changeEasyMap
             // 
+            this.changeEasyMap.ForeColor = System.Drawing.Color.White;
             this.changeEasyMap.Location = new System.Drawing.Point(522, 188);
             this.changeEasyMap.Name = "changeEasyMap";
             this.changeEasyMap.Size = new System.Drawing.Size(75, 23);
             this.changeEasyMap.TabIndex = 8;
-            this.changeEasyMap.Text = "button1";
+            this.changeEasyMap.Text = "change map";
             this.changeEasyMap.UseVisualStyleBackColor = true;
             this.changeEasyMap.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // changeHardMap
+            // 
+            this.changeHardMap.ForeColor = System.Drawing.Color.White;
+            this.changeHardMap.Location = new System.Drawing.Point(522, 230);
+            this.changeHardMap.Name = "changeHardMap";
+            this.changeHardMap.Size = new System.Drawing.Size(75, 23);
+            this.changeHardMap.TabIndex = 9;
+            this.changeHardMap.Text = "change map";
+            this.changeHardMap.UseVisualStyleBackColor = true;
+            this.changeHardMap.Click += new System.EventHandler(this.changeHardMap_Click);
+            // 
+            // changeCrazyMap
+            // 
+            this.changeCrazyMap.ForeColor = System.Drawing.Color.White;
+            this.changeCrazyMap.Location = new System.Drawing.Point(522, 269);
+            this.changeCrazyMap.Name = "changeCrazyMap";
+            this.changeCrazyMap.Size = new System.Drawing.Size(75, 23);
+            this.changeCrazyMap.TabIndex = 10;
+            this.changeCrazyMap.Text = "change map";
+            this.changeCrazyMap.UseVisualStyleBackColor = true;
+            this.changeCrazyMap.Click += new System.EventHandler(this.changeCrazyMap_Click);
             // 
             // StartScreen
             // 
@@ -109,6 +136,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(32)))), ((int)(((byte)(108)))));
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.changeCrazyMap);
+            this.Controls.Add(this.changeHardMap);
             this.Controls.Add(this.changeEasyMap);
             this.Controls.Add(this.hard);
             this.Controls.Add(this.VangDeVolgerLbl);
@@ -129,6 +158,8 @@
         private System.Windows.Forms.Label VangDeVolgerLbl;
         private System.Windows.Forms.Label hard;
         private System.Windows.Forms.Button changeEasyMap;
+        private System.Windows.Forms.Button changeHardMap;
+        private System.Windows.Forms.Button changeCrazyMap;
     }
 }
 

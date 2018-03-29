@@ -27,9 +27,7 @@ namespace VangDeVolgerSetup
             _PbSpriteContainer.Top = _MaxGameHeight;
             _PbSpriteContainer.Size = new Size(_SpriteWidth - 7, _SpriteHeight -7);
             _PbSpriteContainer.SizeMode = PictureBoxSizeMode.Zoom;
-            _PbSpriteContainer.Image = Properties.Resources.enemyLeft;
-        
- 
+            _PbSpriteContainer.Image = Properties.Resources.enemyLeft; 
         }
 
         /// <summary>

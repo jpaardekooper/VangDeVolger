@@ -23,8 +23,7 @@ namespace VangDeVolgerSetup
             spriteBox.Name = "box";
             spriteBox.Tag = spriteBox.Name;
             spriteBox.Image = Properties.Resources.box;
-            spriteBox.Location = new Point(locationX, locationY);
-       //     _SpriteType = SpriteType.box;
+            spriteBox.Location = new Point(locationX, locationY); 
         }
     }
 }

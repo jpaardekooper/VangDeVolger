@@ -13,15 +13,13 @@ namespace VangDeVolgerSetup
 {
     public partial class StartScreen : Form
     {
-        public static string MyTextBoxValue;
-
-        public static string myMapValue;
+        public static string MyTextBoxValue { get; set; }
+        public static string myMapValue { get; set; }
 
         public StartScreen()
         {
             InitializeComponent();           
-        }
-              
+        }              
 
         //css for easy
         private void easy_Click(object sender, EventArgs e)
@@ -40,6 +38,13 @@ namespace VangDeVolgerSetup
         {
             easy.BorderStyle = BorderStyle.None;
             easy.BackColor = Color.Transparent;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            myMapValue = easy.Text;
+            ChangeMap ChangeMap = new ChangeMap();
+            ChangeMap.Show();
         }
         //end css for easy
 
@@ -61,20 +66,43 @@ namespace VangDeVolgerSetup
             hard.BorderStyle = BorderStyle.None;
             hard.BackColor = Color.Transparent;
         }
-        //end hard css
 
-
-        private void crazy_Click(object sender, EventArgs e)
+        private void changeHardMap_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            myMapValue = easy.Text;
+            myMapValue = hard.Text;
             ChangeMap ChangeMap = new ChangeMap();
             ChangeMap.Show();
         }
+        //end hard css     
+
+      
+        //css for crazy
+        private void crazy_Click(object sender, EventArgs e)
+        {
+            MyTextBoxValue = crazy.Text;
+            Game Gameboard = new Game();
+            Gameboard.Show();
+        }
+
+        private void changeCrazyMap_Click(object sender, EventArgs e)
+        {
+            myMapValue = crazy.Text;
+            ChangeMap ChangeMap = new ChangeMap();
+            ChangeMap.Show();
+        }
+
+        private void crazy_MouseEnter(object sender, EventArgs e)
+        {
+            crazy.BorderStyle = BorderStyle.FixedSingle;
+            crazy.BackColor = Color.White;
+        }
+
+        private void crazy_MouseLeave(object sender, EventArgs e)
+        {
+            crazy.BorderStyle = BorderStyle.None;
+            crazy.BackColor = Color.Transparent;
+        }
+        //end crazy css
 
         private void _playHoverSound()
         {

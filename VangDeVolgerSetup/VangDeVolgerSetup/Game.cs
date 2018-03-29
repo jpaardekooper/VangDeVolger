@@ -17,9 +17,7 @@ namespace VangDeVolgerSetup
         private Enemy _callEnemyClass = new Enemy(); //create new enemy class
         private GenerateLevel _callGeneratelevel = new GenerateLevel(); //create new generate level class
         private Highscore _callHighscoreClass = new Highscore();
-
         public string GetMapName; //able to detect what game modus we are playing
-
         private bool _gameOver = false;
         private bool _gamePaused = false;
         //   private bool _playerInput = false; // creating a public string called direction
@@ -79,12 +77,10 @@ namespace VangDeVolgerSetup
                         {
                             //moving to the left of the wall
                             if (j.Bounds.IntersectsWith(x.Bounds))
-                            {
-                             //   _callEnemyClass.CheckForOutOfBounds();
+                            {                            
                                 _updateScore();
                                 if (j.Left <= x.Right && _callHeroClass.HeroDirection == Direction.Left)
-                                {
-                                    Console.WriteLine("touching");
+                                {                                  
                                     j.Left += _callHeroClass._SpriteSpeed;
                                     //box can't go out of the screen from left side
                                     if (x.Left > 0)
@@ -164,7 +160,6 @@ namespace VangDeVolgerSetup
                             //moving to the left of the wall
                             if (j.Bounds.IntersectsWith(x.Bounds))
                             {
-
                                 if (_callHeroClass.HeroDirection == Direction.Left)
                                 {
                                     j.Left = x.Right + j.Height;
@@ -256,7 +251,6 @@ namespace VangDeVolgerSetup
                                 {
                                     _callEnemyClass.EnemyHealth += 5;
                                 }
-
                             }
 
                             if (j.Left < x.Left - 30)
