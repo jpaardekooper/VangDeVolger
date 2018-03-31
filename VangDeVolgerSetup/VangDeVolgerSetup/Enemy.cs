@@ -34,9 +34,9 @@ namespace VangDeVolgerSetup
         /// Create the sprite of enemy and adding it to the form
         /// </summary>
         /// <param name="form"></param>
-        public void CreateEnemyInstance(Form form2)
+        public void CreateEnemyInstance(Form gameplatform)
         {
-            form2.Controls.Add(_PbSpriteContainer);
+            gameplatform.Controls.Add(_PbSpriteContainer);
             _PbSpriteContainer.BringToFront();
         }
 

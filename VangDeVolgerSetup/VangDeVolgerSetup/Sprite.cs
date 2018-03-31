@@ -29,7 +29,7 @@ namespace VangDeVolgerSetup
         protected int _MaxGameHeight { get; set; }
         protected SpriteType _SpriteType { get; set; }
 
-        protected enum SpriteType
+        public enum SpriteType
         {
             empty,
             box,
@@ -44,6 +44,7 @@ namespace VangDeVolgerSetup
             _SpriteHeight = 40;
             _MaxGameWidth = 11 * 40;
             _MaxGameHeight = 12 * 40 + 60;
+            _SpriteType = SpriteType.empty;
         }
 
         public void CheckForOutOfBounds()

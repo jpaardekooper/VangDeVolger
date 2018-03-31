@@ -88,21 +88,21 @@ namespace VangDeVolgerSetup
                                 Box box = new Box(_currentPositionX, _currentPositionY + 100);
                                 gameplatform.Controls.Add(box.spriteBox);  //adding the tile to Form2 so we can see it   
                                 box.spriteBox.BringToFront();
-                                Tile.Contains = box;
+                                Tile.Contains = Sprite.SpriteType.box;
                                 break;
                             case "V":
                                 //creating a pictureBox when the char V is found in txt.file
                                 Wall wall = new Wall(_currentPositionX, _currentPositionY + 100);
                                 gameplatform.Controls.Add(wall.spriteWall);  //adding the tile to Form2 so we can see it   
                                 wall.spriteWall.BringToFront();
-                                Tile.Contains = wall;
+                                Tile.Contains = Sprite.SpriteType.wall;
                                 break;
                             case "N":
-                                Tile.Contains = null;
+                                Tile.Contains = Sprite.SpriteType.empty;
                                 break;
                             //catching the error //creating a button if a char N is found with the type empty and img empty
                             case "?":
-                                Tile.Contains = null;
+                                Tile.Contains = Sprite.SpriteType.empty;
                                 break;
                         }
                         _generateLevelMap[_iCol, _iRow] = Tile; //assigning the Tile object to the array                     
@@ -117,7 +117,7 @@ namespace VangDeVolgerSetup
                         _iCol++;  //adding 1 collumn eachtime we pass this    
                         _currentPositionX += _pbWidth;  //while we are in the loop we place the tiles on the Game window. We increase the positionX
                     }
-                    Console.WriteLine();
+                  //  Console.WriteLine();
                     _iRow++; //add 1 new row each time we pass this
                     _iCol = 0; //resetting column count to 0 so we can pass new data
                     _currentPositionX = _placement;
@@ -159,8 +159,10 @@ namespace VangDeVolgerSetup
                         _neighbour.Add('S', _generateLevelMap[j + 1, i]);
                     }
                 }
-                Console.WriteLine();
+             //   Console.WriteLine();
             }
+
+            Console.WriteLine(Tile.HasNeighbour(_generateLevelMap, 2, 2));
         }
     }
 }

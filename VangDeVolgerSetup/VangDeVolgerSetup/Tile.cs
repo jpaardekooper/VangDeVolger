@@ -11,7 +11,7 @@ namespace VangDeVolgerSetup
     public class Tile
     {
         public Button BtnTile = new Button();
-        public Sprite Contains { get; set; }       
+        public Sprite.SpriteType Contains { get; set; }       
 
         /// <summary>
         /// checking what type the tile is and filling it in the correct array
@@ -36,23 +36,23 @@ namespace VangDeVolgerSetup
         /// <returns></returns>
         public static bool HasNeighbour(Tile[,] array, int CellX, int CellY)
         {
-            if (array[CellX + 1, CellY].Contains is null)
+            if (array[CellX + 1, CellY].Contains is Sprite.SpriteType.empty)
             {
                 Console.WriteLine(array[CellX + 1, CellY]);
                 Console.WriteLine("right is true");
                 return true;
             }
-            if (array[CellX - 1, CellY].Contains is null)
+            if (array[CellX - 1, CellY].Contains is Sprite.SpriteType.empty)
             {
                 Console.WriteLine("left is true");
                 return true;
             }
-            if (array[CellX, CellY + 1].Contains is null)
+            if (array[CellX, CellY + 1].Contains is Sprite.SpriteType.empty)
             {
                 Console.WriteLine("top is true");
                 return true;
             }
-            if (array[CellX, CellY - 1].Contains is null)
+            if (array[CellX, CellY - 1].Contains is Sprite.SpriteType.empty)
             {
                 Console.WriteLine("bottom is true");
                 return true;
