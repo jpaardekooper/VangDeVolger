@@ -17,8 +17,6 @@ namespace VangDeVolgerSetup
         None
     }
 
-
-
     public abstract class Sprite
     {
         protected int _SpriteWidth { get; set; }
@@ -31,12 +29,9 @@ namespace VangDeVolgerSetup
 
         public enum SpriteType
         {
-            empty,
-            box,
-            wall,
-            player,
-            enemy
+            empty, box, wall, player, enemy
         }
+
         public Sprite()
         {
             _SpriteSpeed = 0;

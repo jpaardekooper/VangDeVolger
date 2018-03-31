@@ -24,7 +24,8 @@ namespace VangDeVolgerSetup
             BtnTile.Size = new Size(40, 40);
             BtnTile.Enabled = false;
             BtnTile.Image = Properties.Resources.empty;
-            BtnTile.Location = new Point(x, y);  
+            BtnTile.Location = new Point(x, y);
+            Contains = Sprite.SpriteType.empty;
         }
 
         /// <summary>
@@ -36,23 +37,23 @@ namespace VangDeVolgerSetup
         /// <returns></returns>
         public static bool HasNeighbour(Tile[,] array, int CellX, int CellY)
         {
-            if (array[CellX + 1, CellY].Contains is Sprite.SpriteType.empty)
+            if (CellX < 10 && array[CellX + 1, CellY].Contains == Sprite.SpriteType.empty)
             {
                 Console.WriteLine(array[CellX + 1, CellY]);
                 Console.WriteLine("right is true");
                 return true;
             }
-            if (array[CellX - 1, CellY].Contains is Sprite.SpriteType.empty)
+            if (CellX > 0 && array[CellX - 1, CellY].Contains is Sprite.SpriteType.empty)
             {
                 Console.WriteLine("left is true");
                 return true;
             }
-            if (array[CellX, CellY + 1].Contains is Sprite.SpriteType.empty)
+            if (CellY < 10 && array[CellX, CellY + 1].Contains is Sprite.SpriteType.empty)
             {
                 Console.WriteLine("top is true");
                 return true;
             }
-            if (array[CellX, CellY - 1].Contains is Sprite.SpriteType.empty)
+            if (CellY < 10 && array[CellX, CellY - 1].Contains is Sprite.SpriteType.empty)
             {
                 Console.WriteLine("bottom is true");
                 return true;
