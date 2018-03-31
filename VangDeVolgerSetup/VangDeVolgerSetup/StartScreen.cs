@@ -40,7 +40,7 @@ namespace VangDeVolgerSetup
             easy.BackColor = Color.Transparent;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void changeEasyMap_Click(object sender, EventArgs e)
         {
             myMapValue = easy.Text;
             ChangeMap ChangeMap = new ChangeMap();
@@ -109,5 +109,7 @@ namespace VangDeVolgerSetup
             SoundPlayer simpleSound = new SoundPlayer(@"c:\Windows\Media\chimes.wav");
             simpleSound.Play();
         }
+
+        
     }
 }

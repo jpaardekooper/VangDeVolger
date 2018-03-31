@@ -106,7 +106,7 @@
             this.changeEasyMap.TabIndex = 8;
             this.changeEasyMap.Text = "change map";
             this.changeEasyMap.UseVisualStyleBackColor = true;
-            this.changeEasyMap.Click += new System.EventHandler(this.button1_Click);
+            this.changeEasyMap.Click += new System.EventHandler(this.changeEasyMap_Click);
             // 
             // changeHardMap
             // 

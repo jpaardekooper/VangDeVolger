@@ -13,81 +13,65 @@ namespace VangDeVolgerSetup
 {
     public partial class ChangeMap : Form
     {
-        private string _mapValue;
-        private string _levelModusPath;
-        private string filelocation = string.Empty;
-        OpenFileDialog openFile1 = new OpenFileDialog();
-
-
+        private string _mapValue { get; set; }
+        private string _levelModusPath { get; set; }     
+        private string _filter { get; set; }
 
         public ChangeMap()
         {
             InitializeComponent();
 
             mapName.Text = StartScreen.myMapValue;
-            _mapValue = mapName.Text.ToString();            
+            _mapValue = mapName.Text.ToString();
 
-            loadData(_mapValue);
-
+            loadData(_mapValue);          
+            _filter = "Map difficulty |*.txt";
         }
 
         private void loadData(string levelmodus)
         {
-           
+
             switch (levelmodus)
             {
                 case "easy":
-                    _levelModusPath = Path.GetFullPath(Directory.GetCurrentDirectory() + @"..\..\..\Levels\easy.txt");                 
+                    _levelModusPath = Path.GetFullPath(Directory.GetCurrentDirectory() + @"..\..\..\Levels\easy.txt");
                     break;
                 case "hard":
-                    _levelModusPath = Path.GetFullPath(Directory.GetCurrentDirectory() + @"..\..\..\Levels\hard.txt");                   
+                    _levelModusPath = Path.GetFullPath(Directory.GetCurrentDirectory() + @"..\..\..\Levels\hard.txt");
                     break;
                 case "crazy":
-                    _levelModusPath = Path.GetFullPath(Directory.GetCurrentDirectory() + @"..\..\..\Levels\crazy.txt");                  
+                    _levelModusPath = Path.GetFullPath(Directory.GetCurrentDirectory() + @"..\..\..\Levels\crazy.txt");
                     break;
             }
 
-            // Initialize the filter to look for text files.
-            openFile1.Filter = "Text Files|*.txt";
-
-            //string text =Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..\\..\\Levels\\Easy.txt")
-
-
-            using (FileStream fs = File.Open(_levelModusPath, FileMode.Open, FileAccess.Read, FileShare.None))
+            using (FileStream filestream = File.Open(_levelModusPath, FileMode.Open, FileAccess.Read))
             {
                 byte[] b = new byte[1024];
                 UTF8Encoding temp = new UTF8Encoding(true);
 
-                while (fs.Read(b, 0, b.Length) > 0)
+                while (filestream.Read(b, 0, b.Length) > 0)
                 {
-                  //  Console.WriteLine(temp.GetString(b));
+                    //  Console.WriteLine(temp.GetString(b));
                     richTextBox1.Text = temp.GetString(b);
-                }            
-              
+                }
             }
-        }
+        } 
 
-        private void ChangeMap_Load(object sender, EventArgs e)
+        private void save_Click(object sender, EventArgs e)
         {
-           
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            SaveFileDialog saveFile1 = new SaveFileDialog();
+            SaveFileDialog saveFile = new SaveFileDialog();
 
             // Initialize the SaveFileDialog to specify the RTF extension for the file.
-            saveFile1.DefaultExt = "*.txt";
-            saveFile1.FileName = _mapValue;
-            saveFile1.Filter = "txt Files|*.txt";
+            saveFile.DefaultExt = "*.txt";
+            saveFile.FileName = _mapValue;
+            saveFile.Filter = _filter;
 
             // Determine if the user selected a file name from the saveFileDialog.
-            if (saveFile1.ShowDialog() == DialogResult.OK &&
-               saveFile1.FileName.Length >= 0)
+            if (saveFile.ShowDialog() == DialogResult.OK &&
+               saveFile.FileName.Length >= 0)
             {
                 // Save the contents of the RichTextBox into the file.
-                richTextBox1.SaveFile(saveFile1.FileName, RichTextBoxStreamType.PlainText);
+                richTextBox1.SaveFile(saveFile.FileName, RichTextBoxStreamType.PlainText);
             }
 
             this.Close();
