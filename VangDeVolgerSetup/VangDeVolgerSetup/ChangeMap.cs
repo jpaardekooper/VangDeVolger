@@ -1,4 +1,10 @@
-﻿using System;
+﻿/*
+ * On this form the user will be able to change the map to his design
+ * in order to change the map we need the mapValue data from StartGame.
+ * if we correctly recieved the data we will load the selected data in a RichTextBox.
+ * clicking on the save button will save the changes
+ */
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,8 +19,11 @@ namespace VangDeVolgerSetup
 {
     public partial class ChangeMap : Form
     {
+        //obtaining data from start screen
         private string _mapValue { get; set; }
+        //assigning the path to load the txt filer
         private string _levelModusPath { get; set; }     
+        //basic filter to show when you save the filer
         private string _filter { get; set; }
 
         public ChangeMap()
@@ -30,7 +39,8 @@ namespace VangDeVolgerSetup
 
         private void loadData(string levelmodus)
         {
-
+            //switching between easy, hard and crazy if we picked for 
+            //example easy _levelModusPath will be filled with the easy path
             switch (levelmodus)
             {
                 case "easy":
@@ -43,16 +53,16 @@ namespace VangDeVolgerSetup
                     _levelModusPath = Path.GetFullPath(Directory.GetCurrentDirectory() + @"..\..\..\Levels\crazy.txt");
                     break;
             }
-
+            //using FileStream to read the txt file out in a richTextBox
             using (FileStream filestream = File.Open(_levelModusPath, FileMode.Open, FileAccess.Read))
             {
-                byte[] b = new byte[1024];
+                byte[] filetext = new byte[1024];
                 UTF8Encoding temp = new UTF8Encoding(true);
 
-                while (filestream.Read(b, 0, b.Length) > 0)
-                {
-                    //  Console.WriteLine(temp.GetString(b));
-                    richTextBox1.Text = temp.GetString(b);
+                //while the file is not empty we put it on a RichTextBox
+                while (filestream.Read(filetext, 0, filetext.Length) > 0)
+                {                    
+                    changeMapBox.Text = temp.GetString(filetext);
                 }
             }
         } 
@@ -71,7 +81,7 @@ namespace VangDeVolgerSetup
                saveFile.FileName.Length >= 0)
             {
                 // Save the contents of the RichTextBox into the file.
-                richTextBox1.SaveFile(saveFile.FileName, RichTextBoxStreamType.PlainText);
+                changeMapBox.SaveFile(saveFile.FileName, RichTextBoxStreamType.PlainText);
             }
 
             this.Close();

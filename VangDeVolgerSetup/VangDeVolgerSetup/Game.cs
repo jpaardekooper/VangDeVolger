@@ -29,13 +29,11 @@ namespace VangDeVolgerSetup
             lblPause.Visible = false;
             resume.Visible = false;
             lblGameOver.Visible = false;
-            inputPlayerName.Visible = false;
-            //   lblScore.Visible = false;
+            inputPlayerName.Visible = false;           
             btnShowScore.Visible = false;
             lblHighscore.Visible = false;
             boxAllHighScores.Visible = false;
-            //       boxAllHighScores.Enabled = false;
-
+           
             ///Able to get de level name of the screen to generate the levelwith          
             label2.Text = StartScreen.MyTextBoxValue;
             GetMapName = label2.Text.ToString();
@@ -46,9 +44,8 @@ namespace VangDeVolgerSetup
         private void _startGame()
         {
             _callGeneratelevel.Name = GetMapName;
-            ///
-            /// giving the class _callGenerateLevel the level modus [ easy , hard , crazy ]
-            /// 
+
+            // giving the class _callGenerateLevel the level modus [ easy , hard , crazy ]         
             _callGeneratelevel.ReadMyTextLevelFile(this, GetMapName);         
 
            _loadsprites(); //call loadsprites function on line 51
@@ -180,7 +177,7 @@ namespace VangDeVolgerSetup
                             }
                         }
 
-                        Enemy and wall collision
+                      //  Enemy and wall collision
                         if ((j.Tag.Equals("enemy")) && (x.Tag.Equals("wall")))
                         {
                             //checking if the X loop is touching the J loop
