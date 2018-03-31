@@ -38,7 +38,7 @@ namespace VangDeVolgerSetup
         {
             if (array[CellX + 1, CellY].Contains is null)
             {
-                Console.WriteLine(array[CellX + 1, CellY].Contains);
+                Console.WriteLine(array[CellX + 1, CellY]);
                 Console.WriteLine("right is true");
                 return true;
             }

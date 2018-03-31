@@ -133,8 +133,7 @@ namespace VangDeVolgerSetup
                             {
 
                                 if (j.Left <= x.Right && _callHeroClass.HeroDirection == Direction.Left)
-                                {
-                                    //    Console.WriteLine("touching");
+                                {                          
                                     j.Left += _callHeroClass._SpriteSpeed;
                                 }
                                 else if (j.Right >= x.Left && _callHeroClass.HeroDirection == Direction.Right)
@@ -466,7 +465,7 @@ namespace VangDeVolgerSetup
         {
             int myScore = Convert.ToInt32(lblScore.Text);
             int newScore = myScore + 2;
-            Console.WriteLine(newScore);
+           // Console.WriteLine(newScore);
             lblScore.Text = newScore.ToString();
         }
 

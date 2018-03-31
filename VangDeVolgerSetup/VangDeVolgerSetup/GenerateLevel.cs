@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace VangDeVolgerSetup
@@ -35,11 +30,11 @@ namespace VangDeVolgerSetup
         private int _placement { get; set; }
         private int _iRow { get; set; }
         private int _iCol { get; set; }
-        private string _levelModus = string.Empty;
+        private string _levelModus { get; set; }
 
         //filling the attributes with values
         public GenerateLevel()
-        {        
+        {
             _pbHeight = 40;
             _pbWidth = 40;
             _currentPositionX = 0;
@@ -47,6 +42,7 @@ namespace VangDeVolgerSetup
             _placement = 0;
             _iRow = 0;
             _iCol = 0;
+            _levelModus = string.Empty;
         }
         /// <summary>
         /// checking the level we picked and giving it back to Form2
@@ -65,7 +61,7 @@ namespace VangDeVolgerSetup
             switch (Name)
             {
                 case "easy":
-                    _levelModus = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..\\..\\Levels\\easy.txt");                 
+                    _levelModus = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..\\..\\Levels\\easy.txt");
                     break;
                 case "hard":
                     _levelModus = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..\\..\\Levels\\hard.txt");
@@ -83,35 +79,34 @@ namespace VangDeVolgerSetup
                     foreach (string c in stringLineArray)
                     {
                         //creating a Tile object to fill our Game with tiles
-                        Tile Tile = new Tile(_currentPositionX, _currentPositionY + 100);                   
+                        Tile Tile = new Tile(_currentPositionX, _currentPositionY + 100);
 
                         switch (c)
                         {
                             case "D":
                                 //creating a pictureBox when the char D is found in txt.file
-                                Box Box = new Box(_currentPositionX, _currentPositionY + 100);
-                                gameplatform.Controls.Add(Box.spriteBox);  //adding the tile to Form2 so we can see it   
-                                Box.spriteBox.BringToFront();  
-                                Tile.Contains = Box;                               
+                                Box box = new Box(_currentPositionX, _currentPositionY + 100);
+                                gameplatform.Controls.Add(box.spriteBox);  //adding the tile to Form2 so we can see it   
+                                box.spriteBox.BringToFront();
+                                Tile.Contains = box;
                                 break;
                             case "V":
                                 //creating a pictureBox when the char V is found in txt.file
-                                Wall Wall = new Wall(_currentPositionX, _currentPositionY + 100);
-                                gameplatform.Controls.Add(Wall.spriteWall);  //adding the tile to Form2 so we can see it   
-                                Wall.spriteWall.BringToFront();                         
-                                Tile.Contains = Wall;                          
+                                Wall wall = new Wall(_currentPositionX, _currentPositionY + 100);
+                                gameplatform.Controls.Add(wall.spriteWall);  //adding the tile to Form2 so we can see it   
+                                wall.spriteWall.BringToFront();
+                                Tile.Contains = wall;
                                 break;
                             case "N":
-                                Tile.Contains = null;                               
+                                Tile.Contains = null;
                                 break;
                             //catching the error //creating a button if a char N is found with the type empty and img empty
                             case "?":
-                                Tile.Contains = null;                      
+                                Tile.Contains = null;
                                 break;
                         }
                         _generateLevelMap[_iCol, _iRow] = Tile; //assigning the Tile object to the array                     
-                        gameplatform.Controls.Add(Tile.BtnTile);  //adding the tile to Form2 so we can see it  
-
+                        gameplatform.Controls.Add(Tile.BtnTile);  //adding the tile to Form2 so we can see it                        
                         //its not a bug but a feature
                         if (Name.Equals("crazy"))
                         {
@@ -122,6 +117,7 @@ namespace VangDeVolgerSetup
                         _iCol++;  //adding 1 collumn eachtime we pass this    
                         _currentPositionX += _pbWidth;  //while we are in the loop we place the tiles on the Game window. We increase the positionX
                     }
+                    Console.WriteLine();
                     _iRow++; //add 1 new row each time we pass this
                     _iCol = 0; //resetting column count to 0 so we can pass new data
                     _currentPositionX = _placement;
@@ -134,11 +130,9 @@ namespace VangDeVolgerSetup
 
         private void SetNeighbours()
         {
-            //checking what is inside the array
-            //y
+            //checking what is inside the array         
             for (int i = 0; i < _generateLevelMap.GetLength(0); i++)
             {
-                //x
                 for (int j = 0; j < _generateLevelMap.GetLength(1); j++)
                 {
                     // checks for the borders and adds the neighbor if it exists
@@ -147,7 +141,7 @@ namespace VangDeVolgerSetup
                     {
                         { 'T', _generateLevelMap[j,i] }
                     };
-                    Console.Write(" "+ _generateLevelMap[j, i].Contains);
+                    //    Console.Write(" "+ _generateLevelMap[j, i].Contains);
                     if (i != 0)
                     {
                         _neighbour.Add('W', _generateLevelMap[j, i - 1]);
