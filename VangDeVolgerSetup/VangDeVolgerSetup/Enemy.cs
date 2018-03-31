@@ -25,9 +25,9 @@ namespace VangDeVolgerSetup
             _PbSpriteContainer.Tag = _PbSpriteContainer.Name;
             _PbSpriteContainer.Left = _MaxGameWidth;
             _PbSpriteContainer.Top = _MaxGameHeight;
-            _PbSpriteContainer.Size = new Size(_SpriteWidth - 7, _SpriteHeight -7);
+            _PbSpriteContainer.Size = new Size(_SpriteWidth - 7, _SpriteHeight - 7);
             _PbSpriteContainer.SizeMode = PictureBoxSizeMode.Zoom;
-            _PbSpriteContainer.Image = Properties.Resources.enemyLeft; 
+            _PbSpriteContainer.Image = Properties.Resources.enemyLeft;
         }
 
         /// <summary>
@@ -48,8 +48,42 @@ namespace VangDeVolgerSetup
         public void SetEnemyImageRight()
         {
             _PbSpriteContainer.Image = Properties.Resources.enemyRight;
+
+        }      
+
+        /// <summary>
+        /// checking the Neighbour of the current tile
+        /// </summary>
+        /// <param name="array"></param>
+        /// <param name="CellX"></param>
+        /// <param name="CellY"></param>
+        /// <returns></returns>
+        public static bool HasNeighbour(Tile[,] array, int CellX, int CellY, Direction direction)
+        {
+            if (CellX < 10 && array[CellX + 1, CellY].Contains is Box && direction == Direction.Right)
+            {
+             //   Console.WriteLine("right is true");
+                return true;
+            }
+            else if (CellX > 0 && array[CellX - 1, CellY].Contains is Box && direction == Direction.Left)
+            {
+              //  Console.WriteLine("left is true");
+                return true;
+            }
+            else if (CellY < 10 && array[CellX, CellY + 1].Contains is Box && direction == Direction.Up)
+            {
+            //    Console.WriteLine("top is true");
+                return true;
+            }
+            else if (CellY < 0 && array[CellX, CellY - 1].Contains is Box && direction == Direction.Down)
+            {
+           //     Console.WriteLine("bottom is true");
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
-
-
     }
 }

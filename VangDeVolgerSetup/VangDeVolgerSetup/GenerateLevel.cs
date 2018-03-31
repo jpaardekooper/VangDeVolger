@@ -20,7 +20,7 @@ namespace VangDeVolgerSetup
                 _name = value;
             }
         }
-        private Tile[,] _generateLevelMap = new Tile[12, 12];
+        public Tile[,] _generateLevelMap = new Tile[12, 12];
         //basic information of the picturebox (pb) width, height and position 
         private Dictionary<char, Tile> _neighbour { get; set; }
         private int _pbHeight { get; set; }
@@ -31,6 +31,7 @@ namespace VangDeVolgerSetup
         private int _iRow { get; set; }
         private int _iCol { get; set; }
         private string _levelModus { get; set; }
+        private Enemy e = new Enemy();
 
         //filling the attributes with values
         public GenerateLevel()
@@ -88,21 +89,21 @@ namespace VangDeVolgerSetup
                                 Box box = new Box(_currentPositionX, _currentPositionY + 100);
                                 gameplatform.Controls.Add(box.spriteBox);  //adding the tile to Form2 so we can see it   
                                 box.spriteBox.BringToFront();
-                                Tile.Contains = Sprite.SpriteType.box;
+                                Tile.Contains = box;
                                 break;
                             case "V":
                                 //creating a pictureBox when the char V is found in txt.file
                                 Wall wall = new Wall(_currentPositionX, _currentPositionY + 100);
                                 gameplatform.Controls.Add(wall.spriteWall);  //adding the tile to Form2 so we can see it   
                                 wall.spriteWall.BringToFront();
-                                Tile.Contains = Sprite.SpriteType.wall;
+                                Tile.Contains = wall;
                                 break;
                             case "N":
-                                Tile.Contains = Sprite.SpriteType.empty;
+                                Tile.Contains = null;
                                 break;
                             //catching the error //creating a button if a char N is found with the type empty and img empty
                             case "?":
-                                Tile.Contains = Sprite.SpriteType.empty;
+                                Tile.Contains = null;
                                 break;
                         }
                         _generateLevelMap[_iCol, _iRow] = Tile; //assigning the Tile object to the array                     
@@ -117,7 +118,7 @@ namespace VangDeVolgerSetup
                         _iCol++;  //adding 1 collumn eachtime we pass this    
                         _currentPositionX += _pbWidth;  //while we are in the loop we place the tiles on the Game window. We increase the positionX
                     }
-                  //  Console.WriteLine();
+                    //  Console.WriteLine();
                     _iRow++; //add 1 new row each time we pass this
                     _iCol = 0; //resetting column count to 0 so we can pass new data
                     _currentPositionX = _placement;
@@ -159,10 +160,34 @@ namespace VangDeVolgerSetup
                         _neighbour.Add('S', _generateLevelMap[j + 1, i]);
                     }
                 }
-             //   Console.WriteLine();
+                //   Console.WriteLine();
             }
 
-            Console.WriteLine(Tile.HasNeighbour(_generateLevelMap, 2, 2));
+
         }
+
+        //public void EnemyMovement()
+        //{
+        //    // Enemy.HasNeighbour(_generateLevelMap, 11, 11, Direction.Right);
+
+        //    Console.WriteLine(_generateLevelMap);
+
+        //    if (Enemy.HasNeighbour(_generateLevelMap, 11, 11, Direction.Right))
+        //    {              
+        //        Console.WriteLine("ri");
+        //    }
+        //    else if (Enemy.HasNeighbour(_generateLevelMap, 11, 11, Direction.Left))
+        //    {
+        //        Console.WriteLine("le"); 
+        //    }
+        //    else if (Enemy.HasNeighbour(_generateLevelMap, 11, 11, Direction.Up))
+        //    {
+        //        Console.WriteLine("up");
+        //    }
+        //    else if (Enemy.HasNeighbour(_generateLevelMap, 11, 11, Direction.Down))
+        //    {
+        //        Console.WriteLine("do");
+        //    }
+        //}
     }
 }

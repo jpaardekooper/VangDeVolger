@@ -49,8 +49,9 @@ namespace VangDeVolgerSetup
             ///
             /// giving the class _callGenerateLevel the level modus [ easy , hard , crazy ]
             /// 
-            _callGeneratelevel.ReadMyTextLevelFile(this, GetMapName);
-            _loadsprites(); //call loadsprites function on line 51
+            _callGeneratelevel.ReadMyTextLevelFile(this, GetMapName);         
+
+           _loadsprites(); //call loadsprites function on line 51
         }
 
         private void _loadsprites()
@@ -65,10 +66,10 @@ namespace VangDeVolgerSetup
             if (!_gameOver)
             {
                 _callHeroClass.CheckForOutOfBounds();
-
+              
                 //   Console.WriteLine(_playerInput);
                 foreach (PictureBox x in Controls.OfType<PictureBox>())
-                {
+                {                  
                     //we can determine if they hit eachother
                     foreach (PictureBox j in Controls.OfType<PictureBox>())
                     {
@@ -159,27 +160,27 @@ namespace VangDeVolgerSetup
                             //moving to the left of the wall
                             if (j.Bounds.IntersectsWith(x.Bounds))
                             {
-                                if (_callHeroClass.HeroDirection == Direction.Left)
+                                if (j.Left <= x.Right && _callHeroClass.HeroDirection == Direction.Left)
                                 {
-                                    j.Left = x.Right + j.Height;
+                                    j.Left += 40;
                                 }
-                                else if (_callHeroClass.HeroDirection == Direction.Right)
+                                else if (j.Right >= x.Left && _callHeroClass.HeroDirection == Direction.Right)
                                 {
-                                    j.Left = x.Left - j.Height;
+                                    j.Left -= 40;
                                 }
-                                else if (_callHeroClass.HeroDirection == Direction.Down)
+                                else if (j.Bottom <= x.Bottom && _callHeroClass.HeroDirection == Direction.Down)
                                 {
-                                    j.Top = x.Bottom - j.Height;
+                                    j.Top -= 40;
                                 }
+                                else if (j.Bottom >= x.Top && _callHeroClass.HeroDirection == Direction.Up)
+                                {
+                                    j.Top += 40;
 
-                                else if (_callHeroClass.HeroDirection == Direction.Up)
-                                {
-                                    j.Top = x.Top + j.Height;
                                 }
                             }
                         }
 
-                        //Enemy and wall collision
+                        Enemy and wall collision
                         if ((j.Tag.Equals("enemy")) && (x.Tag.Equals("wall")))
                         {
                             //checking if the X loop is touching the J loop
@@ -254,7 +255,7 @@ namespace VangDeVolgerSetup
 
                             if (j.Left < x.Left - 30)
                             {
-                                j.Left += _callEnemyClass._SpriteSpeed;                                
+                                j.Left += _callEnemyClass._SpriteSpeed;
                                 _callEnemyClass.SetEnemyImageLeft();
                             }
                             else if (j.Left > x.Left + 30)
@@ -300,7 +301,6 @@ namespace VangDeVolgerSetup
                     _callHeroClass.PlayerInput = true;
                     _callHeroClass.HeroDirection = Direction.Up;
                     break;
-
             }
 
             //pausing the game

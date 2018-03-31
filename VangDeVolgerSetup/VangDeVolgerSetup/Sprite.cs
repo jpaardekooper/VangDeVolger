@@ -24,13 +24,7 @@ namespace VangDeVolgerSetup
         public int _SpriteSpeed { get; set; } // creating a integer called speed    
         protected PictureBox _PbSpriteContainer { get; set; }
         protected int _MaxGameWidth { get; set; }
-        protected int _MaxGameHeight { get; set; }
-        protected SpriteType _SpriteType { get; set; }
-
-        public enum SpriteType
-        {
-            empty, box, wall, player, enemy
-        }
+        protected int _MaxGameHeight { get; set; }       
 
         public Sprite()
         {
@@ -38,8 +32,7 @@ namespace VangDeVolgerSetup
             _SpriteWidth = 40;
             _SpriteHeight = 40;
             _MaxGameWidth = 11 * 40;
-            _MaxGameHeight = 12 * 40 + 60;
-            _SpriteType = SpriteType.empty;
+            _MaxGameHeight = 12 * 40 + 60;           
         }
 
         public void CheckForOutOfBounds()

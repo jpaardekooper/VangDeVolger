@@ -23,7 +23,7 @@ namespace VangDeVolgerSetup
             spriteWall.Name = "wall";
             spriteWall.Tag = spriteWall.Name;
             spriteWall.Image = Properties.Resources.wall;
-            spriteWall.Location = new Point(locationX, locationY);
+            spriteWall.Location = new Point(locationX, locationY);         
         }
     }
 }
