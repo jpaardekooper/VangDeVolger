@@ -10,20 +10,25 @@ namespace VangDeVolgerSetup
 {
     class Box : Sprite
     {
-        public PictureBox spriteBox = new PictureBox();
-        
+        public PictureBox SpriteBox = new PictureBox();
+
+        public Box()
+        {
+            SpriteBox.Size = new Size(_SpriteWidth, _SpriteHeight);
+            SpriteBox.Name = "box";
+            SpriteBox.Tag = SpriteBox.Name;
+            SpriteBox.Image = Properties.Resources.box;
+
+        }
+
         /// <summary>
         /// creating a box sprite on top of a tile
         /// </summary>
         /// <param name="locationX"></param>
         /// <param name="locationY"></param>
-        public Box( int locationX, int locationY)
+        public void PlaceBox(int locationX, int locationY)
         {
-            spriteBox.Size = new Size(_SpriteWidth, _SpriteHeight);   
-            spriteBox.Name = "box";
-            spriteBox.Tag = spriteBox.Name;
-            spriteBox.Image = Properties.Resources.box;
-            spriteBox.Location = new Point(locationX, locationY);        
+            SpriteBox.Location = new Point(locationX, locationY);
         }
     }
 }

@@ -8,7 +8,7 @@ namespace VangDeVolgerSetup
 {
 
 
-    public abstract class Sprite
+    abstract public class Sprite
     {
         public enum Direction
         {

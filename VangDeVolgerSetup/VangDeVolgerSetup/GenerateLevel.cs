@@ -20,7 +20,7 @@ namespace VangDeVolgerSetup
                 _name = value;
             }
         }
-        public Tile[,] _generateLevelMap = new Tile[12, 12];
+        public Tile[,] GenerateLevelMap { get; set; }
         //basic information of the picturebox (pb) width, height and position 
         private Dictionary<char, Tile> _neighbour { get; set; }
         private int _pbHeight { get; set; }
@@ -31,11 +31,11 @@ namespace VangDeVolgerSetup
         private int _iRow { get; set; }
         private int _iCol { get; set; }
         private string _levelModus { get; set; }
-        private Enemy e = new Enemy();
 
         //filling the attributes with values
         public GenerateLevel()
         {
+            GenerateLevelMap =  new Tile[12, 12];
             _pbHeight = 40;
             _pbWidth = 40;
             _currentPositionX = 0;
@@ -46,9 +46,14 @@ namespace VangDeVolgerSetup
             _levelModus = string.Empty;
         }
         /// <summary>
-        /// checking the level we picked and giving it back to Form2
+        /// checking the level we picked and giving it back to gameplatform
+        /// if the name is not equal to an empty string we continue to go to the switch statement.
+        /// We use the name that was obtained from the gameplatform to determine which txt level it needs to open.
+        /// once the path is found we use a Streamreader to read all data from the txt file and convert it to an string array.
+        /// while reading it out we give each char a Tile object and giving specific chars the correct object such as box, empty and wall.
+        /// Also while reading the data out we  put them in an Tile[,] 2D array so we can place them on the gameplatform screen.
         /// </summary>
-        /// <param name="Form2"></param>
+        /// <param name="gameplatform"></param>
         /// <param name="Name"></param>
         public void ReadMyTextLevelFile(Game gameplatform, string Name)
         {
@@ -80,39 +85,42 @@ namespace VangDeVolgerSetup
                     foreach (string c in stringLineArray)
                     {
                         //creating a Tile object to fill our Game with tiles
-                        Tile Tile = new Tile(_currentPositionX, _currentPositionY + 100);
+                        Tile tileObject = new Tile();
+                        tileObject.PlaceTile(_currentPositionX, _currentPositionY + 100);
 
                         switch (c)
                         {
                             case "D":
                                 //creating a pictureBox when the char D is found in txt.file
-                                Box box = new Box(_currentPositionX, _currentPositionY + 100);
-                                gameplatform.Controls.Add(box.spriteBox);  //adding the tile to Form2 so we can see it   
-                                box.spriteBox.BringToFront();
-                                Tile.Contains = box;
+                                Box box = new Box();
+                                box.PlaceBox(_currentPositionX, _currentPositionY + 100);
+                                gameplatform.Controls.Add(box.SpriteBox);  //adding the tile to Form2 so we can see it   
+                                box.SpriteBox.BringToFront();
+                                tileObject.Contains = box;
                                 break;
                             case "V":
                                 //creating a pictureBox when the char V is found in txt.file
-                                Wall wall = new Wall(_currentPositionX, _currentPositionY + 100);
-                                gameplatform.Controls.Add(wall.spriteWall);  //adding the tile to Form2 so we can see it   
-                                wall.spriteWall.BringToFront();
-                                Tile.Contains = wall;
+                                Wall wall = new Wall();
+                                wall.PlaceWall(_currentPositionX, _currentPositionY + 100);
+                                gameplatform.Controls.Add(wall.SpriteWall);  //adding the tile to Form2 so we can see it   
+                                wall.SpriteWall.BringToFront();
+                                tileObject.Contains = wall;
                                 break;
                             case "N":
-                                Tile.Contains = null;
+                                tileObject.Contains = null;
                                 break;
                             //catching the error //creating a button if a char N is found with the type empty and img empty
                             case "?":
-                                Tile.Contains = null;
+                                tileObject.Contains = null;
                                 break;
                         }
-                        _generateLevelMap[_iCol, _iRow] = Tile; //assigning the Tile object to the array                     
-                        gameplatform.Controls.Add(Tile.BtnTile);  //adding the tile to Form2 so we can see it                        
+                        GenerateLevelMap[_iCol, _iRow] = tileObject; //assigning the Tile object to the array                     
+                        gameplatform.Controls.Add(tileObject.BtnTile);  //adding the tile to Form2 so we can see it                        
                         //its not a bug but a feature
                         if (Name.Equals("crazy"))
                         {
                             Console.WriteLine("crazy");
-                            Tile.BtnTile.BringToFront();
+                            tileObject.BtnTile.BringToFront();
                         }
 
                         _iCol++;  //adding 1 collumn eachtime we pass this    
@@ -132,32 +140,32 @@ namespace VangDeVolgerSetup
         private void SetNeighbours()
         {
             //checking what is inside the array         
-            for (int i = 0; i < _generateLevelMap.GetLength(0); i++)
+            for (int i = 0; i < GenerateLevelMap.GetLength(0); i++)
             {
-                for (int j = 0; j < _generateLevelMap.GetLength(1); j++)
+                for (int j = 0; j < GenerateLevelMap.GetLength(1); j++)
                 {
                     // checks for the borders and adds the neighbor if it exists
                     // in the board
                     Dictionary<char, Tile> _neighbour = new Dictionary<char, Tile>
                     {
-                        { 'T', _generateLevelMap[j,i] }
+                        { 'T', GenerateLevelMap[j,i] }
                     };
-                    //    Console.Write(" "+ _generateLevelMap[j, i].Contains);
+                    //    Console.Write(" "+ GenerateLevelMap[j, i].Contains);
                     if (i != 0)
                     {
-                        _neighbour.Add('W', _generateLevelMap[j, i - 1]);
+                        _neighbour.Add('W', GenerateLevelMap[j, i - 1]);
                     }
-                    if (i != _generateLevelMap.GetLength(0) - 1)
+                    if (i != GenerateLevelMap.GetLength(0) - 1)
                     {
-                        _neighbour.Add('E', _generateLevelMap[j, i + 1]);
+                        _neighbour.Add('E', GenerateLevelMap[j, i + 1]);
                     }
                     if (j != 0)
                     {
-                        _neighbour.Add('N', _generateLevelMap[j - 1, i]);
+                        _neighbour.Add('N', GenerateLevelMap[j - 1, i]);
                     }
-                    if (j != _generateLevelMap.GetLength(1) - 1)
+                    if (j != GenerateLevelMap.GetLength(1) - 1)
                     {
-                        _neighbour.Add('S', _generateLevelMap[j + 1, i]);
+                        _neighbour.Add('S', GenerateLevelMap[j + 1, i]);
                     }
                 }
                 //   Console.WriteLine();
@@ -168,23 +176,23 @@ namespace VangDeVolgerSetup
 
         //public void EnemyMovement()
         //{
-        //    // Enemy.HasNeighbour(_generateLevelMap, 11, 11, Direction.Right);
+        //    // Enemy.HasNeighbour(GenerateLevelMap, 11, 11, Direction.Right);
 
-        //    Console.WriteLine(_generateLevelMap);
+        //    Console.WriteLine(GenerateLevelMap);
 
-        //    if (Enemy.HasNeighbour(_generateLevelMap, 11, 11, Direction.Right))
+        //    if (Enemy.HasNeighbour(GenerateLevelMap, 11, 11, Direction.Right))
         //    {              
         //        Console.WriteLine("ri");
         //    }
-        //    else if (Enemy.HasNeighbour(_generateLevelMap, 11, 11, Direction.Left))
+        //    else if (Enemy.HasNeighbour(GenerateLevelMap, 11, 11, Direction.Left))
         //    {
         //        Console.WriteLine("le"); 
         //    }
-        //    else if (Enemy.HasNeighbour(_generateLevelMap, 11, 11, Direction.Up))
+        //    else if (Enemy.HasNeighbour(GenerateLevelMap, 11, 11, Direction.Up))
         //    {
         //        Console.WriteLine("up");
         //    }
-        //    else if (Enemy.HasNeighbour(_generateLevelMap, 11, 11, Direction.Down))
+        //    else if (Enemy.HasNeighbour(GenerateLevelMap, 11, 11, Direction.Down))
         //    {
         //        Console.WriteLine("do");
         //    }

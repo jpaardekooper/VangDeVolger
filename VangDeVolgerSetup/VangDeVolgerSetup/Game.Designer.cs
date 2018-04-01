@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.GameEngineTimer = new System.Windows.Forms.Timer(this.components);
-            this.label2 = new System.Windows.Forms.Label();
+            this.lblLevelName = new System.Windows.Forms.Label();
             this.lblPause = new System.Windows.Forms.Label();
             this.pause = new System.Windows.Forms.Label();
             this.resume = new System.Windows.Forms.Label();
@@ -51,16 +51,16 @@
             this.GameEngineTimer.Interval = 24;
             this.GameEngineTimer.Tick += new System.EventHandler(this.GameEngine);
             // 
-            // label2
+            // lblLevelName
             // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(32)))), ((int)(((byte)(108)))));
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(114)))), ((int)(((byte)(204)))));
-            this.label2.Location = new System.Drawing.Point(12, 9);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 13);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "label2";
+            this.lblLevelName.AutoSize = true;
+            this.lblLevelName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(32)))), ((int)(((byte)(108)))));
+            this.lblLevelName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(114)))), ((int)(((byte)(204)))));
+            this.lblLevelName.Location = new System.Drawing.Point(12, 9);
+            this.lblLevelName.Name = "lblLevelName";
+            this.lblLevelName.Size = new System.Drawing.Size(35, 13);
+            this.lblLevelName.TabIndex = 0;
+            this.lblLevelName.Text = "label2";
             // 
             // lblPause
             // 
@@ -208,13 +208,13 @@
             this.Controls.Add(this.playerHealthBar);
             this.Controls.Add(this.resume);
             this.Controls.Add(this.pause);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.lblLevelName);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Game";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form2";
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form2_KeyDown);
-            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form2_KeyUp);
+            this.Text = "Game";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Game_KeyDown);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Game_KeyUp);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -222,7 +222,7 @@
 
         #endregion
         private System.Windows.Forms.Timer GameEngineTimer;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblLevelName;
         private System.Windows.Forms.Label lblPause;
         private System.Windows.Forms.Label pause;
         private System.Windows.Forms.Label resume;

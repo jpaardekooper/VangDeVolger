@@ -10,20 +10,25 @@ namespace VangDeVolgerSetup
 {
     class Wall : Sprite
     {
-        public PictureBox spriteWall = new PictureBox();
+        public PictureBox SpriteWall { get; set; }
+
+        public Wall()
+        {
+            SpriteWall = new PictureBox();
+            SpriteWall.Size = new Size(_SpriteHeight, _SpriteHeight);
+            SpriteWall.Name = "wall";
+            SpriteWall.Tag = SpriteWall.Name;
+            SpriteWall.Image = Properties.Resources.wall;
+        }
 
         /// <summary>
         /// creating a wall sprite that stand on top of the tile
         /// </summary>
         /// <param name="locationX"></param>
         /// <param name="locationY"></param>
-        public Wall(int locationX, int locationY)
+        public void PlaceWall(int locationX, int locationY)
         {
-            spriteWall.Size = new Size(_SpriteHeight, _SpriteHeight);          
-            spriteWall.Name = "wall";
-            spriteWall.Tag = spriteWall.Name;
-            spriteWall.Image = Properties.Resources.wall;
-            spriteWall.Location = new Point(locationX, locationY);         
+            SpriteWall.Location = new Point(locationX, locationY);
         }
     }
 }

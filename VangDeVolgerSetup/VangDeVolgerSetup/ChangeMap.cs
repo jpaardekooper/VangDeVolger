@@ -30,8 +30,8 @@ namespace VangDeVolgerSetup
         {
             InitializeComponent();
 
-            mapName.Text = StartScreen.myMapValue;
-            _mapValue = mapName.Text.ToString();
+            lblMapName.Text = StartScreen.myMapValue;
+            _mapValue = lblMapName.Text.ToString();
 
             loadData(_mapValue);          
             _filter = "Map difficulty |*.txt";

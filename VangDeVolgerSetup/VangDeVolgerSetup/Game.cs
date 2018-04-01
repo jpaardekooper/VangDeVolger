@@ -60,14 +60,14 @@ namespace VangDeVolgerSetup
             boxAllHighScores.Visible = false;
 
             ///Able to get de level name of the screen to generate the levelwith          
-            label2.Text = StartScreen.MyTextBoxValue;
-            GetMapName = label2.Text.ToString();
+            lblLevelName.Text = StartScreen.MyTextBoxValue;
+            GetMapName = lblLevelName.Text.ToString();
             //use private function _startGame to start the game
             _startGame(); // call startGamefunction on line 46   
         }
 
         private void _startGame()
-        {         
+        {
             // giving the class _callGenerateLevel the level modus [ easy , hard , crazy ]         
             _callGeneratelevel.ReadMyTextLevelFile(this, GetMapName);
             _loadsprites(); //call loadsprites function on line 51
@@ -103,9 +103,9 @@ namespace VangDeVolgerSetup
                                 {
                                     j.Left += _callHeroClass._SpriteSpeed;
                                     //box can't go out of the screen from left side                                  
-                                        x.Left -= 40;
-                                        x.BringToFront();
-                                   
+                                    x.Left -= 40;
+                                    x.BringToFront();
+
                                 }
                                 else if (j.Right >= x.Left && _callHeroClass.HeroDirection == Sprite.Direction.Right)
                                 {
@@ -293,7 +293,7 @@ namespace VangDeVolgerSetup
             }
         }
 
-        private void Form2_KeyDown(object sender, KeyEventArgs e)
+        private void Game_KeyDown(object sender, KeyEventArgs e)
         {
             if (_gameOver) return; // if game over is true then do nothing
             if (_gamePaused) return; // if gamepaused is true then do nothing
@@ -327,7 +327,7 @@ namespace VangDeVolgerSetup
             }
         }
 
-        private void Form2_KeyUp(object sender, KeyEventArgs e)
+        private void Game_KeyUp(object sender, KeyEventArgs e)
         {
             switch (e.KeyCode)
             {
@@ -518,5 +518,6 @@ namespace VangDeVolgerSetup
             lblNewGame.BorderStyle = BorderStyle.None;
             lblNewGame.BackColor = Color.Transparent;
         }
+      
     }
 }

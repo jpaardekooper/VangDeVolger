@@ -28,38 +28,38 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.mapName = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.lblMapName = new System.Windows.Forms.Label();
+            this.btnSave = new System.Windows.Forms.Button();
             this.changeMapBox = new System.Windows.Forms.RichTextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.lblBoxInfo = new System.Windows.Forms.Label();
+            this.lblWallInfo = new System.Windows.Forms.Label();
+            this.lvlEmptyInfo = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // mapName
+            // lblMapName
             // 
-            this.mapName.AutoSize = true;
-            this.mapName.Font = new System.Drawing.Font("Mistral", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mapName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(114)))), ((int)(((byte)(204)))));
-            this.mapName.Location = new System.Drawing.Point(111, 19);
-            this.mapName.Name = "mapName";
-            this.mapName.Size = new System.Drawing.Size(112, 44);
-            this.mapName.TabIndex = 1;
-            this.mapName.Text = "example";
-            this.mapName.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.lblMapName.AutoSize = true;
+            this.lblMapName.Font = new System.Drawing.Font("Mistral", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMapName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(114)))), ((int)(((byte)(204)))));
+            this.lblMapName.Location = new System.Drawing.Point(111, 19);
+            this.lblMapName.Name = "lblMapName";
+            this.lblMapName.Size = new System.Drawing.Size(112, 44);
+            this.lblMapName.TabIndex = 1;
+            this.lblMapName.Text = "example";
+            this.lblMapName.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // button1
+            // btnSave
             // 
-            this.button1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(135, 439);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 32);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "Save";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.save_Click);
+            this.btnSave.Cursor = System.Windows.Forms.Cursors.Default;
+            this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSave.ForeColor = System.Drawing.Color.White;
+            this.btnSave.Location = new System.Drawing.Point(135, 439);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(75, 32);
+            this.btnSave.TabIndex = 3;
+            this.btnSave.Text = "Save";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.save_Click);
             // 
             // changeMapBox
             // 
@@ -76,35 +76,35 @@
             this.changeMapBox.TabIndex = 5;
             this.changeMapBox.Text = "";
             // 
-            // label1
+            // lblBoxInfo
             // 
-            this.label1.AutoSize = true;
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(116, 82);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(94, 13);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "D: Box (moveable)";
+            this.lblBoxInfo.AutoSize = true;
+            this.lblBoxInfo.ForeColor = System.Drawing.Color.White;
+            this.lblBoxInfo.Location = new System.Drawing.Point(116, 82);
+            this.lblBoxInfo.Name = "lblBoxInfo";
+            this.lblBoxInfo.Size = new System.Drawing.Size(94, 13);
+            this.lblBoxInfo.TabIndex = 6;
+            this.lblBoxInfo.Text = "D: Box (moveable)";
             // 
-            // label2
+            // lblWallInfo
             // 
-            this.label2.AutoSize = true;
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(116, 106);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(114, 13);
-            this.label2.TabIndex = 7;
-            this.label2.Text = "V: Wall (not moveable)";
+            this.lblWallInfo.AutoSize = true;
+            this.lblWallInfo.ForeColor = System.Drawing.Color.White;
+            this.lblWallInfo.Location = new System.Drawing.Point(116, 106);
+            this.lblWallInfo.Name = "lblWallInfo";
+            this.lblWallInfo.Size = new System.Drawing.Size(114, 13);
+            this.lblWallInfo.TabIndex = 7;
+            this.lblWallInfo.Text = "V: Wall (not moveable)";
             // 
-            // label3
+            // lvlEmptyInfo
             // 
-            this.label3.AutoSize = true;
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(116, 130);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(82, 13);
-            this.label3.TabIndex = 8;
-            this.label3.Text = "N: Empty object";
+            this.lvlEmptyInfo.AutoSize = true;
+            this.lvlEmptyInfo.ForeColor = System.Drawing.Color.White;
+            this.lvlEmptyInfo.Location = new System.Drawing.Point(116, 130);
+            this.lvlEmptyInfo.Name = "lvlEmptyInfo";
+            this.lvlEmptyInfo.Size = new System.Drawing.Size(82, 13);
+            this.lvlEmptyInfo.TabIndex = 8;
+            this.lvlEmptyInfo.Text = "N: Empty object";
             // 
             // ChangeMap
             // 
@@ -112,12 +112,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(32)))), ((int)(((byte)(108)))));
             this.ClientSize = new System.Drawing.Size(334, 499);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lvlEmptyInfo);
+            this.Controls.Add(this.lblWallInfo);
+            this.Controls.Add(this.lblBoxInfo);
             this.Controls.Add(this.changeMapBox);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.mapName);
+            this.Controls.Add(this.btnSave);
+            this.Controls.Add(this.lblMapName);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "ChangeMap";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -128,11 +128,11 @@
         }
 
         #endregion
-        private System.Windows.Forms.Label mapName;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label lblMapName;
+        private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.RichTextBox changeMapBox;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lblBoxInfo;
+        private System.Windows.Forms.Label lblWallInfo;
+        private System.Windows.Forms.Label lvlEmptyInfo;
     }
 }
