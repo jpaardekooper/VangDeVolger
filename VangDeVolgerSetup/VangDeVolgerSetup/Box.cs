@@ -10,10 +10,11 @@ namespace VangDeVolgerSetup
 {
     class Box : Sprite
     {
-        public PictureBox SpriteBox = new PictureBox();
+        public PictureBox SpriteBox { get; set; }
 
         public Box()
         {
+            SpriteBox = new PictureBox();
             SpriteBox.Size = new Size(_SpriteWidth, _SpriteHeight);
             SpriteBox.Name = "box";
             SpriteBox.Tag = SpriteBox.Name;

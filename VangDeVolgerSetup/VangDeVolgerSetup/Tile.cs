@@ -8,7 +8,7 @@ namespace VangDeVolgerSetup
 {
     public class Tile
     {
-        public Button BtnTile = new Button();
+        public Button BtnTile { get; set; }
         public Sprite Contains { get; set; }
 
         /// <summary>
@@ -19,6 +19,7 @@ namespace VangDeVolgerSetup
         /// <param name="type"></param>
         public Tile()
         {
+            BtnTile = new Button();
             BtnTile.Size = new Size(40, 40);
             BtnTile.Enabled = false;
             BtnTile.Image = Properties.Resources.empty;                 

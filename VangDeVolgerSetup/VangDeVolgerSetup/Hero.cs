@@ -12,11 +12,12 @@ namespace VangDeVolgerSetup
     {      
         public Direction HeroDirection { get; set; } // creating a public string called direction
         public int HeroHealth { get; set; }
-        public Timer Move = new Timer(); //creating a new timer event
+        public Timer Move { get; set; }
         public bool PlayerInput { get; set; } // creating a public string called direction
 
         public Hero() : base()
         {
+            Move = new Timer(); //creating a new timer event
             HeroHealth = 100;
             _SpriteSpeed = 5;
             _PbSpriteContainer = new PictureBox();
