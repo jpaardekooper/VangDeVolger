@@ -6,23 +6,22 @@ using System.Windows.Forms;
 
 namespace VangDeVolgerSetup
 {
-    public enum Direction
-    {
-        Left,
-        Right,
-        Up,
-        Down,
-        None
-    }
+
 
     public abstract class Sprite
     {
+        public enum Direction
+        {
+            Left, Right, Up, Down
+        }
+        public Direction SpriteDirection { get; set; }
         protected int _SpriteWidth { get; set; }
         protected int _SpriteHeight { get; set; }
         public int _SpriteSpeed { get; set; } // creating a integer called speed    
-        protected PictureBox _PbSpriteContainer { get; set; }
+        protected PictureBox _PbSpriteContainer { get; set; } //creatnig a picturebox for all sprites
         protected int _MaxGameWidth { get; set; }
-        protected int _MaxGameHeight { get; set; }       
+        protected int _MaxGameHeight { get; set; }
+
 
         public Sprite()
         {
@@ -30,12 +29,12 @@ namespace VangDeVolgerSetup
             _SpriteWidth = 40;
             _SpriteHeight = 40;
             _MaxGameWidth = 11 * 40;
-            _MaxGameHeight = 12 * 40 + 60;           
+            _MaxGameHeight = 12 * 40 + 60;
         }
 
         public void CheckForOutOfBounds()
         {
-            ////stop hero from moving against walls of canvas
+            ////stop sprite from moving against going out of the screen
             ////moving to left
             if (_PbSpriteContainer.Left < 0)
             {

@@ -11,7 +11,7 @@ namespace VangDeVolgerSetup
     class Box : Sprite
     {
         public PictureBox spriteBox = new PictureBox();
-       // public S Type { get; set; } 
+        
         /// <summary>
         /// creating a box sprite on top of a tile
         /// </summary>

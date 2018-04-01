@@ -99,7 +99,7 @@ namespace VangDeVolgerSetup
                             if (j.Bounds.IntersectsWith(x.Bounds))
                             {
                                 _updateScore();
-                                if (j.Left <= x.Right && _callHeroClass.HeroDirection == Direction.Left)
+                                if (j.Left <= x.Right && _callHeroClass.HeroDirection == Sprite.Direction.Left)
                                 {
                                     j.Left += _callHeroClass._SpriteSpeed;
                                     //box can't go out of the screen from left side                                  
@@ -107,7 +107,7 @@ namespace VangDeVolgerSetup
                                         x.BringToFront();
                                    
                                 }
-                                else if (j.Right >= x.Left && _callHeroClass.HeroDirection == Direction.Right)
+                                else if (j.Right >= x.Left && _callHeroClass.HeroDirection == Sprite.Direction.Right)
                                 {
                                     j.Left -= _callHeroClass._SpriteSpeed;
                                     //box can't go out of the screen from right side
@@ -117,7 +117,7 @@ namespace VangDeVolgerSetup
                                         x.BringToFront();
                                     }
                                 }
-                                else if (j.Bottom <= x.Bottom && _callHeroClass.HeroDirection == Direction.Down)
+                                else if (j.Bottom <= x.Bottom && _callHeroClass.HeroDirection == Sprite.Direction.Down)
                                 {
 
                                     j.Top -= _callHeroClass._SpriteSpeed;
@@ -128,7 +128,7 @@ namespace VangDeVolgerSetup
                                         x.BringToFront();
                                     }
                                 }
-                                else if (j.Bottom >= x.Top && _callHeroClass.HeroDirection == Direction.Up)
+                                else if (j.Bottom >= x.Top && _callHeroClass.HeroDirection == Sprite.Direction.Up)
                                 {
                                     j.Top += _callHeroClass._SpriteSpeed;
                                     //box can't go out of the screen from top side
@@ -148,19 +148,19 @@ namespace VangDeVolgerSetup
                             //moving to the left of the wall
                             if (j.Bounds.IntersectsWith(x.Bounds))
                             {
-                                if (j.Left <= x.Right && _callHeroClass.HeroDirection == Direction.Left)
+                                if (j.Left <= x.Right && _callHeroClass.HeroDirection == Sprite.Direction.Left)
                                 {
                                     j.Left += _callHeroClass._SpriteSpeed;
                                 }
-                                else if (j.Right >= x.Left && _callHeroClass.HeroDirection == Direction.Right)
+                                else if (j.Right >= x.Left && _callHeroClass.HeroDirection == Sprite.Direction.Right)
                                 {
                                     j.Left -= _callHeroClass._SpriteSpeed;
                                 }
-                                else if (j.Bottom <= x.Bottom && _callHeroClass.HeroDirection == Direction.Down)
+                                else if (j.Bottom <= x.Bottom && _callHeroClass.HeroDirection == Sprite.Direction.Down)
                                 {
                                     j.Top -= _callHeroClass._SpriteSpeed;
                                 }
-                                else if (j.Bottom >= x.Top && _callHeroClass.HeroDirection == Direction.Up)
+                                else if (j.Bottom >= x.Top && _callHeroClass.HeroDirection == Sprite.Direction.Up)
                                 {
                                     j.Top += _callHeroClass._SpriteSpeed;
 
@@ -175,19 +175,19 @@ namespace VangDeVolgerSetup
                             //moving to the left of the wall
                             if (j.Bounds.IntersectsWith(x.Bounds))
                             {
-                                if (j.Left <= x.Right && _callHeroClass.HeroDirection == Direction.Left)
+                                if (j.Left <= x.Right && _callHeroClass.HeroDirection == Sprite.Direction.Left)
                                 {
                                     j.Left += 40;
                                 }
-                                else if (j.Right >= x.Left && _callHeroClass.HeroDirection == Direction.Right)
+                                else if (j.Right >= x.Left && _callHeroClass.HeroDirection == Sprite.Direction.Right)
                                 {
                                     j.Left -= 40;
                                 }
-                                else if (j.Bottom <= x.Bottom && _callHeroClass.HeroDirection == Direction.Down)
+                                else if (j.Bottom <= x.Bottom && _callHeroClass.HeroDirection == Sprite.Direction.Down)
                                 {
                                     j.Top -= 40;
                                 }
-                                else if (j.Bottom >= x.Top && _callHeroClass.HeroDirection == Direction.Up)
+                                else if (j.Bottom >= x.Top && _callHeroClass.HeroDirection == Sprite.Direction.Up)
                                 {
                                     j.Top += 40;
 
@@ -303,20 +303,20 @@ namespace VangDeVolgerSetup
             {
                 case Keys.Left:
                     _callHeroClass.PlayerInput = true;
-                    _callHeroClass.HeroDirection = Direction.Left;
+                    _callHeroClass.HeroDirection = Sprite.Direction.Left;
                     _updateScore();
                     break;
                 case Keys.Right:
                     _callHeroClass.PlayerInput = true;
-                    _callHeroClass.HeroDirection = Direction.Right;
+                    _callHeroClass.HeroDirection = Sprite.Direction.Right;
                     break;
                 case Keys.Down:
                     _callHeroClass.PlayerInput = true;
-                    _callHeroClass.HeroDirection = Direction.Down;
+                    _callHeroClass.HeroDirection = Sprite.Direction.Down;
                     break;
                 case Keys.Up:
                     _callHeroClass.PlayerInput = true;
-                    _callHeroClass.HeroDirection = Direction.Up;
+                    _callHeroClass.HeroDirection = Sprite.Direction.Up;
                     break;
             }
 
