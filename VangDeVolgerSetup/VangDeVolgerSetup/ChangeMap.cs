@@ -56,6 +56,7 @@ namespace VangDeVolgerSetup
             //using FileStream to read the txt file out in a richTextBox
             using (FileStream filestream = File.Open(_levelModusPath, FileMode.Open, FileAccess.Read))
             {
+                //setting the chars to a byte array
                 byte[] filetext = new byte[1024];
                 UTF8Encoding temp = new UTF8Encoding(true);
 

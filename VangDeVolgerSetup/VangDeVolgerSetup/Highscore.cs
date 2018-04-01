@@ -1,9 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿/*
+ * Getting and Setting the data from Game.cs to Highscore RichTextBox
+ * We need 3 params: playername, highscore and levelmodus
+ */
+using System;
 using System.IO;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace VangDeVolgerSetup
 {
@@ -59,6 +60,7 @@ namespace VangDeVolgerSetup
 
         /// <summary>
         /// this constructor needs the levelmodus, playersname and score
+        /// in order to fill the screen
         /// </summary>
         /// <param name="lvl"></param>
         /// <param name="name"></param>
@@ -78,12 +80,13 @@ namespace VangDeVolgerSetup
         {
             using (FileStream readscores = File.Open(_filePath, FileMode.Open, FileAccess.Read, FileShare.None))
             {
-                byte[] b = new byte[1024];
+                //setting the data to a byte array
+                byte[] fileScores = new byte[1024];
                 UTF8Encoding temp = new UTF8Encoding(true);
-
-                while (readscores.Read(b, 0, b.Length) > 0)
+                //reading all data out and but them on a RichTextBox
+                while (readscores.Read(fileScores, 0, fileScores.Length) > 0)
                 {
-                    gameplatform.boxAllHighScores.Text = temp.GetString(b);
+                    gameplatform.boxAllHighScores.Text = temp.GetString(fileScores);
                 }
 
             }

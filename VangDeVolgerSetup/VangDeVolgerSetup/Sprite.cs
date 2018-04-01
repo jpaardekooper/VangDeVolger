@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿/*
+ * This is the parent class of the following classes: Hero, Box, Wall and Enemy
+ * it has 1 method in order to keep them on the screen
+ */
 using System.Windows.Forms;
 
 namespace VangDeVolgerSetup

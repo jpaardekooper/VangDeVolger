@@ -9,11 +9,10 @@ using System.Windows.Forms;
 namespace VangDeVolgerSetup
 {
     class Hero : Sprite
-    {
-        //    public PictureBox _spriteHero = new PictureBox(); // create a picture box    
+    {      
         public Direction HeroDirection { get; set; } // creating a public string called direction
         public int HeroHealth { get; set; }
-        public Timer Move = new Timer();
+        public Timer Move = new Timer(); //creating a new timer event
         public bool PlayerInput { get; set; } // creating a public string called direction
 
         public Hero() : base()

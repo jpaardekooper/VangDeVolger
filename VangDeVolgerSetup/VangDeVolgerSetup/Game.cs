@@ -4,15 +4,20 @@
  * Once this form has recieved the level modus it will load the GenerateLevel.cs with the correct levelmodus.
  * After the level is loaded. 1 hero will be added to the screen and 1 enemy.
  * This Game.cs has the task to determine if there is an collision going. This can be found in GameEngine method.
+ * we disabled  Application.EnableVisualStyles(); in order to change some  visuals for example the progressbar
  * 
- * small tutorial
+ * [  small tutorial  ]
+ * 
  * The user wins if the enemy progressbar is 0;
  * the user loses if hes progressbar is 0;
+ * 
+ * the user cannot walk through (water) walls.
+ * the user can push boxes.
  * 
  * user loses health if enemy touches him
  * enemy loses health if enemy touches a box
  * 
- * user can walk with the arrow keys (up, down, left, right)
+ * user can walk with the arrow keys (up, down, left, right) this will also update the score
  * 
  * once the player wins or loses the game, the game will ask for a name to fill in for the highscore
  */

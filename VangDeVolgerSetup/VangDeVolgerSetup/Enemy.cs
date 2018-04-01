@@ -9,11 +9,9 @@ using System.Windows.Forms;
 namespace VangDeVolgerSetup
 {
     class Enemy : Sprite
-    {
-        //   public PictureBox _spriteEnemy = new PictureBox();
+    {       
         public Direction EnemyDirection { get; set; } // creating a public string called direction
         public int EnemyHealth { get; set; }
-
 
         public Enemy() : base()
         {
@@ -52,12 +50,16 @@ namespace VangDeVolgerSetup
         }      
 
         /// <summary>
-        /// checking the Neighbour of the current tile
+        /// Checking the four positions of the Tile
+        ///            N
+        ///         W [x] O
+        ///            S
+        /// if the tile is empty we return true else it is false
         /// </summary>
         /// <param name="array"></param>
         /// <param name="CellX"></param>
         /// <param name="CellY"></param>
-        /// <returns></returns>
+        /// <returns></returns>        
         public static bool HasNeighbour(Tile[,] array, int CellX, int CellY, Direction direction)
         {
             if (CellX < 10 && array[CellX + 1, CellY].Contains is Box && direction == Direction.Right)

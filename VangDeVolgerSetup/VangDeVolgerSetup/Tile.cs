@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿/*
+ * A Tile knows what Sprite is on it everytime we create a new Tile we need the location
+ */
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace VangDeVolgerSetup
