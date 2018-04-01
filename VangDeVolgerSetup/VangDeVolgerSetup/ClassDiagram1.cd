@@ -10,7 +10,7 @@
   <Class Name="VangDeVolgerSetup.ChangeMap" Collapsed="true">
     <Position X="15.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAABAAACAAABAAAACEAAACAAAIAIAQAAAQIAAAAAA=</HashCode>
+      <HashCode>AAAAABAAACAAABAAAACEAAACAAAIAIAQAAAAIAAAAAg=</HashCode>
       <FileName>ChangeMap.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -24,7 +24,7 @@
   <Class Name="VangDeVolgerSetup.Game" Collapsed="true">
     <Position X="17.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>CISBoBIEIDIAFDQAECCAYAEiAIQABAIAAEAEAABAIAg=</HashCode>
+      <HashCode>CICBoBIEIDIAFDQAECCAYAEiAIQABAIAAEAEACBAIAg=</HashCode>
       <FileName>Game.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -66,7 +66,7 @@
   <Class Name="VangDeVolgerSetup.StartScreen" Collapsed="true">
     <Position X="17.25" Y="2.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>ACBAAAAAACAMBgQpBAKAIAAiAABAAQAAAEACAAQgCAg=</HashCode>
+      <HashCode>ACBAAAAAACAMAgQpBAKAIAAiAABAAQAAAEACAAQgCAg=</HashCode>
       <FileName>StartScreen.cs</FileName>
     </TypeIdentifier>
   </Class>

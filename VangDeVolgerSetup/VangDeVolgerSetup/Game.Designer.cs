@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.GameEngineTimer = new System.Windows.Forms.Timer(this.components);
             this.label2 = new System.Windows.Forms.Label();
             this.lblPause = new System.Windows.Forms.Label();
             this.pause = new System.Windows.Forms.Label();
@@ -45,11 +45,11 @@
             this.lblHighscore = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // timer1
+            // GameEngineTimer
             // 
-            this.timer1.Enabled = true;
-            this.timer1.Interval = 24;
-            this.timer1.Tick += new System.EventHandler(this.GameEngine);
+            this.GameEngineTimer.Enabled = true;
+            this.GameEngineTimer.Interval = 24;
+            this.GameEngineTimer.Tick += new System.EventHandler(this.GameEngine);
             // 
             // label2
             // 
@@ -221,7 +221,7 @@
         }
 
         #endregion
-        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Timer GameEngineTimer;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lblPause;
         private System.Windows.Forms.Label pause;
