@@ -24,7 +24,7 @@ namespace VangDeVolgerSetup
             _PbSpriteContainer.Name = "player";
             _PbSpriteContainer.Tag = _PbSpriteContainer.Name;  
             _PbSpriteContainer.Top = 100;
-            _PbSpriteContainer.Size = new Size(_SpriteWidth, _SpriteHeight);
+            _PbSpriteContainer.Size = new Size(_SpriteWidth - 5, _SpriteHeight - 5);
             _PbSpriteContainer.SizeMode = PictureBoxSizeMode.Zoom;
             _PbSpriteContainer.Image = Properties.Resources.Nright;
 
