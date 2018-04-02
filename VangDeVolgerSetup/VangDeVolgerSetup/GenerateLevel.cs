@@ -54,17 +54,17 @@ namespace VangDeVolgerSetup
         /// Also while reading the data out we  put them in an Tile[,] 2D array so we can place them on the gameplatform screen.
         /// </summary>
         /// <param name="gameplatform"></param>
-        /// <param name="Name"></param>
-        public void ReadMyTextLevelFile(Game gameplatform, string Name)
+        /// <param name="name"></param>
+        public void ReadMyTextLevelFile(Game gameplatform, string name)
         {
             //if we get an error show it
-            if (Name.Equals(""))
+            if (name.Equals(""))
             {
                 MessageBox.Show("no level found");
             }
 
             //filling the levelModus          
-            switch (Name)
+            switch (name)
             {
                 case "easy":
                     _levelModus = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..\\..\\Levels\\easy.txt");
@@ -117,7 +117,7 @@ namespace VangDeVolgerSetup
                         GenerateLevelMap[_iCol, _iRow] = tileObject; //assigning the Tile object to the array                     
                         gameplatform.Controls.Add(tileObject.BtnTile);  //adding the tile to Form2 so we can see it                        
                         //its not a bug but a feature
-                        if (Name.Equals("crazy"))
+                        if (name.Equals("crazy"))
                         {
                             Console.WriteLine("crazy");
                             tileObject.BtnTile.BringToFront();

@@ -43,6 +43,7 @@
             this.btnShowScore = new System.Windows.Forms.Button();
             this.boxAllHighScores = new System.Windows.Forms.RichTextBox();
             this.lblHighscore = new System.Windows.Forms.Label();
+            this.lblEnterName = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // GameEngineTimer
@@ -67,7 +68,7 @@
             this.lblPause.AutoSize = true;
             this.lblPause.Font = new System.Drawing.Font("Mistral", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPause.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(114)))), ((int)(((byte)(204)))));
-            this.lblPause.Location = new System.Drawing.Point(131, 220);
+            this.lblPause.Location = new System.Drawing.Point(119, 231);
             this.lblPause.Name = "lblPause";
             this.lblPause.Size = new System.Drawing.Size(227, 57);
             this.lblPause.TabIndex = 1;
@@ -117,7 +118,7 @@
             this.lblGameOver.AutoSize = true;
             this.lblGameOver.Font = new System.Drawing.Font("Mistral", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblGameOver.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(114)))), ((int)(((byte)(204)))));
-            this.lblGameOver.Location = new System.Drawing.Point(141, 131);
+            this.lblGameOver.Location = new System.Drawing.Point(143, 132);
             this.lblGameOver.Name = "lblGameOver";
             this.lblGameOver.Size = new System.Drawing.Size(203, 57);
             this.lblGameOver.TabIndex = 8;
@@ -149,7 +150,7 @@
             // 
             // inputPlayerName
             // 
-            this.inputPlayerName.Location = new System.Drawing.Point(196, 197);
+            this.inputPlayerName.Location = new System.Drawing.Point(191, 231);
             this.inputPlayerName.Name = "inputPlayerName";
             this.inputPlayerName.Size = new System.Drawing.Size(94, 20);
             this.inputPlayerName.TabIndex = 11;
@@ -157,9 +158,10 @@
             // 
             // btnShowScore
             // 
-            this.btnShowScore.Location = new System.Drawing.Point(206, 290);
+            this.btnShowScore.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(114)))), ((int)(((byte)(204)))));
+            this.btnShowScore.Location = new System.Drawing.Point(191, 301);
             this.btnShowScore.Name = "btnShowScore";
-            this.btnShowScore.Size = new System.Drawing.Size(75, 23);
+            this.btnShowScore.Size = new System.Drawing.Size(94, 23);
             this.btnShowScore.TabIndex = 12;
             this.btnShowScore.Text = "submit";
             this.btnShowScore.UseVisualStyleBackColor = true;
@@ -171,7 +173,7 @@
             this.boxAllHighScores.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.boxAllHighScores.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.boxAllHighScores.ForeColor = System.Drawing.Color.White;
-            this.boxAllHighScores.Location = new System.Drawing.Point(58, 143);
+            this.boxAllHighScores.Location = new System.Drawing.Point(57, 158);
             this.boxAllHighScores.Name = "boxAllHighScores";
             this.boxAllHighScores.ReadOnly = true;
             this.boxAllHighScores.Size = new System.Drawing.Size(374, 328);
@@ -183,11 +185,21 @@
             this.lblHighscore.AutoSize = true;
             this.lblHighscore.Font = new System.Drawing.Font("Mistral", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblHighscore.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(114)))), ((int)(((byte)(204)))));
-            this.lblHighscore.Location = new System.Drawing.Point(150, 74);
+            this.lblHighscore.Location = new System.Drawing.Point(155, 75);
             this.lblHighscore.Name = "lblHighscore";
             this.lblHighscore.Size = new System.Drawing.Size(181, 57);
             this.lblHighscore.TabIndex = 14;
             this.lblHighscore.Text = "Highscore!";
+            // 
+            // lblEnterName
+            // 
+            this.lblEnterName.AutoSize = true;
+            this.lblEnterName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(114)))), ((int)(((byte)(204)))));
+            this.lblEnterName.Location = new System.Drawing.Point(207, 204);
+            this.lblEnterName.Name = "lblEnterName";
+            this.lblEnterName.Size = new System.Drawing.Size(63, 13);
+            this.lblEnterName.TabIndex = 15;
+            this.lblEnterName.Text = "enter name:";
             // 
             // Game
             // 
@@ -196,6 +208,7 @@
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(32)))), ((int)(((byte)(108)))));
             this.ClientSize = new System.Drawing.Size(491, 552);
+            this.Controls.Add(this.lblEnterName);
             this.Controls.Add(this.lblHighscore);
             this.Controls.Add(this.boxAllHighScores);
             this.Controls.Add(this.btnShowScore);
@@ -235,5 +248,6 @@
         private System.Windows.Forms.Button btnShowScore;
         public System.Windows.Forms.RichTextBox boxAllHighScores;
         private System.Windows.Forms.Label lblHighscore;
+        private System.Windows.Forms.Label lblEnterName;
     }
 }

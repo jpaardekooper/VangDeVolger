@@ -25,9 +25,9 @@ namespace VangDeVolgerSetup
             BtnTile.Image = Properties.Resources.empty;                 
         }
 
-        public void PlaceTile(int x, int y)
+        public void PlaceTile(int LocationX, int LocationY)
         {
-            BtnTile.Location = new Point(x, y);
+            BtnTile.Location = new Point(LocationX, LocationY);
         }
 
         

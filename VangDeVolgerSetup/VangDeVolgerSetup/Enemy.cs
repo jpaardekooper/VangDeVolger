@@ -32,7 +32,7 @@ namespace VangDeVolgerSetup
         /// Create the sprite of enemy and adding it to the form
         /// </summary>
         /// <param name="form"></param>
-        public void CreateEnemyInstance(Form gameplatform)
+        public void CreateEnemyInstance(Game gameplatform)
         {
             gameplatform.Controls.Add(_PbSpriteContainer);
             _PbSpriteContainer.BringToFront();
@@ -47,7 +47,7 @@ namespace VangDeVolgerSetup
         {
             _PbSpriteContainer.Image = Properties.Resources.enemyRight;
 
-        }      
+        }
 
         /// <summary>
         /// Checking the four positions of the Tile
@@ -57,27 +57,27 @@ namespace VangDeVolgerSetup
         /// if the tile is empty we return true else it is false
         /// </summary>
         /// <param name="array"></param>
-        /// <param name="CellX"></param>
-        /// <param name="CellY"></param>
+        /// <param name="LocationX"></param>
+        /// <param name="LocationY"></param>
         /// <returns></returns>        
-        public static bool HasNeighbour(Tile[,] array, int CellX, int CellY, Direction direction)
+        public static bool HasNeighbour(Tile[,] array, int LocationX, int LocationY, Direction direction)
         {
-            if (CellX < 10 && array[CellX + 1, CellY].Contains is Box && direction == Direction.Right)
+            if (LocationX < 10 && array[LocationX + 1, LocationY].Contains is Box && direction == Direction.Right)
             {
              //   Console.WriteLine("right is true");
                 return true;
             }
-            else if (CellX > 0 && array[CellX - 1, CellY].Contains is Box && direction == Direction.Left)
+            else if (LocationX > 0 && array[LocationX - 1, LocationY].Contains is Box && direction == Direction.Left)
             {
               //  Console.WriteLine("left is true");
                 return true;
             }
-            else if (CellY < 10 && array[CellX, CellY + 1].Contains is Box && direction == Direction.Up)
+            else if (LocationY < 10 && array[LocationX, LocationY + 1].Contains is Box && direction == Direction.Up)
             {
             //    Console.WriteLine("top is true");
                 return true;
             }
-            else if (CellY < 0 && array[CellX, CellY - 1].Contains is Box && direction == Direction.Down)
+            else if (LocationY < 0 && array[LocationX, LocationY - 1].Contains is Box && direction == Direction.Down)
             {
            //     Console.WriteLine("bottom is true");
                 return true;

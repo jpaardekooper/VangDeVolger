@@ -58,6 +58,7 @@ namespace VangDeVolgerSetup
             btnShowScore.Visible = false;
             lblHighscore.Visible = false;
             boxAllHighScores.Visible = false;
+            lblEnterName.Visible = false;
 
             ///Able to get de level name of the screen to generate the levelwith          
             lblLevelName.Text = StartScreen.MyTextBoxValue;
@@ -230,7 +231,7 @@ namespace VangDeVolgerSetup
                             //moving to the left of the wall
                             if (j.Bounds.IntersectsWith(x.Bounds))
                             {
-                                CheckEnemyHealth();
+                                _checkEnemyHealth();
                                 _updateScore();
                                 _callEnemyClass.EnemyHealth -= 1;
 
@@ -260,7 +261,7 @@ namespace VangDeVolgerSetup
                             //moving to the left of the wall
                             if (j.Bounds.IntersectsWith(x.Bounds))
                             {
-                                CheckHeroHealth();
+                                _checkHeroHealth();
                                 _callHeroClass.HeroHealth -= 1;
                                 //enemy player is able to heal himself if hes health is lower than 95
                                 if (_callEnemyClass.EnemyHealth < 95)
@@ -403,6 +404,7 @@ namespace VangDeVolgerSetup
             lblHighscore.Visible = false;
             boxAllHighScores.Visible = false;
             lblGameOver.Visible = false;
+            lblEnterName.Visible = false;
             _callHeroClass.Move.Start();
             GameEngineTimer.Start();
         }
@@ -420,13 +422,14 @@ namespace VangDeVolgerSetup
             btnShowScore.Visible = true;
             lblNewGame.Visible = true;
             lblGameOver.Visible = true;
+            lblEnterName.Visible = true;
 
             _callHeroClass.Move.Stop(); //stoping the timer of the hero
             GameEngineTimer.Stop(); //stopping the timer of the gameEngine
         }
 
         //this will change the color of the hero progress bar
-        private void CheckHeroHealth()
+        private void _checkHeroHealth()
         {
             ///
             ///Hero health bar
@@ -454,7 +457,7 @@ namespace VangDeVolgerSetup
         }
 
         //this will change the color of the Enemy progress bar
-        private void CheckEnemyHealth()
+        private void _checkEnemyHealth()
         {
             ///
             /// enemy health bar
@@ -495,6 +498,7 @@ namespace VangDeVolgerSetup
             btnShowScore.Visible = false;
             inputPlayerName.Visible = false;
             lblHighscore.Visible = true;
+            lblEnterName.Visible = false;
 
             //filling the method with mapname, playername, and score
             _callHighscoreClass.showAllHighScores(GetMapName, inputPlayerName.Text.ToString(), lblScore.Text.ToString());
