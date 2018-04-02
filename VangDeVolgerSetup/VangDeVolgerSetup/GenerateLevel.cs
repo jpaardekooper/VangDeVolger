@@ -119,7 +119,7 @@ namespace VangDeVolgerSetup
                         //its not a bug but a feature
                         if (name.Equals("crazy"))
                         {
-                            Console.WriteLine("crazy");
+                           // Console.WriteLine("crazy");
                             tileObject.BtnTile.BringToFront();
                         }
 

@@ -11,12 +11,7 @@ namespace VangDeVolgerSetup
         public Button BtnTile { get; set; }
         public Sprite Contains { get; set; }
 
-        /// <summary>
-        /// checking what type the tile is and filling it in the correct array
-        /// </summary>
-        /// <param name="x"></param>
-        /// <param name="y"></param>
-        /// <param name="type"></param>
+    
         public Tile()
         {
             BtnTile = new Button();
@@ -24,7 +19,11 @@ namespace VangDeVolgerSetup
             BtnTile.Enabled = false;
             BtnTile.Image = Properties.Resources.empty;                 
         }
-
+        /// <summary>
+        /// A tile knows what sprite is standing on top of it
+        /// </summary>
+        /// <param name="LocationX"></param>
+        /// <param name="LocationY"></param>
         public void PlaceTile(int LocationX, int LocationY)
         {
             BtnTile.Location = new Point(LocationX, LocationY);

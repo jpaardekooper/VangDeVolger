@@ -6,8 +6,6 @@ using System.Windows.Forms;
 
 namespace VangDeVolgerSetup
 {
-
-
     abstract public class Sprite
     {
         public enum Direction
@@ -21,8 +19,7 @@ namespace VangDeVolgerSetup
         protected PictureBox _PbSpriteContainer { get; set; } //creatnig a picturebox for all sprites
         protected int _MaxGameWidth { get; set; }
         protected int _MaxGameHeight { get; set; }
-
-
+        
         public Sprite()
         {
             _SpriteSpeed = 0;
@@ -56,7 +53,5 @@ namespace VangDeVolgerSetup
                 _PbSpriteContainer.Top -= _SpriteSpeed;
             }
         }
-
-
     }
 }

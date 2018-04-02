@@ -2,6 +2,9 @@
  * This is the StartScreen of the game Vang de Volger.
  * The user has three options: easy, hard and crazy. Clicking on one of these will generate a new window of Game.cs and load the game
  * The user can also change the map clicking on the change map button. This will create a new window of ChangeMap.cs
+ * This program was created by:
+ * Jasper Paardekooper 17039886
+ * Roos Hoogervorst 17036895
  * 
  */
 using System;
@@ -15,7 +18,7 @@ namespace VangDeVolgerSetup
     {
         //the value MyTextBoxValue and myMapValue is needed to pass it to the game window in order to generate the correct map.
         public static string MyTextBoxValue { get; set; }
-        public static string myMapValue { get; set; }
+        public static string MyMapValue { get; set; }
 
         public StartScreen()
         {
@@ -44,7 +47,7 @@ namespace VangDeVolgerSetup
        //passing myMapValue data to the ChangeMap form in order to change the map
         private void changeEasyMap_Click(object sender, EventArgs e)
         {
-            myMapValue = easy.Text;
+            MyMapValue = easy.Text;
             ChangeMap ChangeMap = new ChangeMap();
             ChangeMap.Show();
         }
@@ -73,7 +76,7 @@ namespace VangDeVolgerSetup
         //passing myMapValue data to the ChangeMap form in order to change the map
         private void changeHardMap_Click(object sender, EventArgs e)
         {
-            myMapValue = hard.Text;
+            MyMapValue = hard.Text;
             ChangeMap ChangeMap = new ChangeMap();
             ChangeMap.Show();
         }
@@ -102,7 +105,7 @@ namespace VangDeVolgerSetup
         //passing myMapValue data to the ChangeMap form in order to change the map
         private void changeCrazyMap_Click(object sender, EventArgs e)
         {
-            myMapValue = crazy.Text;
+            MyMapValue = crazy.Text;
             ChangeMap ChangeMap = new ChangeMap();
             ChangeMap.Show();
         }

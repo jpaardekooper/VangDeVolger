@@ -30,7 +30,7 @@ namespace VangDeVolgerSetup
         {
             InitializeComponent();
 
-            lblMapName.Text = StartScreen.myMapValue;
+            lblMapName.Text = StartScreen.MyMapValue;
             _mapValue = lblMapName.Text.ToString();
 
             loadData(_mapValue);          
