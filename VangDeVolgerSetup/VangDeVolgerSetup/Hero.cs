@@ -15,7 +15,7 @@ namespace VangDeVolgerSetup
         public Timer Move { get; set; }
         public bool PlayerInput { get; set; } // creating a public string called direction
 
-        public Hero() : base()
+        public Hero()
         {
             Move = new Timer(); //creating a new timer event
             HeroHealth = 100;
@@ -24,7 +24,7 @@ namespace VangDeVolgerSetup
             _PbSpriteContainer.Name = "player";
             _PbSpriteContainer.Tag = _PbSpriteContainer.Name;  
             _PbSpriteContainer.Top = 100;
-            _PbSpriteContainer.Size = new Size(_SpriteWidth - 5, _SpriteHeight - 5);
+            _PbSpriteContainer.Size = new Size(_SpriteSize, _SpriteSize);
             _PbSpriteContainer.SizeMode = PictureBoxSizeMode.Zoom;
             _PbSpriteContainer.Image = Properties.Resources.Nright;
 

@@ -15,7 +15,7 @@ namespace VangDeVolgerSetup
         public Wall()
         {
             SpriteWall = new PictureBox();
-            SpriteWall.Size = new Size(_SpriteHeight, _SpriteHeight);
+            SpriteWall.Size = new Size(_SpriteSize, _SpriteSize);
             SpriteWall.Name = "wall";
             SpriteWall.Tag = SpriteWall.Name;
             SpriteWall.Image = Properties.Resources.wall;

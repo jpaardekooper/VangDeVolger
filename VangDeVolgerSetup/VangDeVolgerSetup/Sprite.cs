@@ -13,20 +13,17 @@ namespace VangDeVolgerSetup
             Left, Right, Up, Down
         }
         public Direction SpriteDirection { get; set; }
-        protected int _SpriteWidth { get; set; }
-        protected int _SpriteHeight { get; set; }
+        protected const int _SpriteSize = 40;       
         public int _SpriteSpeed { get; set; } // creating a integer called speed    
         protected PictureBox _PbSpriteContainer { get; set; } //creatnig a picturebox for all sprites
-        protected int _MaxGameWidth { get; set; }
-        protected int _MaxGameHeight { get; set; }
-        
+        protected const int _MaxGameWidth =  11 * 40;
+        protected const int _MaxGameHeight = 12 * 40 + 60;
+
         public Sprite()
         {
             _SpriteSpeed = 0;
-            _SpriteWidth = 40;
-            _SpriteHeight = 40;
-            _MaxGameWidth = 11 * 40;
-            _MaxGameHeight = 12 * 40 + 60;
+         
+           
         }
 
         public void CheckForOutOfBounds()

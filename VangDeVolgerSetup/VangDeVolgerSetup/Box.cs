@@ -15,7 +15,7 @@ namespace VangDeVolgerSetup
         public Box()
         {
             SpriteBox = new PictureBox();
-            SpriteBox.Size = new Size(_SpriteWidth, _SpriteHeight);
+            SpriteBox.Size = new Size(_SpriteSize, _SpriteSize);
             SpriteBox.Name = "box";
             SpriteBox.Tag = SpriteBox.Name;
             SpriteBox.Image = Properties.Resources.box;
