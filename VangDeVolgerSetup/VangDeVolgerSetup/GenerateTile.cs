@@ -161,7 +161,9 @@ namespace VangDeVolgerSetup
         /// </summary>
         private void SetNeighbours()
         {
-            //checking what is inside the array         
+            //checking what is inside the array    
+            // 0 = row
+            // 1 = column
             for (int i = 0; i < TilesArray.GetLength(0); i++)
             {
                 for (int j = 0; j < TilesArray.GetLength(1); j++)
@@ -174,23 +176,26 @@ namespace VangDeVolgerSetup
                     {
                         { 'T', TilesArray[i,j] }
                     };
-                    //  Console.Write(" "+ TilesArray[i,j]);
-                    //if (i != 0)
-                    //{
-                    //    _neighbour.Add('W', TilesArray[i, j - 1]);
-                    //}
-                    //if (i != TilesArray.GetLength(0) - 1)
-                    //{
-                    //    _neighbour.Add('E', TilesArray[i, j + 1]);
-                    //}
-                    //if (j != 0)
-                    //{
-                    //    _neighbour.Add('N', TilesArray[i - 1, j]);
-                    //}
-                    //if (j != TilesArray.GetLength(1) - 1)
-                    //{
-                    //    _neighbour.Add('S', TilesArray[i + 1, j]);
-                    //}
+                      Console.Write(" "+ TilesArray[i,j]);
+                    if (i != 0 )
+                    {
+                        _neighbour.Add('W', TilesArray[i -1, j]);       
+                        
+                        Console.WriteLine("Dit zit ernaast" + TilesArray[i - 1, j].Contains);   
+                    }
+                    if (i != TilesArray.GetLength(0) - 1)
+                    {
+                        _neighbour.Add('E', TilesArray[i + 1, j]);
+                    }
+                    if (j != 0 && i != 0)
+                    {
+                        _neighbour.Add('N', TilesArray[i, j - 1]);
+                    }
+                    if (j != TilesArray.GetLength(1) - 1)
+                    {
+                        _neighbour.Add('S', TilesArray[i, j + 1]);
+                    }
+
                 }
                 Console.WriteLine();
 

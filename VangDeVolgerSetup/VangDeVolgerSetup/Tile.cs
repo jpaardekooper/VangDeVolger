@@ -28,8 +28,7 @@ namespace VangDeVolgerSetup
         public void PlaceTile(int row, int col)
         {
             BtnTile.Location = new Point(row, col); //location of the ground is row by col
-        }
+        }        
 
-        
     }
 }
