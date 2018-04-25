@@ -21,19 +21,10 @@ namespace VangDeVolgerSetup
             }
         }
 
-        public enum TileType
-        {
-            empty,
-            hero,
-            enemy,
-            wall,
-            box
-        }
-
-        public TileType Type { get; set; }
+       
         public Tile[,] TilesArray { get; set; }
         //basic information of the picturebox (pb) width, height and position 
-        private Dictionary<char, Tile> _neighbour { get; set; }
+      public Tile.TileType Type { get; set; }
         private const int _tileSize = 40;
         private const int _maxArrLength = 12;
         private int _currentPositionY { get; set; }
@@ -97,40 +88,63 @@ namespace VangDeVolgerSetup
                     foreach (string c in stringLineArray)
                     {
                         //creating a Tile object to fill our Game with tiles
-                        Tile tileObject = new Tile();
-                        tileObject.PlaceTile(_currentPositionX, _currentPositionY + 100);
+
+
+                        //switch (c)
+                        //{
+                        //    case "D":
+                        //        //creating a pictureBox when the char D is found in txt.file
+                        //        Box box = new Box();
+                        //        box.PlaceBox(_currentPositionY, _currentPositionX + 100);
+                        //        gameplatform.Controls.Add(box.SpriteBox);  //adding the tile to Form2 so we can see it   
+                        //        box.SpriteBox.BringToFront();
+                        //        tileObject.Contains = TileType.box;
+                        //        break;
+                        //    case "V":
+                        //        //creating a pictureBox when the char V is found in txt.file
+                        //        Wall wall = new Wall();
+                        //        wall.PlaceWall(_currentPositionY, _currentPositionX + 100);
+                        //        gameplatform.Controls.Add(wall.SpriteWall);  //adding the tile to Form2 so we can see it   
+                        //        wall.SpriteWall.BringToFront();
+                        //        tileObject.Contains = TileType.wall;
+                        //        break;
+                        //    case "N":
+                        //        tileObject.Contains = TileType.empty;
+                        //        break;
+                        //    //catching the error //creating a button if a char N is found with the type empty and img empty
+                        //    case "?":
+                        //        tileObject.Contains = TileType.empty;
+                        //        break;
 
                         switch (c)
                         {
                             case "D":
                                 //creating a pictureBox when the char D is found in txt.file
-                                Box box = new Box();
-                                box.PlaceBox(_currentPositionY, _currentPositionX + 100);
-                                gameplatform.Controls.Add(box.SpriteBox);  //adding the tile to Form2 so we can see it   
-                                box.SpriteBox.BringToFront();
-                                tileObject.Contains = TileType.box;
+                                Type = Tile.TileType.box;
                                 break;
                             case "V":
                                 //creating a pictureBox when the char V is found in txt.file
-                                Wall wall = new Wall();
-                                wall.PlaceWall(_currentPositionY, _currentPositionX + 100);
-                                gameplatform.Controls.Add(wall.SpriteWall);  //adding the tile to Form2 so we can see it   
-                                wall.SpriteWall.BringToFront();
-                                tileObject.Contains = TileType.wall;
+                                Type = Tile.TileType.wall;
                                 break;
                             case "N":
-                                tileObject.Contains = TileType.empty;
+                                Type = Tile.TileType.empty;
                                 break;
                             //catching the error //creating a button if a char N is found with the type empty and img empty
                             case "?":
-                                tileObject.Contains = TileType.empty;
+                                Type = Tile.TileType.empty;
                                 break;
 
 
                         }
-                        TilesArray[_rowX, _colY] = tileObject; //assigning the Tile object to the array      
 
-                        gameplatform.Controls.Add(tileObject.BtnTile);  //adding the tile to Form2 so we can see it                        
+                        Tile tileObject = new Tile(Type);
+                        tileObject.PlaceTile(_currentPositionX, _currentPositionY + 100);
+
+                        TilesArray[_rowX, _colY] = tileObject; //assigning the Tile object to the array    
+
+                        gameplatform.Controls.Add(tileObject.BtnTile);  //adding the tile to Form2 so we can see it   
+
+                      
                         //its not a bug but a feature
                         if (name.Equals("crazy"))
                         {
@@ -152,80 +166,23 @@ namespace VangDeVolgerSetup
                     //     Console.WriteLine();
                 }
                 strReader.Close(); //closing the file
+                setArrayLevel();
             }
-            SetNeighbours();
+
         }
 
-        /// <summary>
-        /// placing ne
-        /// </summary>
-        private void SetNeighbours()
+        private void setArrayLevel()
         {
-            //checking what is inside the array    
-            // 0 = row
-            // 1 = column
             for (int i = 0; i < TilesArray.GetLength(0); i++)
             {
                 for (int j = 0; j < TilesArray.GetLength(1); j++)
                 {
-                    Console.Write(TilesArray[i, j].Contains + "\t");
+                    Console.Write(TilesArray[i, j].Contains);
 
-                    // checks for the borders and adds the neighbor if it exists
-                    // in the board
-                    Dictionary<char, Tile> _neighbour = new Dictionary<char, Tile>
-                    {
-                        { 'T', TilesArray[i,j] }
-                    };
-                      Console.Write(" "+ TilesArray[i,j]);
-                    if (i != 0 )
-                    {
-                        _neighbour.Add('W', TilesArray[i -1, j]);       
-                        
-                        Console.WriteLine("Dit zit ernaast" + TilesArray[i - 1, j].Contains);   
-                    }
-                    if (i != TilesArray.GetLength(0) - 1)
-                    {
-                        _neighbour.Add('E', TilesArray[i + 1, j]);
-                    }
-                    if (j != 0 && i != 0)
-                    {
-                        _neighbour.Add('N', TilesArray[i, j - 1]);
-                    }
-                    if (j != TilesArray.GetLength(1) - 1)
-                    {
-                        _neighbour.Add('S', TilesArray[i, j + 1]);
-                    }
-
+                    TilesArray[i, j].SetNeighbours(TilesArray, i, j);
                 }
                 Console.WriteLine();
-
             }
-
-
         }
-
-        //public void EnemyMovement()
-        //{
-        //    // Enemy.HasNeighbour(TilesArray, 11, 11, Direction.Right);
-
-        //    Console.WriteLine(TilesArray);
-
-        //    if (Enemy.HasNeighbour(TilesArray, 11, 11, Direction.Right))
-        //    {              
-        //        Console.WriteLine("ri");
-        //    }
-        //    else if (Enemy.HasNeighbour(TilesArray, 11, 11, Direction.Left))
-        //    {
-        //        Console.WriteLine("le"); 
-        //    }
-        //    else if (Enemy.HasNeighbour(TilesArray, 11, 11, Direction.Up))
-        //    {
-        //        Console.WriteLine("up");
-        //    }
-        //    else if (Enemy.HasNeighbour(TilesArray, 11, 11, Direction.Down))
-        //    {
-        //        Console.WriteLine("do");
-        //    }
-        //}
     }
 }
