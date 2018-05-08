@@ -1,188 +1,162 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Windows.Forms;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace VangDeVolgerSetup
 {
-    public class GenerateTile
+    /// <summary>
+    /// Gameboard Object makes a tileboard based on
+    /// GameTiles and Gameobjects
+    /// </summary>
+    class GenerateTile
     {
-        //creating a private _name instance to set the game modus of the game (easy, hard, crazy)
-        private string _name { get; set; }
-        public string Name
-        {
-            get
-            {
-                return _name;
-            }
-            set
-            {
-                _name = value;
-            }
-        }
+        //setting the gamesize and sprites
+        public int GameSize { get; set; }
 
-       
-        public Tile[,] TilesArray { get; set; }
-        //basic information of the picturebox (pb) width, height and position 
-      public Tile.TileType Type { get; set; }
-        private const int _tileSize = 40;
-        private const int _maxArrLength = 12;
-        private int _currentPositionY { get; set; }
-        private int _currentPositionX { get; set; }
-        private int _placement { get; set; }
-        private int _rowX { get; set; }
-        private int _colY { get; set; }
-        private string _levelModus { get; set; }
+        //a sprite needs to know on what tile it stands
+        public Tile[,] GameTiles { get; set; }
+        private int _amountOfBoxes { get; set; }
+        private int _unmovableBoxes { get; set; }
 
+        //getting the types from sprites with enum
+        public Sprite.SpriteType _tileType { get; set; }
 
+        //variable for random
+        private Random _rand { get; set; }
+        private int _randomNr { get; set; }       
 
-        //filling the attributes with values
-        public GenerateTile()
-        {
-            TilesArray = new Tile[_maxArrLength, _maxArrLength];
+        //defining a standard size of 40 (img size is 40)
+        private const int _BoardSize = 40;
+        private Bitmap _buffer { get; set; }
+        private Size _bufferSize { get; set; }
 
-            _currentPositionY = 0;
-            _currentPositionX = 0;
-            _placement = 0;
-            _rowX = 0;
-            _colY = 0;
-            _levelModus = string.Empty;
-        }
         /// <summary>
-        /// checking the level we picked and giving it back to gameplatform
-        /// if the name is not equal to an empty string we continue to go to the switch statement.
-        /// We use the name that was obtained from the gameplatform to determine which txt level it needs to open.
-        /// once the path is found we use a Streamreader to read all data from the txt file and convert it to an string array.
-        /// while reading it out we give each char a Tile object and giving specific chars the correct object such as box, empty and wall.
-        /// Also while reading the data out we  put them in an Tile[,] 2D array so we can place them on the gameplatform screen.
+        /// Makes a new GameBoard of tiles it depends on the selected modus
         /// </summary>
-        /// <param name="gameplatform"></param>
-        /// <param name="name"></param>
-        public void ReadMyTextLevelFile(Game gameplatform, string name)
-        {
-            //if we get an error show it
-            if (name.Equals(""))
-            {
-                MessageBox.Show("no level found");
+        /// <param name="newSize"></param>
+        public GenerateTile(int newSize)
+        {           
+            // Declaring class attributes           
+            GameSize = newSize;
+            GameTiles = new Tile[GameSize, GameSize];
+            // 40 refers to the image size. All tiles are 40 by 40 pixels
+            _bufferSize = new Size(GameSize * _BoardSize, GameSize * _BoardSize);
+            _buffer = new Bitmap(_bufferSize.Width, _bufferSize.Height);
+
+            // creating a _rand function so we know how many boxes you can push and how many you can't
+            _rand = new Random();
+            
+            switch (newSize)
+            {   
+                //this will be  20% moveable boxes and 5% unmoveable boxres
+                case 8: 
+                    //if its option easy
+                    _amountOfBoxes = 22;
+                    _unmovableBoxes = 3;
+                    break;
+                case 10: 
+                    //if its option medium
+                    _amountOfBoxes = 20;
+                    _unmovableBoxes = 5;
+                    break;
+                case 12:     
+                    //if its option hard
+                    _amountOfBoxes = 18;
+                    _unmovableBoxes = 8;
+                    break;
             }
 
-            //filling the levelModus          
-            switch (name)
+            // Filling the array GameTiles with GameTiles
+            for (int i = 0; i < GameSize; i++)
             {
-                case "easy":
-                    _levelModus = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..\\..\\Levels\\easy.txt");
-                    break;
-                case "hard":
-                    _levelModus = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..\\..\\Levels\\hard.txt");
-                    break;
-                case "crazy":
-                    _levelModus = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..\\..\\Levels\\hard.txt");
-                    break;
-            }
-            using (StreamReader strReader = new StreamReader(_levelModus))
-            {
-                string strLine = string.Empty;
-                while ((strLine = strReader.ReadLine()) != null)
-                {
-                    string[] stringLineArray = strLine.Split(' ');
-                    foreach (string c in stringLineArray)
+                for (int j = 0; j < GameSize; j++)
+                {                         
+                    // Determines what the Sprite on the tile will become
+              
+                    _randomNr = _rand.Next(100);
+
+                    if (i == 0 && j == 0)
                     {
-                        //creating a Tile object to fill our Game with tiles
+                        // the Hero's sprite
+                        _tileType = Sprite.SpriteType.Hero;
 
-
-                        //switch (c)
-                        //{
-                        //    case "D":
-                        //        //creating a pictureBox when the char D is found in txt.file
-                        //        Box box = new Box();
-                        //        box.PlaceBox(_currentPositionY, _currentPositionX + 100);
-                        //        gameplatform.Controls.Add(box.SpriteBox);  //adding the tile to Form2 so we can see it   
-                        //        box.SpriteBox.BringToFront();
-                        //        tileObject.Contains = TileType.box;
-                        //        break;
-                        //    case "V":
-                        //        //creating a pictureBox when the char V is found in txt.file
-                        //        Wall wall = new Wall();
-                        //        wall.PlaceWall(_currentPositionY, _currentPositionX + 100);
-                        //        gameplatform.Controls.Add(wall.SpriteWall);  //adding the tile to Form2 so we can see it   
-                        //        wall.SpriteWall.BringToFront();
-                        //        tileObject.Contains = TileType.wall;
-                        //        break;
-                        //    case "N":
-                        //        tileObject.Contains = TileType.empty;
-                        //        break;
-                        //    //catching the error //creating a button if a char N is found with the type empty and img empty
-                        //    case "?":
-                        //        tileObject.Contains = TileType.empty;
-                        //        break;
-
-                        switch (c)
-                        {
-                            case "D":
-                                //creating a pictureBox when the char D is found in txt.file
-                                Type = Tile.TileType.box;
-                                break;
-                            case "V":
-                                //creating a pictureBox when the char V is found in txt.file
-                                Type = Tile.TileType.wall;
-                                break;
-                            case "N":
-                                Type = Tile.TileType.empty;
-                                break;
-                            //catching the error //creating a button if a char N is found with the type empty and img empty
-                            case "?":
-                                Type = Tile.TileType.empty;
-                                break;
-
-
-                        }
-
-                        Tile tileObject = new Tile(Type);
-                        tileObject.PlaceTile(_currentPositionX, _currentPositionY + 100);
-
-                        TilesArray[_rowX, _colY] = tileObject; //assigning the Tile object to the array    
-
-                        gameplatform.Controls.Add(tileObject.BtnTile);  //adding the tile to Form2 so we can see it   
-
-                      
-                        //its not a bug but a feature
-                        if (name.Equals("crazy"))
-                        {
-                            // Console.WriteLine("crazy");
-                            tileObject.BtnTile.BringToFront();
-                        }
-
-                        _colY++;  //adding 1 collumn eachtime we pass this    
-                        _currentPositionY += _tileSize;  //while we are in the loop we place the tiles on the Game window. We increase the positionX
-
-                        //  Console.Write(tileObject.Contains +" ");
                     }
-                    //  Console.WriteLine();
-                    _rowX++; //add 1 new row each time we pass this
-                    _colY = 0; //resetting column count to 0 so we can pass new data
-                    _currentPositionY = _placement;
-                    _currentPositionX += _tileSize;   //adding small margin between each tile
+                    else if (i == GameTiles.GetLength(0) - 1 && j == GameTiles.GetLength(1) - 1)
+                    {
+                        // the Enemy's sprite
+                        _tileType = Sprite.SpriteType.Enemy;
+                    }
+                    else if (_randomNr < _unmovableBoxes)
+                    {
+                        // the water sprite (a wall you cannot push)
+                        _tileType = Sprite.SpriteType.Wall;
+                    }
+                    else if (_randomNr < _amountOfBoxes)
+                    {
+                        // the Box sprite (a box you can push)
+                        _tileType = Sprite.SpriteType.Box;
+                    }                  
+                    else
+                    {
+                        // empty (null) a tile where something can stand on
+                        _tileType = Sprite.SpriteType.Empty;
+                    }
 
-                    //     Console.WriteLine();
+                    // calls for tile constructor to generate the tiles
+                    Tile tile = new Tile(_tileType, _rand.Next(4), GameSize);
+                    GameTiles[i, j] = tile;
+
+                    //testing map
+                    //Console.Write(_tileType);
                 }
-                strReader.Close(); //closing the file
-                setArrayLevel();
+                //adding an enter each time it passes the loop
+               // Console.WriteLine();
             }
 
+            // Initializing all neighbours, by calling their function
+            // after the complete board has been build
+            for (int i = 0; i < GameSize; i++)
+            {
+                for (int j = 0; j < GameSize; j++)
+                {
+                    // Sets the neighbour for each Tile
+                    GameTiles[i, j].SetNeighbours(GameTiles, i, j);
+                }
+            }
         }
 
-        private void setArrayLevel()
+        /// <summary>
+        /// this will draw the board on the bitmap
+        /// </summary>
+        /// <returns></returns>
+        public Bitmap DrawTileBoard()
         {
-            for (int i = 0; i < TilesArray.GetLength(0); i++)
+            // using a simple way to draw the board on a fixed shape
+            for (int i = 0; i < GameTiles.GetLength(0); i++)
             {
-                for (int j = 0; j < TilesArray.GetLength(1); j++)
+                for (int j = 0; j < GameTiles.GetLength(1); j++)
                 {
-                    Console.Write(TilesArray[i, j].Contains);
+                    //using Graphics for the buffer
+                    using (Graphics graphics = Graphics.FromImage(_buffer))
+                    {
+                        //if the gameTile[i,j] is not null
+                        if (!(GameTiles[i, j].SpriteObject is null))
+                        {
+                            graphics.DrawImage(GameTiles[i, j].SpriteObject.SpriteImage, i * _BoardSize, j * _BoardSize, _BoardSize, _BoardSize);
+                        }
+                        else
+                        {
+                            // 40 refers to the image size. All images are 40 by 40 pixels
+                            graphics.DrawImage(GameTiles[i, j].TileImage, i * _BoardSize, j * _BoardSize, _BoardSize, _BoardSize);
+                        }
 
-                    TilesArray[i, j].SetNeighbours(TilesArray, i, j);
+                    }
                 }
-                Console.WriteLine();
             }
+            return _buffer;
         }
     }
 }

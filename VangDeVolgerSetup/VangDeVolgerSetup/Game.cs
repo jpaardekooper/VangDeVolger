@@ -1,536 +1,343 @@
-﻿/*
- * On this form the level will be loaded and displayed
- * There is alot of .visible true and false going on this was mostly used for styling purposes.
- * Once this form has recieved the level modus it will load the GenerateLevel.cs with the correct levelmodus.
- * After the level is loaded. 1 hero will be added to the screen and 1 enemy.
- * This Game.cs has the task to determine if there is an collision going. This can be found in GameEngine method.
- * we disabled  Application.EnableVisualStyles(); in order to change some  visuals for example the progressbar.
- * 
- * [  small tutorial  ]
- * 
- * The user wins if the enemy progressbar is 0;
- * the user loses if hes progressbar is 0;
- * 
- * the user cannot walk through (water) walls.
- * the user can push boxes.
- * 
- * user loses health if enemy touches him
- * enemy loses health if enemy touches a box
- * 
- * user can walk with the arrow keys (up, down, left, right) this will also update the score
- * 
- * once the player wins or loses the game, the game will ask for a name to fill in for the highscore
- * 
- * This program was created by:
- * Jasper Paardekooper 17039886
- * Roos Hoogervorst 17036895
- */
-
-using System;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace VangDeVolgerSetup
 {
-    public partial class Game : Form
+    partial class Game : Form
     {
-        private Hero callHeroClass; //create new hero class
-        private Enemy callEnemyClass; //create new enemy class
-        private GenerateTile callGeneratelevel; //create new generate level class
-        private Highscore callHighscoreClass;
-        public string GetMapName; //able to detect what game modus we are playing
-        private bool _gameOver;
-        private bool _gamePaused;
+        // Association attributes
+        public GenerateTile GenerateTile { get; set; }
+        private Highscore _callHighscoreClass { get; set; }      
+        private Hero _callHeroClass { get; set; }
+        private Enemy _callEnemyClass { get; set; }
 
-        public Game()
+        // Using 2 variables to set the new size and levelmodus
+        private int _lastSize { get; set; }
+        private int _newSize { get; set; }
+        public string GameModus { get; set; }
+
+        // The enemy Timer
+        private Timer _moveTimer { get; set; }
+
+        // Other attributes   
+        public bool Pause { get; set; }
+        private int _highScore { get; set; }
+        private string _mapName { get; set; }
+
+        
+        /// <summary>
+        /// Constructor for the Game
+        /// Uses a size to create the requested GameBoard GameSize
+        /// </summary>
+        /// <param name="size"></param>
+        public Game(int size)
         {
             InitializeComponent();
 
-            callHeroClass = new Hero(); //create new hero class
-            callEnemyClass = new Enemy(); //create new enemy class
-            callGeneratelevel = new GenerateTile(); //create new generate level class
-            callHighscoreClass = new Highscore();
-            _gameOver = false;
-            _gamePaused = false;
+            //
+            //styling for the highscore 
+            //
 
-            //some styling for labels to show them later on
-            lblPause.Visible = false;
-            resume.Visible = false;
-            lblGameOver.Visible = false;
-            inputPlayerName.Visible = false;
-            btnShowScore.Visible = false;
-            lblHighscore.Visible = false;
+            //label, submit button and input of entering a name is set to invisble
+            lblName.Visible = false;
+            txtBoxName.Visible = false;
+            btnSubmit.Visible = false;
+
+            //the rich textbox of highscores is set to invisible
             boxAllHighScores.Visible = false;
-            lblEnterName.Visible = false;
+            //highscorebackground set to invisble
+            pbHighScoreBackground.Visible = false;
 
-            ///Able to get de level name of the screen to generate the levelwith          
-            lblLevelName.Text = StartScreen.MyTextBoxValue;
-            GetMapName = lblLevelName.Text.ToString();
-            //use private function _startGame to start the game
-            _startGame(); // call startGamefunction on line 46   
+            //setting the score value to 0 and highscore label to 0
+            _highScore = 0;
+            lblHighScore.Text = _highScore.ToString();
+
+            ///end styling
+
+            //defining the mapname so we call the function get map        
+            GetMapName(size);  
+
+            // Setting pause to false (default)
+            Pause = false;
+
+            //calls for function in order to create the hero and enemy instance
+            GenerateSpriteObjects(size);
+          
+
+            //variable _lastSize gets the value of the current generateTile.GameSize
+            _lastSize = GenerateTile.GameSize;
+
+            // Setting keypreview to true, so the keyDown event will work
+            KeyPreview = true;
+
+
+            // Creating a new timer, its event and its interval
+            _moveTimer = new Timer();
+            _moveTimer.Tick += new EventHandler(_MoveTimer_Tick);
+            _moveTimer.Interval = _callEnemyClass.Speed;
+            _moveTimer.Start();
+
+            // Drawing the board on the screen
+            DrawBoardOnScreen();
+
+            // After everything is initialized the board will be shown to the player
+            ShowDialog();
+
         }
 
-        private void _startGame()
+        /// <summary>
+        ///  // Creates a new gameboard and adds a Hero and Enemy sprite
+        /// </summary>
+        /// <param name="size"></param>
+        private void GenerateSpriteObjects(int size)
         {
-            // giving the class _callGenerateLevel the level modus [ easy , hard , crazy ]         
-            callGeneratelevel.ReadMyTextLevelFile(this, GetMapName);
-            _loadsprites(); //call loadsprites function on line 51
+            // Creates a new gameboard and adds a Hero and Enemy sprite
+            GenerateTile = new GenerateTile(size);
+
+            for (int i = 0; i < GenerateTile.GameSize; i++)
+            {
+                for (int j = 0; j < GenerateTile.GameSize; j++)
+                {
+
+                    // Finding the hero and enemy on the board
+                    if (GenerateTile.GameTiles[i, j].SpriteObject is Enemy)
+                    {
+                        _callEnemyClass = (Enemy)GenerateTile.GameTiles[i, j].SpriteObject;
+                    }
+                    else if (GenerateTile.GameTiles[i, j].SpriteObject is Hero)
+                    {
+                        _callHeroClass = (Hero)GenerateTile.GameTiles[i, j].SpriteObject;
+                    }
+                }
+            }
         }
 
-        private void _loadsprites()
+
+
+        /// <summary>
+        ///   //defining the mapnap by size
+        /// </summary>
+        /// <param name="size"></param>
+        private void GetMapName(int size)
+        {       
+            //depending on size the mapname will be displayed
+            switch (size)
+            {
+                case 8:
+                    _mapName = "easy";
+                    lblMapName.Text = "map niveau is: " + _mapName;
+                    return;
+                case 10:
+                    _mapName = "medium";
+                    lblMapName.Text = "map niveau is: " + _mapName;
+                    return;
+                case 12:
+                    _mapName = "hard";
+                    lblMapName.Text = "map niveau is: " + _mapName;
+                    return;
+            }           
+        }
+
+        //
+        //  Game functions
+        //
+
+        /// <summary>
+        /// Closes the current window and makes a new one
+        /// </summary>
+        private void ResetGame()
+        { 
+            //setting the size of the game
+            _newSize = _lastSize;
+
+            // Closes the current window and removes it from the ram
+            Dispose();
+            this.Dispose(true);   
+          
+            // Makes a new GameWindow
+            Game NewForm = new Game(_newSize);           
+        }
+
+        /// <summary>
+        /// Checks if either the forklift or theboss is dead
+        /// </summary>
+        private void IsAnyoneAlive()
         {
-            callHeroClass.CreateHeroInstance(this); //run the function CreateHeroInstance from the Hero.cs class
-            callEnemyClass.CreateEnemyInstance(this); //run the function CreateEnemyInstance from the Enemy.cs class
+            // Calls the Enemy' function to check if he is unable to move
+            _callEnemyClass.IsEnemyAlive();
+
+            // Checks if either the Hero or Enemy is dead
+            if (!_callEnemyClass.CheckAlifeStatus)
+            {
+                // Pauses the game
+                GamePause();
+                // calls for the function ShowHighscore
+                ShowHighscore();
+                //setting the lblhighscore to victory
+                lblHighScore.Text = "U WON!!";
+               // Console.WriteLine("u won");
+
+            }
+            else if (!_callHeroClass.CheckAlifeStatus)
+            {
+                // calls for function Gamepause
+                GamePause();
+                //setting the lblhighscore to lose
+                lblHighScore.Text = "U LOSE!!";
+            //    Console.WriteLine("u lost");
+            }
         }
 
-        //this is a game engine timer this will check the interaction of each object 
-        private void GameEngine(object sender, EventArgs e)
+        /// <summary>
+        /// Draws the current gameboard on screen
+        /// </summary>
+        private void DrawBoardOnScreen()
         {
-            //if (!_gameOver)
-            //{
-            //    callHeroClass.CheckForOutOfBounds();
-
-            //    //   Console.WriteLine(_playerInput);
-            //    foreach (PictureBox x in Controls.OfType<PictureBox>())
-            //    {
-            //        //we can determine if they hit eachother
-            //        //           top side
-            //        // left side [sprite] right side
-            //        //          bottom side
-            //        foreach (PictureBox j in Controls.OfType<PictureBox>())
-            //        {
-            //            //player with walll interaction
-            //            if ((j.Tag.Equals("player")) && (x.Tag.Equals("box")))
-            //            {
-            //                //moving to the left of the wall
-            //                if (j.Bounds.IntersectsWith(x.Bounds))
-            //                {
-            //                    updateScore();
-            //                    if (j.Left <= x.Right && callHeroClass.HeroDirection == Sprite.Direction.Left)
-            //                    {
-            //                        j.Left += callHeroClass._SpriteSpeed;
-            //                        //box can't go out of the screen from left side                                  
-            //                        x.Left -= 40;
-            //                        x.BringToFront();
-
-            //                    }
-            //                    else if (j.Right >= x.Left && callHeroClass.HeroDirection == Sprite.Direction.Right)
-            //                    {
-            //                        j.Left -= callHeroClass._SpriteSpeed;
-            //                        //box can't go out of the screen from right side
-            //                        if (x.Left < (12 * 40 - x.Width))
-            //                        {
-            //                            x.Left += 40;
-            //                            x.BringToFront();
-            //                        }
-            //                    }
-            //                    else if (j.Bottom <= x.Bottom && callHeroClass.HeroDirection == Sprite.Direction.Down)
-            //                    {
-
-            //                        j.Top -= callHeroClass._SpriteSpeed;
-            //                        //box can't go out of the screen from bottom side
-            //                        if (x.Top < (12 * 40 + x.Height))
-            //                        {
-            //                            x.Top += 40;
-            //                            x.BringToFront();
-            //                        }
-            //                    }
-            //                    else if (j.Bottom >= x.Top && callHeroClass.HeroDirection == Sprite.Direction.Up)
-            //                    {
-            //                        j.Top += callHeroClass._SpriteSpeed;
-            //                        //box can't go out of the screen from top side
-            //                        if (x.Top > 100)
-            //                        {
-            //                            x.Top -= 40;
-            //                            x.BringToFront();
-            //                        }
-            //                    }
-            //                }
-            //            }
-
-            //            //walll interaction
-            //            else if ((j.Tag.Equals("player")) && (x.Tag.Equals("wall")))
-            //            {
-            //                //checking if the X loop is touching the J loop
-            //                //moving to the left of the wall
-            //                if (j.Bounds.IntersectsWith(x.Bounds))
-            //                {
-            //                    if (j.Left <= x.Right && callHeroClass.HeroDirection == Sprite.Direction.Left)
-            //                    {
-            //                        j.Left += callHeroClass._SpriteSpeed;
-            //                    }
-            //                    else if (j.Right >= x.Left && callHeroClass.HeroDirection == Sprite.Direction.Right)
-            //                    {
-            //                        j.Left -= callHeroClass._SpriteSpeed;
-            //                    }
-            //                    else if (j.Bottom <= x.Bottom && callHeroClass.HeroDirection == Sprite.Direction.Down)
-            //                    {
-            //                        j.Top -= callHeroClass._SpriteSpeed;
-            //                    }
-            //                    else if (j.Bottom >= x.Top && callHeroClass.HeroDirection == Sprite.Direction.Up)
-            //                    {
-            //                        j.Top += callHeroClass._SpriteSpeed;
-            //                    }
-            //                }
-            //            }
-
-            //            else if ((j.Tag.Equals("box")) && (x.Tag.Equals("wall")))
-            //            {
-            //                //checking if the X loop is touching the J loop
-            //                //moving to the left of the wall
-            //                if (j.Bounds.IntersectsWith(x.Bounds))
-            //                {
-            //                    if (j.Left <= x.Right && callHeroClass.HeroDirection == Sprite.Direction.Left)
-            //                    {
-            //                        //pushing the wall back once it pushed accidently
-            //                        j.Left += 40;
-            //                    }
-            //                    else if (j.Right >= x.Left && callHeroClass.HeroDirection == Sprite.Direction.Right)
-            //                    {
-            //                        //pushing the wall back once it pushed accidently
-            //                        j.Left -= 40;
-            //                    }
-            //                    else if (j.Bottom <= x.Bottom && callHeroClass.HeroDirection == Sprite.Direction.Down)
-            //                    {
-            //                        //pushing the wall back once it pushed accidently
-            //                        j.Top -= 40;
-            //                    }
-            //                    else if (j.Bottom >= x.Top && callHeroClass.HeroDirection == Sprite.Direction.Up)
-            //                    {
-            //                        //pushing the wall back once it pushed accidently
-            //                        j.Top += 40;
-
-            //                    }
-            //                }
-            //            }
-
-            //            //  Enemy and wall collision
-            //            if ((j.Tag.Equals("enemy")) && (x.Tag.Equals("wall")))
-            //            {
-            //                //checking if the X loop is touching the J loop
-            //                //moving to the left of the wall
-            //                if (j.Bounds.IntersectsWith(x.Bounds))
-            //                {
-            //                    updateScore();
-            //                    if (j.Left <= x.Right + x.Width)
-            //                    {
-            //                        j.Left += callHeroClass._SpriteSpeed;
-            //                    }
-            //                    else if (j.Right >= x.Left - x.Width)
-            //                    {
-            //                        j.Left -= callHeroClass._SpriteSpeed;
-            //                    }
-            //                    else if (j.Top < x.Top + x.Height)
-            //                    {
-            //                        j.Top -= callHeroClass._SpriteSpeed;
-            //                    }
-            //                    else if (j.Top > x.Top - x.Height)
-            //                    {
-            //                        j.Top += callHeroClass._SpriteSpeed;
-            //                    }
-            //                }
-
-            //            }
-
-            //            if ((j.Tag.Equals("enemy")) && (x.Tag.Equals("box")))
-            //            {
-
-            //                //checking if the X loop is touching the J loop
-            //                //moving to the left of the wall
-            //                if (j.Bounds.IntersectsWith(x.Bounds))
-            //                {
-            //                    checkEnemyHealth();
-            //                    updateScore();
-            //                    callEnemyClass.EnemyHealth -= 1;
-
-            //                    if (j.Left <= x.Right + x.Width)
-            //                    {
-            //                        j.Left += callHeroClass._SpriteSpeed;
-            //                    }
-            //                    else if (j.Right >= x.Left - x.Width)
-            //                    {
-            //                        j.Left -= callHeroClass._SpriteSpeed;
-            //                    }
-            //                    else if (j.Bottom < x.Bottom + x.Height)
-            //                    {
-            //                        j.Top -= callHeroClass._SpriteSpeed;
-            //                    }
-            //                    else if (j.Top > x.Top - x.Height)
-            //                    {
-            //                        j.Top += callHeroClass._SpriteSpeed;
-            //                    }
-            //                }
-            //            }
-
-            //            //this is mostly giving the events errors
-            //            if ((j.Tag.Equals("enemy")) && (x.Tag.Equals("player")))
-            //            {
-            //                //checking if the X loop is touching the J loop
-            //                //moving to the left of the wall
-            //                if (j.Bounds.IntersectsWith(x.Bounds))
-            //                {
-            //                    checkHeroHealth();
-            //                    callHeroClass.HeroHealth -= 1;
-            //                    //enemy player is able to heal himself if hes health is lower than 95
-            //                    if (callEnemyClass.EnemyHealth < 95)
-            //                    {
-            //                        callEnemyClass.EnemyHealth += 5;
-            //                    }
-            //                }
-
-            //                if (j.Left < x.Left - 7)
-            //                {
-            //                    j.Left += callEnemyClass._SpriteSpeed;
-            //                    callEnemyClass.SetEnemyImageLeft();
-            //                }
-            //                else if (j.Left > x.Left + 7)
-            //                {
-            //                    j.Left -= callEnemyClass._SpriteSpeed;
-            //                    callEnemyClass.SetEnemyImageRight();
-            //                }
-            //                else if (j.Top < x.Top)
-            //                {
-            //                    j.Top += callEnemyClass._SpriteSpeed;
-            //                }
-            //                else if (j.Top > x.Top)
-            //                {
-            //                    j.Top -= callEnemyClass._SpriteSpeed;
-            //                }
-            //            }
-            //        }
-            //    }
-            //}
+            // Requests the gameboard from its class and draws it to the gamewindow
+            pbGameBoard.Image = GenerateTile.DrawTileBoard();
         }
 
+        /// <summary>
+        /// Switches between pauze and unpauze
+        /// </summary>
+        private void GamePause()
+        {           
+            if (Pause)
+            {            
+                // Unpause the game
+                Pause = false;
+                lblHighScore.Text = _highScore.ToString();
+            }
+            else
+            {              
+                // Pauses the game
+                Pause = true;
+                lblHighScore.Text = "Game is Paused";
+            }
+        }  
+
+      
+
+        /// <summary>
+        /// Calls theboss' function to move every time interval
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void _MoveTimer_Tick(object sender, EventArgs e)
+        {
+            // Checks if the game is pauzed
+            if (Pause)
+            {
+                return;
+            }
+            // Calls the enemy' move function
+            _callEnemyClass.Move(_callEnemyClass.ObjectGameBox, Tile.Neighbours.B);
+            // Draws the bord to the screen
+            DrawBoardOnScreen();
+            // checks if the player has won or lost
+            IsAnyoneAlive();
+        }
+   
+
+        /// <summary>
+        /// Calls the function hero move when the key is down 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Game_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (_gameOver) return; // if game over is true then do nothing
-            if (_gamePaused) return; // if gamepaused is true then do nothing
+        {           
 
-            //switching between keydown and giving the hero a direction
+            // Makes a local variable to declare direcion          
+            Tile.Neighbours direction = Tile.Neighbours.B;
+
+            // Switches the input to decide what to do with it
+            // arrow key(left right up down) is used to delcare direction(North, South, West, East), 
+            //the keys are used in the _hasNeighbour dictonary
             switch (e.KeyCode)
             {
+                case Keys.F12:
+                    // Resets the game and stops the event
+                    ResetGame();
+                    return;
+                case Keys.P:
+                    // Pauzes or unpauzes the game and stops the event
+                    GamePause();
+                    return;
                 case Keys.Left:
-                    callHeroClass.PlayerInput = true;
-                    callHeroClass.HeroDirection = Sprite.Direction.Left;
-                    updateScore();
+                    //moving hero left of the screen
+                    direction = Tile.Neighbours.W;
+                    //sets hero img to the left
+                    _callHeroClass.SpriteImage = Properties.Resources.Nleft;
                     break;
                 case Keys.Right:
-                    callHeroClass.PlayerInput = true;
-                    callHeroClass.HeroDirection = Sprite.Direction.Right;
-                    break;
-                case Keys.Down:
-                    callHeroClass.PlayerInput = true;
-                    callHeroClass.HeroDirection = Sprite.Direction.Down;
+                    //moving hero right of the screen
+                    direction = Tile.Neighbours.E;
+                    //sets hero img to the right
+                    _callHeroClass.SpriteImage = Properties.Resources.Nright;
                     break;
                 case Keys.Up:
-                    callHeroClass.PlayerInput = true;
-                    callHeroClass.HeroDirection = Sprite.Direction.Up;
-                    break;
-            }
-
-            //pausing the game
-            if (e.KeyCode == Keys.P)
-            {
-                _pauseGame(); //when P is pressed we call pauseGame function on line 328
-            }
-        }
-
-        private void Game_KeyUp(object sender, KeyEventArgs e)
-        {
-            switch (e.KeyCode)
-            {
-                case Keys.Left:
-                    callHeroClass.PlayerInput = false;
-                    break;
-                case Keys.Right:
-                    callHeroClass.PlayerInput = false;
+                    //moving hero to the top side of the screen
+                    direction = Tile.Neighbours.N;
                     break;
                 case Keys.Down:
-                    callHeroClass.PlayerInput = false;
-                    break;
-                case Keys.Up:
-                    callHeroClass.PlayerInput = false;
-                    break;
+                    //moving hero to the down side of of the screen
+                    direction = Tile.Neighbours.S;
+                    break;              
+                default:
+                    return;
             }
 
-            if (e.KeyCode == Keys.R)
+            // Checks if the game is paused we return the keydown events so nothing happens
+            if (Pause)
             {
-                _resumeGame(); //when R is up again we call resumeGame on line 343
-            }
-
-            if (e.KeyCode == Keys.N)
-            {
-                _resetMap(); //when N is pressed we call resetMap on line 321
-            }
-        }
-
-        private void _resetMap()
-        {
-            //to be extra sure it will be removed from the program 
-            foreach (Control c in Controls)
-            {
-                this.Controls.Remove(c); //remove from frame display
-                c.Dispose();//disposes it from the program
-            }
-            this.Dispose(true);
-
-            Game NewForm = new Game();
-            NewForm.Show();
-        }
-
-        private void _pauseGame()
-        {
-            _gamePaused = true;
-            //grabbing all controls and hide them.
-            foreach (Control c in Controls)
-            {
-                c.Visible = false;
-            }
-            lblScore.Visible = true;
-            lblPause.Visible = true;
-            pause.Visible = false;
-            resume.Visible = true;
-            callHeroClass.Move.Stop();
-            GameEngineTimer.Stop();
-        }
-
-        private void _resumeGame()
-        {
-            _gamePaused = false;
-            //grabbing all controls and show them again
-            foreach (Control c in Controls)
-            {
-                c.Visible = true;
-            }
-            lblPause.Visible = false;
-            pause.Visible = true;
-            resume.Visible = false;
-            inputPlayerName.Visible = false;
-            lblScore.Visible = true;
-            btnShowScore.Visible = false;
-            lblHighscore.Visible = false;
-            boxAllHighScores.Visible = false;
-            lblGameOver.Visible = false;
-            lblEnterName.Visible = false;
-            callHeroClass.Move.Start();
-            GameEngineTimer.Start();
-        }
-
-        private void _gameIsOver()
-        {
-            _gameOver = true;
-            //grabbing all controls and hide them
-            foreach (Control c in Controls)
-            {
-                c.Visible = false;
-            }
-            inputPlayerName.Visible = true;
-            lblScore.Visible = true;
-            btnShowScore.Visible = true;
-            lblNewGame.Visible = true;
-            lblGameOver.Visible = true;
-            lblEnterName.Visible = true;
-
-            callHeroClass.Move.Stop(); //stoping the timer of the hero
-            GameEngineTimer.Stop(); //stopping the timer of the gameEngine
-        }
-
-        //this will change the color of the hero progress bar
-        private void checkHeroHealth()
-        {
-            ///
-            ///Hero health bar
-            ///
-            if (callHeroClass.HeroHealth > 1) //if health is higher than 1
-            {
-                playerHealthBar.Value = Convert.ToInt32(callHeroClass.HeroHealth); //assigning progress bar to player health *note need to change name later
+                return;
             }
             else
             {
-                callHeroClass.HeroIsDeath(this);
-                Console.WriteLine("U Lose");
-                _gameIsOver();
+                //otherswise eachtime the key down is pressed highscore is added +1
+                _highScore += 1;
+                //setting the variable highscore to the labelhighscore
+                lblHighScore.Text = _highScore.ToString();
             }
 
-            if (callHeroClass.HeroHealth < 60)
-            {
-                playerHealthBar.ForeColor = Color.Orange; //when we enter danger zone of the health progress bar is changed to orange
-            }
-
-            if (callHeroClass.HeroHealth < 20)
-            {
-                playerHealthBar.ForeColor = Color.Red; //when we enter danger zone of the health progress bar is changed to red
-            }
+            // Calls the Hero's move function
+            _callHeroClass.Move(_callHeroClass.ObjectGameBox, direction);
+            // Draws the board on screen
+            DrawBoardOnScreen();
+            // Checks if the player has won the game or lost the game
+            IsAnyoneAlive();
         }
 
-        //this will change the color of the Enemy progress bar
-        private void checkEnemyHealth()
+        private void ShowHighscore()
         {
-            ///
-            /// enemy health bar
-            /// 
-            if (callEnemyClass.EnemyHealth > 1) //if health is higher than 1
-            {
-                enemyHealthBar.Value = Convert.ToInt32(callEnemyClass.EnemyHealth); //assigning progress bar to player health *note need to change name later
-            }
-            else
-            {
-                Console.WriteLine("u Won!");
-
-                _gameIsOver();
-            }
-
-            if (callEnemyClass.EnemyHealth < 60)
-            {
-                playerHealthBar.ForeColor = Color.Orange; //when we enter danger zone of the health progress bar is changed to orange
-            }
-
-            if (callEnemyClass.EnemyHealth < 30)
-            {
-                playerHealthBar.ForeColor = Color.Red; //when we enter danger zone of the health progress bar is changed to red
-            }
+            //setting the input, submit button and label to visible in order to enter your name
+            lblName.Visible = true;
+            txtBoxName.Visible = true;
+            btnSubmit.Visible = true;
+            pbHighScoreBackground.Visible = true;
+            //creating a new Highscore
+            _callHighscoreClass = new Highscore();           
         }
 
-        private void updateScore()
+        private void btnSubmit_Click(object sender, EventArgs e)
         {
-            int myScore = Convert.ToInt32(lblScore.Text);
-            int newScore = myScore + 2;
-            // Console.WriteLine(newScore);
-            lblScore.Text = newScore.ToString();
-        }
-
-        private void btnShowScore_Click(object sender, EventArgs e)
-        {
-            lblGameOver.Visible = false;
-            btnShowScore.Visible = false;
-            inputPlayerName.Visible = false;
-            lblHighscore.Visible = true;
-            lblEnterName.Visible = false;
+            //setting the input, submit button and label to invisible 
+            lblName.Visible = false;
+            txtBoxName.Visible = false;
+            btnSubmit.Visible = false;
 
             //filling the method with mapname, playername, and score
-            callHighscoreClass.showAllHighScores(GetMapName, inputPlayerName.Text.ToString(), lblScore.Text.ToString());
+            _callHighscoreClass.showAllHighScores(_mapName, txtBoxName.Text.ToString(), _highScore.ToString());
 
-            callHighscoreClass.ReadAllHighScores(this);
+            //loading the highscore txtbox
+            _callHighscoreClass.ReadAllHighScores(this);
         }
-
-        private void newgame_Click(object sender, EventArgs e)
-        {
-            _resetMap();
-        }
-
-        private void newgame_MouseEnter(object sender, EventArgs e)
-        {
-            lblNewGame.BorderStyle = BorderStyle.FixedSingle;
-            lblNewGame.BackColor = Color.White;
-        }
-
-        private void newgame_MouseLeave(object sender, EventArgs e)
-        {
-            lblNewGame.BorderStyle = BorderStyle.None;
-            lblNewGame.BackColor = Color.Transparent;
-        }
-
-    }
+    }  
 }

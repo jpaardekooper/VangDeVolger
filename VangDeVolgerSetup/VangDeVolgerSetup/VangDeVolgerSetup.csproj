@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{0259EDB6-467D-4EB0-90F2-ADEE1399B0B1}</ProjectGuid>
+    <ProjectGuid>{4238C109-1927-4A49-BE9D-AAEC5062AA96}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>VangDeVolgerSetup</RootNamespace>
     <AssemblyName>VangDeVolgerSetup</AssemblyName>
@@ -45,22 +45,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ChangeMap.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ChangeMap.Designer.cs">
-      <DependentUpon>ChangeMap.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Enemy.cs" />
-    <Compile Include="Highscore.cs" />
-    <Compile Include="Sprite.cs" />
     <Compile Include="Box.cs" />
-    <Compile Include="StartScreen.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="StartScreen.Designer.cs">
-      <DependentUpon>StartScreen.cs</DependentUpon>
-    </Compile>
+    <Compile Include="Enemy.cs" />
     <Compile Include="Game.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -69,21 +55,25 @@
     </Compile>
     <Compile Include="GenerateTile.cs" />
     <Compile Include="Hero.cs" />
+    <Compile Include="Highscore.cs" />
+    <Compile Include="Sprite.cs" />
+    <Compile Include="StartGame.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StartGame.Designer.cs">
+      <DependentUpon>StartGame.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tile.cs" />
-    <Compile Include="Wall.cs" />
-    <EmbeddedResource Include="ChangeMap.resx">
-      <DependentUpon>ChangeMap.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="StartScreen.resx">
-      <DependentUpon>StartScreen.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Game.resx">
       <DependentUpon>Game.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="StartGame.resx">
+      <DependentUpon>StartGame.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
+      <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -106,10 +96,19 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\wall.jpg" />
+    <None Include="Resources\box.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\death.gif" />
+    <None Include="Resources\death 5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\empty.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\enemyLeft.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\enemyRight.gif" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Nleft.gif" />
@@ -118,31 +117,13 @@
     <None Include="Resources\Nright.gif" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\pushLeft.gif" />
+    <None Include="Resources\wall.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\pushRight.gif" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\empty.png" />
     <None Include="Resources\wall.png" />
-    <None Include="Resources\box.png" />
-    <None Include="Resources\background.png" />
-    <None Include="Resources\enemyRight.gif" />
-    <None Include="Resources\enemyLeft.gif" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\death 5.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Levels\easy.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Levels\hard.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Highscores\Highscores.txt" />
-    <None Include="Levels\crazy.txt" />
+    <Content Include="Highscore\Highscore.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

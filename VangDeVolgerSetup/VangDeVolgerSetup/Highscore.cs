@@ -1,83 +1,51 @@
-﻿/*
- * Getting and Setting the data from Game.cs to Highscore RichTextBox
- * We need 3 params: playername, highscore and levelmodus
- */
-using System;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace VangDeVolgerSetup
 {
-    public class Highscore
-    {  
+    class Highscore
+    {
         private string _fileName { get; set; }
-        private string _filePath { get; set; }
+        private string _filePath { get; set; } 
 
-        private string _levelModus { get; set; }
-        public string Levelmodus
-        {
-            get
-            {
-                return _levelModus;            
-            }
-            set
-            {
-                _levelModus = value;
-            }
-        }
-
-        private string _highscore { get; set; }
-        public string MyScore
-        {
-            get
-            {
-                return _highscore;
-            }
-            set
-            {
-                _highscore = value;
-            }
-        }
-
-        private string _playerName { get; set; }
-        public string PlayerName
-        {
-            get
-            {
-                return _playerName;
-            }
-            set
-            {
-                _playerName = value;
-            }
-        }
-       
+        /// <summary>
+        /// default constructore of Highscore
+        /// defining the filename and path
+        /// </summary>
         public Highscore()
         {
-            _fileName = "..\\..\\Highscores\\Highscores.txt";
-            _filePath = Path.GetFullPath(Directory.GetCurrentDirectory() + @"..\..\..\Highscores\Highscores.txt");
+            //defining the fileName highscore.Txt
+            _fileName = "..\\..\\Highscore\\Highscore.txt";
+            //highscore.txt is located at the _filePath location
+            _filePath = Path.GetFullPath(Directory.GetCurrentDirectory() + @"..\..\..\Highscore\Highscore.txt");
         }
 
         /// <summary>
-        /// this constructor needs the levelmodus, playersname and score
-        /// in order to fill the screen
+        /// this constructor needs the levelmodus, playersname and score in order to fill the screen       
         /// </summary>
-        /// <param name="lvl"></param>
-        /// <param name="name"></param>
+        /// <param name="mapname"></param>
+        /// <param name="playername"></param>
         /// <param name="score"></param>
-        public void showAllHighScores(string lvl, string name, string score)
-        {          
-            //adding parameters to the file
+        public void showAllHighScores(string mapname, string playername, string score)
+        {
+            //adding parameters to the file 
             File.AppendAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, _fileName),
-                    lvl + "  " + name + "  " + score + "  " + DateTime.Now.ToString() + Environment.NewLine);
+                //adding tabs in the textfile in order to fill it out
+                    mapname + "\t" + playername + "\t  " + score + "\t " + DateTime.Now.ToString() + Environment.NewLine);
+            
 
-            TextWriter tw = new StreamWriter(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, _fileName), true);   
+            TextWriter tw = new StreamWriter(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, _fileName), true);
             // close the stream
-            tw.Close();       
+            tw.Close();
         }
 
         public void ReadAllHighScores(Game gameplatform)
         {
+            //using filestream in order to open the file and read the data
             using (FileStream readscores = File.Open(_filePath, FileMode.Open, FileAccess.Read, FileShare.None))
             {
                 //setting the data to a byte array
@@ -86,13 +54,13 @@ namespace VangDeVolgerSetup
                 //reading all data out and but them on a RichTextBox
                 while (readscores.Read(fileScores, 0, fileScores.Length) > 0)
                 {
+                    //the richttextbox from form Game will get the data from _filename (highscore.txt)
                     gameplatform.boxAllHighScores.Text = temp.GetString(fileScores);
                 }
-
             }
             //let the highscore (richtextbox) show
             gameplatform.boxAllHighScores.Visible = true;
         }
-      
+
     }
 }

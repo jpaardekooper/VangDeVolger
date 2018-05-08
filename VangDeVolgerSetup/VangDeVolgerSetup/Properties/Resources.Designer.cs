@@ -22,7 +22,7 @@ namespace VangDeVolgerSetup.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class Resources {
+    internal class Resources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace VangDeVolgerSetup.Properties {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Resources.ResourceManager ResourceManager {
+        internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("VangDeVolgerSetup.Properties.Resources", typeof(Resources).Assembly);
@@ -51,7 +51,7 @@ namespace VangDeVolgerSetup.Properties {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Globalization.CultureInfo Culture {
+        internal static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,7 +63,7 @@ namespace VangDeVolgerSetup.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap box {
+        internal static System.Drawing.Bitmap box {
             get {
                 object obj = ResourceManager.GetObject("box", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -73,7 +73,7 @@ namespace VangDeVolgerSetup.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap death_5 {
+        internal static System.Drawing.Bitmap death_5 {
             get {
                 object obj = ResourceManager.GetObject("death_5", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -81,29 +81,9 @@ namespace VangDeVolgerSetup.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to N N V V V V N N N N V N
-        ///N N N N N N N N N D N N
-        ///N N D V V V V V V N N V
-        ///N N N D D D D V N N N N
-        ///N N N D N N D N N N N V
-        ///N V N D N N D N N N N N
-        ///N V N V N N D N V N N V
-        ///N N N N N D D D D N N N
-        ///N N N N N D N N D N N V
-        ///N D D D D N N N N D N N
-        ///N D N D N N D N N N N N
-        ///N N N N N N N N N N N N.
-        /// </summary>
-        public static string easy {
-            get {
-                return ResourceManager.GetString("easy", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap empty {
+        internal static System.Drawing.Bitmap empty {
             get {
                 object obj = ResourceManager.GetObject("empty", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -113,7 +93,7 @@ namespace VangDeVolgerSetup.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap enemyLeft {
+        internal static System.Drawing.Bitmap enemyLeft {
             get {
                 object obj = ResourceManager.GetObject("enemyLeft", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -123,7 +103,7 @@ namespace VangDeVolgerSetup.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap enemyRight {
+        internal static System.Drawing.Bitmap enemyRight {
             get {
                 object obj = ResourceManager.GetObject("enemyRight", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -131,38 +111,9 @@ namespace VangDeVolgerSetup.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ?N N V V V V N N N N V N
-        ///N N N N N N N N N D N N
-        ///N N D V V V V V V N N V
-        ///N N N D D D D V N N N N
-        ///N N N D N N D N N N N V
-        ///N V N D N N D N N N N N
-        ///N V N V N N D N V N N V
-        ///N N N N N N N N D N N N
-        ///N N N N N N N N N N N V
-        ///N D D D D N N N N D N N
-        ///N D N D N N N N N N N N
-        ///N N N N N N N N N N N N.
-        /// </summary>
-        public static string hard {
-            get {
-                return ResourceManager.GetString("hard", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to 123456.
-        /// </summary>
-        public static string Highscores {
-            get {
-                return ResourceManager.GetString("Highscores", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap Nleft {
+        internal static System.Drawing.Bitmap Nleft {
             get {
                 object obj = ResourceManager.GetObject("Nleft", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -172,7 +123,7 @@ namespace VangDeVolgerSetup.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap Nright {
+        internal static System.Drawing.Bitmap Nright {
             get {
                 object obj = ResourceManager.GetObject("Nright", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -182,29 +133,19 @@ namespace VangDeVolgerSetup.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap pushLeft {
-            get {
-                object obj = ResourceManager.GetObject("pushLeft", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap pushRight {
-            get {
-                object obj = ResourceManager.GetObject("pushRight", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap wall {
+        internal static System.Drawing.Bitmap wall {
             get {
                 object obj = ResourceManager.GetObject("wall", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap wall1 {
+            get {
+                object obj = ResourceManager.GetObject("wall1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
