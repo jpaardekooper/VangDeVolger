@@ -17,6 +17,9 @@ namespace VangDeVolgerSetup
         // Generates a random direction
         private Random _rand { get; set; }
 
+        //creating an array of enum to check what moves are available
+        //private Enum[] _availableMoves = new Enum[] { Tile.Neighbours.N, Tile.Neighbours.E, Tile.Neighbours.S, Tile.Neighbours.W };
+
         /// <summary>
         /// construct the enemy class
         /// </summary>
