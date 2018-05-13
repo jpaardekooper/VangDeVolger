@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿/*
+ * Enemy class of the game  depending on the level modus it will move faster or slower
+ * */
+
+using System;
 
 namespace VangDeVolgerSetup
 {
@@ -59,19 +58,19 @@ namespace VangDeVolgerSetup
         /// </summary>
         public void IsEnemyAlive()
         {
-            // Checking if there isn't a ground tile around the boss
+            // Checking if there isn't a empty tile around the enemy
             if (!((ObjectGameBox._HasNeighbours.ContainsKey(Tile.Neighbours.N) && ObjectGameBox._HasNeighbours[Tile.Neighbours.N].SpriteObject is null) ||
                   (ObjectGameBox._HasNeighbours.ContainsKey(Tile.Neighbours.W) && ObjectGameBox._HasNeighbours[Tile.Neighbours.W].SpriteObject is null) ||
                   (ObjectGameBox._HasNeighbours.ContainsKey(Tile.Neighbours.S) && ObjectGameBox._HasNeighbours[Tile.Neighbours.S].SpriteObject is null) ||
                   (ObjectGameBox._HasNeighbours.ContainsKey(Tile.Neighbours.E) && ObjectGameBox._HasNeighbours[Tile.Neighbours.E].SpriteObject is null)))
             {
-                // Checking if all tiles around the boss are able to block him
+                // Checking if all tiles around the enemy are able to block him
                 if (((ObjectGameBox._HasNeighbours.ContainsKey(Tile.Neighbours.N) && ObjectGameBox._HasNeighbours[Tile.Neighbours.N].SpriteObject.BlockEnemy) || !ObjectGameBox._HasNeighbours.ContainsKey(Tile.Neighbours.N)) &&
                    ((ObjectGameBox._HasNeighbours.ContainsKey(Tile.Neighbours.W) && ObjectGameBox._HasNeighbours[Tile.Neighbours.W].SpriteObject.BlockEnemy) || !ObjectGameBox._HasNeighbours.ContainsKey(Tile.Neighbours.W)) &&
                    ((ObjectGameBox._HasNeighbours.ContainsKey(Tile.Neighbours.S) && ObjectGameBox._HasNeighbours[Tile.Neighbours.S].SpriteObject.BlockEnemy) || !ObjectGameBox._HasNeighbours.ContainsKey(Tile.Neighbours.S)) &&
                    ((ObjectGameBox._HasNeighbours.ContainsKey(Tile.Neighbours.E) && ObjectGameBox._HasNeighbours[Tile.Neighbours.E].SpriteObject.BlockEnemy) || !ObjectGameBox._HasNeighbours.ContainsKey(Tile.Neighbours.E)))
                 {
-                    // setting theboss' livestatus to false
+                    // setting enemy' CheckAlifeStatus to false
                     ObjectGameBox.SpriteObject.CheckAlifeStatus = false;
                 }
             }

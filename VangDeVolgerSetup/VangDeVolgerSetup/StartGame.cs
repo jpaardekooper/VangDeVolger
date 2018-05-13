@@ -1,11 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿/*
+ * This is the StartScreen of the game Vang de Volger.
+ * The user has three options: easy, medium and hard. Clicking on one of these will generate a new window of Game.cs and load the game
+
+ * This program was created by:
+ * Jasper Paardekooper 17039886
+ * Roos Hoogervorst 17036895
+ * 
+ */
+
+using System;
 using System.Windows.Forms;
 
 namespace VangDeVolgerSetup

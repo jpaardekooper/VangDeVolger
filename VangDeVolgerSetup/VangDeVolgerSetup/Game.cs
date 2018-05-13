@@ -1,11 +1,30 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿/*
+ * On this form the level will be loaded and displayed
+ * There is alot of .visible true and false going on this was mostly used for styling purposes.
+ * Once this form has recieved the level modus it will load the GenerateTiles.cs with the correct levelmodus.
+ * After the tiles are loaded. 1 hero will be added to the screen and 1 enemy.
+ * This Game.cs has the task to determine if hero or enemy is still alive. 
+ * we enabled  Application.EnableVisualStyles() because we are no longer using a progress bar
+ * 
+ * [  small tutorial  ]
+ * 
+ * The user wins if the enemy is stuck between walls and boxes
+ * the user loses if the enemy touches the player
+ * 
+ * the user cannot walk through (water) walls.
+ * the user can push boxes.
+ * 
+ * 
+ * user can walk with the arrow keys (up, down, left, right) this will also update the score
+ * 
+ * once the player wins or loses the game, the game will ask for a name to fill in for the highscore
+ * 
+ * This program was created by:
+ * Jasper Paardekooper 17039886
+ * Roos Hoogervorst 17036895
+ */
+
+using System;
 using System.Windows.Forms;
 
 namespace VangDeVolgerSetup

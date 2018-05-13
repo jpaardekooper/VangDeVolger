@@ -1,9 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿/*
+ * This is the parent class of the following classes: Hero, Box, and Enemy
+ * it has 1 abstract method in order to move the sprites
+ */
+
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace VangDeVolgerSetup
 {

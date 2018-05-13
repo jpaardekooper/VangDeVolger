@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace VangDeVolgerSetup
 {
     /// <summary>
@@ -22,12 +16,12 @@ namespace VangDeVolgerSetup
         {
             // sets attributes based on canMove : bool Pictures are stored in the Properties folder
             if (canMove)
-            {             
+            {
                 SpriteImage = Properties.Resources.box;
                 PushWall = true;
             }
             else
-            {              
+            {
                 SpriteImage = Properties.Resources.wall1;
                 PushWall = false;
             }
@@ -36,7 +30,7 @@ namespace VangDeVolgerSetup
 
             // set other class atributes
             CheckAlifeStatus = false;
-            BlockEnemy = true;     
+            BlockEnemy = true;
         }
 
         /// <summary>
@@ -63,8 +57,6 @@ namespace VangDeVolgerSetup
                     // Prevents steel box pushing
                     return;
                 }
-
-           
 
                 if (AnotherGameBoX._HasNeighbours[direction]._HasNeighbours[direction].SpriteObject is null)
                 {

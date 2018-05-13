@@ -9,3 +9,14 @@ C:\Users\P_jaz\Desktop\VangDeVolgerSetup\VangDeVolgerSetup\bin\Debug\VangDeVolge
 C:\Users\P_jaz\Desktop\VangDeVolgerSetup\VangDeVolgerSetup\bin\Debug\VangDeVolgerSetup.pdb
 C:\Users\P_jaz\Desktop\VangDeVolgerSetup\VangDeVolgerSetup\obj\Debug\VangDeVolgerSetup.exe
 C:\Users\P_jaz\Desktop\VangDeVolgerSetup\VangDeVolgerSetup\obj\Debug\VangDeVolgerSetup.pdb
+C:\Users\P_jaz\source\repos\VangDeVolger\VangDeVolgerSetup\VangDeVolgerSetup\bin\Debug\VangDeVolgerSetup.exe.config
+C:\Users\P_jaz\source\repos\VangDeVolger\VangDeVolgerSetup\VangDeVolgerSetup\bin\Debug\VangDeVolgerSetup.exe
+C:\Users\P_jaz\source\repos\VangDeVolger\VangDeVolgerSetup\VangDeVolgerSetup\bin\Debug\VangDeVolgerSetup.pdb
+C:\Users\P_jaz\source\repos\VangDeVolger\VangDeVolgerSetup\VangDeVolgerSetup\obj\Debug\VangDeVolgerSetup.csprojResolveAssemblyReference.cache
+C:\Users\P_jaz\source\repos\VangDeVolger\VangDeVolgerSetup\VangDeVolgerSetup\obj\Debug\VangDeVolgerSetup.Game.resources
+C:\Users\P_jaz\source\repos\VangDeVolger\VangDeVolgerSetup\VangDeVolgerSetup\obj\Debug\VangDeVolgerSetup.StartGame.resources
+C:\Users\P_jaz\source\repos\VangDeVolger\VangDeVolgerSetup\VangDeVolgerSetup\obj\Debug\VangDeVolgerSetup.Properties.Resources.resources
+C:\Users\P_jaz\source\repos\VangDeVolger\VangDeVolgerSetup\VangDeVolgerSetup\obj\Debug\VangDeVolgerSetup.csproj.GenerateResource.cache
+C:\Users\P_jaz\source\repos\VangDeVolger\VangDeVolgerSetup\VangDeVolgerSetup\obj\Debug\VangDeVolgerSetup.csproj.CoreCompileInputs.cache
+C:\Users\P_jaz\source\repos\VangDeVolger\VangDeVolgerSetup\VangDeVolgerSetup\obj\Debug\VangDeVolgerSetup.exe
+C:\Users\P_jaz\source\repos\VangDeVolger\VangDeVolgerSetup\VangDeVolgerSetup\obj\Debug\VangDeVolgerSetup.pdb

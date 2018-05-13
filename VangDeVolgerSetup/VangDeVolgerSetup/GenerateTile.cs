@@ -26,7 +26,7 @@ namespace VangDeVolgerSetup
 
         //variable for random
         private Random _rand { get; set; }
-        private int _randomNr { get; set; }       
+        private int _randomNr { get; set; }
 
         //defining a standard size of 40 (img size is 40)
         private const int _BoardSize = 40;
@@ -38,7 +38,7 @@ namespace VangDeVolgerSetup
         /// </summary>
         /// <param name="newSize"></param>
         public GenerateTile(int newSize)
-        {           
+        {
             // Declaring class attributes           
             GameSize = newSize;
             GameTiles = new Tile[GameSize, GameSize];
@@ -48,21 +48,21 @@ namespace VangDeVolgerSetup
 
             // creating a _rand function so we know how many boxes you can push and how many you can't
             _rand = new Random();
-            
+
             switch (newSize)
-            {   
+            {
                 //this will be  20% moveable boxes and 5% unmoveable boxres
-                case 8: 
+                case 8:
                     //if its option easy
                     _amountOfBoxes = 22;
                     _unmovableBoxes = 3;
                     break;
-                case 10: 
+                case 10:
                     //if its option medium
                     _amountOfBoxes = 20;
                     _unmovableBoxes = 5;
                     break;
-                case 12:     
+                case 12:
                     //if its option hard
                     _amountOfBoxes = 18;
                     _unmovableBoxes = 8;
@@ -73,9 +73,9 @@ namespace VangDeVolgerSetup
             for (int i = 0; i < GameSize; i++)
             {
                 for (int j = 0; j < GameSize; j++)
-                {                         
+                {
                     // Determines what the Sprite on the tile will become
-              
+
                     _randomNr = _rand.Next(100);
 
                     if (i == 0 && j == 0)
@@ -98,7 +98,7 @@ namespace VangDeVolgerSetup
                     {
                         // the Box sprite (a box you can push)
                         _tileType = Sprite.SpriteType.Box;
-                    }                  
+                    }
                     else
                     {
                         // empty (null) a tile where something can stand on
@@ -113,7 +113,7 @@ namespace VangDeVolgerSetup
                     //Console.Write(_tileType);
                 }
                 //adding an enter each time it passes the loop
-               // Console.WriteLine();
+                // Console.WriteLine();
             }
 
             // Initializing all neighbours, by calling their function
@@ -134,7 +134,7 @@ namespace VangDeVolgerSetup
         /// <returns></returns>
         public Bitmap DrawTileBoard()
         {
-            // using a simple way to draw the board on a fixed shape
+            // using a simple way to draw the board
             for (int i = 0; i < GameTiles.GetLength(0); i++)
             {
                 for (int j = 0; j < GameTiles.GetLength(1); j++)
