@@ -7,6 +7,7 @@ namespace VangDeVolgerSetup
     class Box : Sprite
     {
         /// <summary>
+        /// box constructor
         /// This will create a new box depending o nthe parameter if it will be a (water sprite) that cannot move 
         /// or a wall sprite that can move and block an enemy
         /// generation is based in GenerateTile and Tile

@@ -1,9 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿/***
+ * A Winning game has a Highscore 
+ * */
+using System;
 using System.IO;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace VangDeVolgerSetup
 {
@@ -13,6 +13,7 @@ namespace VangDeVolgerSetup
         private string _filePath { get; set; } 
 
         /// <summary>
+        /// Highscore constructor
         /// default constructore of Highscore
         /// defining the filename and path
         /// </summary>

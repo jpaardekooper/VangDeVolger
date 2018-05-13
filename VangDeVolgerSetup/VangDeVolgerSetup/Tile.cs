@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace VangDeVolgerSetup
 {
@@ -29,14 +25,15 @@ namespace VangDeVolgerSetup
         }
 
         /// <summary>
+        /// Tile constructor
         /// Makes a gamebox based on 3 ints 
         /// </summary>
         /// <param name="tileType"></param>
-        /// <param name="rngNumber"></param>
+        /// <param name="randNumber"></param>
         /// <param name="Size"></param>
-        public Tile(Sprite.SpriteType tileType, int rngNumber, int size)
+        public Tile(Sprite.SpriteType tileType, int randNumber, int size)
         {
-            // Sets the generic background image           
+            // Sets the default background image           
             TileImage = Properties.Resources.empty;
 
             // Generates a dictionary that will be used later on
@@ -58,14 +55,14 @@ namespace VangDeVolgerSetup
                     SpriteObject = new Box(false);
                     break;
                 case Sprite.SpriteType.Box:
-                    //  create moveable metal sprite
+                    //  create moveable box sprite
                     SpriteObject = new Box(true);
                     break;
                 case Sprite.SpriteType.Empty:
                     // Sets gameobject to null
                     SpriteObject = null;
                     break;
-            }    
+            }
         }
 
         /// <summary>

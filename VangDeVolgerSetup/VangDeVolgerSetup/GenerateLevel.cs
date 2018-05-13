@@ -116,7 +116,7 @@ namespace VangDeVolgerSetup
                 // Console.WriteLine();
             }
 
-            // Initializing all neighbours, by calling their function
+            // Initializing all neighbours
             // after the complete board has been build
             for (int i = 0; i < GameSize; i++)
             {

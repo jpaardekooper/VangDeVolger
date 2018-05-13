@@ -1,6 +1,9 @@
 ﻿/*
  * This is the StartScreen of the game Vang de Volger.
  * The user has three options: easy, medium and hard. Clicking on one of these will generate a new window of Game.cs and load the game
+ * easy is 8 by 8 = 64
+ * medium is 10 by 10 = 100
+ * hard is 12 by 12 = 144;
 
  * This program was created by:
  * Jasper Paardekooper 17039886
@@ -34,7 +37,7 @@ namespace VangDeVolgerSetup
             ////hides the current screen
             //this.Hide();
 
-            //setting gameSize to 10 (game will be 10 tiles by 10 tiles)
+            //setting gameSize to 8 (game will be 8 tiles by 8 tiles)
             _gameSize = 8;
 
             // Makes the new gamewindow
@@ -48,7 +51,7 @@ namespace VangDeVolgerSetup
         /// <param name="e"></param>
         private void BtnPlayMedium_Click(object sender, EventArgs e)
         {
-            //setting gameSize to 12 (game will be 12 tiles by 12 tiles)
+            //setting gameSize to 10 (game will be 10 tiles by 10 tiles)
             _gameSize = 10;
 
             // Makes the new gamewindow
@@ -62,7 +65,7 @@ namespace VangDeVolgerSetup
         /// <param name="e"></param>
         private void BtnPlayHard_Click(object sender, EventArgs e)
         {
-            //setting gameSize to 16 (game will be 16 tiles by 16 tiles)
+            //setting gameSize to 12 (game will be 12 tiles by 12 tiles)
             _gameSize = 12;
 
             // Makes the new gamewindow

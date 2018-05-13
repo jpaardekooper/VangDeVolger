@@ -2,14 +2,12 @@
  * This is the parent class of the following classes: Hero, Box, and Enemy
  * it has 1 abstract method in order to move the sprites
  */
-
 using System.Drawing;
-
 
 namespace VangDeVolgerSetup
 {
     /// <summary>
-    /// A Sprite can be anything used in the game
+    /// A Sprite can be a Hero, Enemy, Wall, Box or empty (null)
     /// </summary>
     abstract class Sprite
     {        
@@ -17,7 +15,9 @@ namespace VangDeVolgerSetup
         public bool CheckAlifeStatus { get; set; }
         public bool BlockEnemy { get; set; }
 
+        //a sprite has a image
         public Image SpriteImage { get; set; }
+        //a sprite has a location
         public Tile ObjectGameBox { get; set; } 
 
         public enum SpriteType
@@ -28,13 +28,13 @@ namespace VangDeVolgerSetup
             Wall,
             Empty
         }
-
+       
         /// <summary>
-        /// Constructor for a Sprite
+        /// Sprite's constructor
         /// </summary>
         public Sprite()
         {
-            // All attributes are currently set in the child classes           
+            // All attributes are set in child classes      
         }
 
         /// <summary>
