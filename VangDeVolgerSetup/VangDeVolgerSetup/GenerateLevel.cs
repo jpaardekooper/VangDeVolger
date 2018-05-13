@@ -11,7 +11,7 @@ namespace VangDeVolgerSetup
     /// Gameboard Object makes a tileboard based on
     /// GameTiles and Gameobjects
     /// </summary>
-    class GenerateTile
+    class GenerateLevel
     {
         //setting the gamesize and sprites
         public int GameSize { get; set; }
@@ -37,7 +37,7 @@ namespace VangDeVolgerSetup
         /// Makes a new GameBoard of tiles it depends on the selected modus
         /// </summary>
         /// <param name="newSize"></param>
-        public GenerateTile(int newSize)
+        public GenerateLevel(int newSize)
         {
             // Declaring class attributes           
             GameSize = newSize;

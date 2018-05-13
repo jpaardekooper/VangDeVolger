@@ -32,7 +32,7 @@ namespace VangDeVolgerSetup
     partial class Game : Form
     {
         // Association attributes
-        public GenerateTile GenerateTile { get; set; }
+        public GenerateLevel GenerateTile { get; set; }
         private Highscore _callHighscoreClass { get; set; }      
         private Hero _callHeroClass { get; set; }
         private Enemy _callEnemyClass { get; set; }
@@ -118,7 +118,7 @@ namespace VangDeVolgerSetup
         private void GenerateSpriteObjects(int size)
         {
             // Creates a new gameboard and adds a Hero and Enemy sprite
-            GenerateTile = new GenerateTile(size);
+            GenerateTile = new GenerateLevel(size);
 
             for (int i = 0; i < GenerateTile.GameSize; i++)
             {
