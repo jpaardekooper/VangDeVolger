@@ -66,7 +66,14 @@ namespace VangDeVolgerSetup
         }
 
         /// <summary>
-        /// A function that sets the neighbours for the gameboxes      
+        /// A function that sets the neighbours for the gameboxes    
+        ///         ------> columns
+        ///       0 0 0 0 0 0 0 0 0 0 
+        ///     | 0 0 0 0 0 0 0 0 0 0 
+        ///     | 0 0 0 0 0 0 0 0 0 0 
+        ///rows | 0 0 0 0 0 0 0 0 0 0 
+        ///     | 0 0 0 0 0 0 0 0 0 0 
+        ///     V 0 0 0 0 0 0 0 0 0 0 
         /// </summary>
         /// <param name="gameBoxes"></param>
         /// <param name="column"></param>
